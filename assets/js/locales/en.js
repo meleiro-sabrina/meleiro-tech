@@ -1,18 +1,18 @@
 /** English (en-US) strings, keyed by the data-i18n attributes in index.html. */
 export default {
-  "meta.title": "Meleiro Tech — Turning ideas into software",
+  "meta.title": "Website, Landing Page & Custom Software Development | Meleiro Tech",
   "meta.desc":
-    "Meleiro Tech builds websites, landing pages, and custom software that transform business needs into digital solutions.",
+    "Professional websites, landing pages and custom software for businesses across Brazil and abroad. Modern, fast and search-engine optimized. Free quote.",
   "nav.home": "Home",
   "nav.services": "Services",
   "nav.projects": "Projects",
   "nav.about": "About",
   "nav.contact": "Contact",
   "cta.quote": "Request a quote",
-  "hero.eyebrow": "Software house · Custom development",
+  "hero.eyebrow": "Websites & custom software · Remote worldwide",
   "hero.title": 'Turning ideas into <span class="hl">software.</span>',
   "hero.text":
-    "We build websites, landing pages, and custom software that transform business needs into digital solutions.",
+    "Professional websites, landing pages and custom software for businesses of all sizes — from first sketch to launch.",
   "hero.cta1": "Explore our services",
   "hero.cta2": "Start a project",
   "hero.chip3": "Software",
@@ -23,10 +23,10 @@ export default {
     '<span class="c-k">const</span> <span class="c-v">project</span> = <span class="c-k">await</span> meleiro\n  .<span class="c-f">build</span>({\n    idea: <span class="c-s">\'yours\'</span>,\n    stack: <span class="c-s">\'modern\'</span>,\n  });',
   "hero.scroll": "Scroll to explore",
   "services.kicker": "Services",
-  "services.title": "What we build",
+  "services.title": "Websites, landing pages and custom software",
   "services.lead":
     "Three areas of expertise, one obsession: turning real business needs into well-crafted digital products.",
-  "services.cta": "Start a project",
+  "services.cta": "Learn more",
   "services.s1.text": "Modern digital experiences for companies, brands, and professionals.",
   "services.s1.i1": "Company websites",
   "services.s1.i2": "Corporate websites",
@@ -71,17 +71,22 @@ export default {
   "portfolio.lumio.t2": "Authentication",
   "portfolio.lumio.t3": "Learning tracks",
   "portfolio.spectrum.cat": "Landing page · Architecture",
-  "portfolio.spectrum.desc": "Landing page for a modern home builder, with a project slider, price estimate form, and work portfolio.",
+  "portfolio.spectrum.desc":
+    "Landing page for a modern home builder, with a project slider, price estimate form, and work portfolio.",
   "portfolio.profit.cat": "Landing page · Gym",
-  "portfolio.profit.desc": "One-page site for a fitness studio, with services, gallery, coaching team, and a sign-up call to action.",
+  "portfolio.profit.desc":
+    "One-page site for a fitness studio, with services, gallery, coaching team, and a sign-up call to action.",
   "portfolio.pizzahouse.cat": "Website · Restaurant",
   "portfolio.pizzahouse.desc": "Pizzeria website with menu, photo gallery, team, and contact page.",
   "portfolio.worky.cat": "WordPress website · Architecture",
-  "portfolio.worky.desc": "WordPress theme built with Elementor for an architecture firm, with services, about, and blog pages.",
+  "portfolio.worky.desc":
+    "WordPress theme built with Elementor for an architecture firm, with services, about, and blog pages.",
   "portfolio.webion.cat": "WordPress website · Agency",
-  "portfolio.webion.desc": "Minimalist WordPress theme for a creative agency, with services, company stats, team, and blog.",
+  "portfolio.webion.desc":
+    "Minimalist WordPress theme for a creative agency, with services, company stats, team, and blog.",
   "portfolio.herber.cat": "Website · Organic food",
-  "portfolio.herber.desc": "Website for an organic food store, with gallery, team, testimonials, and company pages.",
+  "portfolio.herber.desc":
+    "Website for an organic food store, with gallery, team, testimonials, and company pages.",
   "why.kicker": "Why us",
   "why.title": 'Why <span class="hl">Meleiro Tech?</span>',
   "why.c1.t": "Tailor-made",
@@ -145,6 +150,9 @@ export default {
   "toast.fail": "We couldn't send your message right now. Please try WhatsApp.",
   "footer.text": "Software, design, and technology turning ideas into solutions.",
   "footer.rights": "All rights reserved.",
+  "footer.svc1": "Websites",
+  "footer.svc2": "Landing pages",
+  "footer.svc3": "Custom software",
   "footer.made": "Built with code, coffee, and a lot of care.",
   "toast.lang": "Language switched to English",
   "toast.error": "Please review the highlighted fields.",

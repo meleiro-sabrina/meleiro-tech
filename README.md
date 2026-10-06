@@ -28,28 +28,34 @@ Site institucional da **Meleiro Tech** — websites, landing pages e sistemas pe
 - **Formulário funcional** — envio para o e-mail via [FormSubmit](https://formsubmit.co) e alternativa de envio pelo WhatsApp com a mensagem já preenchida.
 - **Animações com propósito** — reveal on scroll, parallax, partículas e constelação de tecnologias, todas respeitando `prefers-reduced-motion`.
 - **Responsivo** — layouts dedicados para desktop, tablet e celular.
-- **SEO e compartilhamento** — metadados Open Graph, `sitemap.xml` e `robots.txt`.
+- **SEO** — páginas dedicadas por serviço, dados estruturados (Schema.org), Open Graph, `sitemap.xml` e `robots.txt`.
 
 ## Estrutura
 
 ```text
 .
-├── index.html                 # Página única com todas as seções
+├── index.html                 # Página inicial com todas as seções
+├── criacao-de-sites/          # Páginas de serviço (geradas por scripts/)
+├── landing-pages/
+├── sistemas-personalizados/
 ├── assets/
 │   ├── css/
 │   │   ├── base.css           # Tokens da marca, reset e utilitários
 │   │   ├── components.css     # Botões, toast e peças reutilizáveis
 │   │   ├── layout.css         # Header, navegação, seções e footer
-│   │   ├── sections/          # Um arquivo por seção da página
+│   │   ├── sections/          # Um arquivo por seção da página inicial
+│   │   ├── pages/             # Estilos das páginas de serviço
 │   │   └── animations.css     # Reveal, keyframes e reduced motion (carregar por último)
 │   ├── js/
-│   │   ├── main.js            # Ponto de entrada
+│   │   ├── main.js            # Ponto de entrada da página inicial
+│   │   ├── page.js            # Ponto de entrada das páginas de serviço
 │   │   ├── config.js          # Contatos, endpoint do formulário e idioma padrão
 │   │   ├── core/              # DOM helpers, i18n, scroll e toast
 │   │   ├── modules/           # Um módulo por funcionalidade da página
 │   │   └── locales/           # Textos em pt e en
 │   └── img/                   # Imagens otimizadas para a web
 ├── brand/                     # Arquivos originais da identidade visual
+├── scripts/                   # Gerador das páginas de serviço
 └── docs/                      # Imagens usadas neste README
 ```
 
@@ -74,6 +80,12 @@ export const CONTACT = { email: "meleiro.tech@gmail.com", whatsapp: "55839930419
 ```
 
 Os textos do site ficam em [`assets/js/locales/`](assets/js/locales). Para editar um texto, altere a mesma chave em `pt.js` e `en.js`.
+
+O conteúdo das páginas de serviço fica em [`scripts/build-service-pages.py`](scripts/build-service-pages.py). Depois de editar, gere as páginas novamente:
+
+```bash
+npm run build:pages
+```
 
 ## Padrões de código
 

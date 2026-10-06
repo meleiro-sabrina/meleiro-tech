@@ -1,18 +1,18 @@
 /** Português (pt-BR) strings, keyed by the data-i18n attributes in index.html. */
 export default {
-  "meta.title": "Meleiro Tech — Transformamos ideias em software",
+  "meta.title": "Criação de Sites, Landing Pages e Sistemas | Meleiro Tech",
   "meta.desc":
-    "Meleiro Tech desenvolve websites, landing pages e sistemas personalizados para transformar necessidades de negócio em soluções digitais.",
+    "Criação de sites profissionais, landing pages e sistemas personalizados para empresas de todo o Brasil. Design moderno, rápido e otimizado para o Google. Orçamento grátis.",
   "nav.home": "Início",
   "nav.services": "Serviços",
   "nav.projects": "Projetos",
   "nav.about": "Sobre",
   "nav.contact": "Contato",
   "cta.quote": "Solicitar orçamento",
-  "hero.eyebrow": "Software house · Desenvolvimento sob medida",
+  "hero.eyebrow": "Criação de sites e sistemas · Todo o Brasil",
   "hero.title": 'Transformamos ideias em <span class="hl">software.</span>',
   "hero.text":
-    "Desenvolvemos websites, landing pages e sistemas personalizados para transformar necessidades de negócio em soluções digitais.",
+    "Criação de sites profissionais, landing pages e sistemas personalizados para empresas de todo o Brasil — do primeiro esboço ao projeto no ar.",
   "hero.cta1": "Conheça nossos serviços",
   "hero.cta2": "Começar um projeto",
   "hero.chip3": "Sistemas",
@@ -23,10 +23,10 @@ export default {
     '<span class="c-k">const</span> <span class="c-v">projeto</span> = <span class="c-k">await</span> meleiro\n  .<span class="c-f">build</span>({\n    ideia: <span class="c-s">\'sua\'</span>,\n    stack: <span class="c-s">\'moderna\'</span>,\n  });',
   "hero.scroll": "Role para explorar",
   "services.kicker": "Serviços",
-  "services.title": "O que construímos",
+  "services.title": "Criação de sites, landing pages e sistemas",
   "services.lead":
     "Três frentes de atuação, uma mesma obsessão: transformar necessidades reais em produtos digitais bem construídos.",
-  "services.cta": "Iniciar projeto",
+  "services.cta": "Ver detalhes",
   "services.s1.text": "Experiências digitais modernas para empresas, marcas e profissionais.",
   "services.s1.i1": "Sites institucionais",
   "services.s1.i2": "Sites corporativos",
@@ -71,17 +71,22 @@ export default {
   "portfolio.lumio.t2": "Autenticação",
   "portfolio.lumio.t3": "Trilhas de conteúdo",
   "portfolio.spectrum.cat": "Landing page · Arquitetura",
-  "portfolio.spectrum.desc": "Landing page para construtora de casas modernas, com slider de obras, simulação de orçamento e portfólio de projetos.",
+  "portfolio.spectrum.desc":
+    "Landing page para construtora de casas modernas, com slider de obras, simulação de orçamento e portfólio de projetos.",
   "portfolio.profit.cat": "Landing page · Academia",
-  "portfolio.profit.desc": "Página única para estúdio de fitness, com serviços, galeria, equipe de treinadores e chamada para matrícula.",
+  "portfolio.profit.desc":
+    "Página única para estúdio de fitness, com serviços, galeria, equipe de treinadores e chamada para matrícula.",
   "portfolio.pizzahouse.cat": "Website · Restaurante",
   "portfolio.pizzahouse.desc": "Site de pizzaria com cardápio, galeria de fotos, equipe e página de contato.",
   "portfolio.worky.cat": "Website WordPress · Arquitetura",
-  "portfolio.worky.desc": "Tema WordPress com Elementor para escritório de arquitetura, com páginas de serviços, sobre e blog.",
+  "portfolio.worky.desc":
+    "Tema WordPress com Elementor para escritório de arquitetura, com páginas de serviços, sobre e blog.",
   "portfolio.webion.cat": "Website WordPress · Agência",
-  "portfolio.webion.desc": "Tema WordPress minimalista para agência criativa, com serviços, números da empresa, equipe e blog.",
+  "portfolio.webion.desc":
+    "Tema WordPress minimalista para agência criativa, com serviços, números da empresa, equipe e blog.",
   "portfolio.herber.cat": "Website · Alimentos orgânicos",
-  "portfolio.herber.desc": "Site para loja de produtos orgânicos, com galeria, equipe, depoimentos e páginas institucionais.",
+  "portfolio.herber.desc":
+    "Site para loja de produtos orgânicos, com galeria, equipe, depoimentos e páginas institucionais.",
   "why.kicker": "Diferenciais",
   "why.title": 'Por que <span class="hl">Meleiro Tech?</span>',
   "why.c1.t": "Sob medida",
@@ -145,6 +150,9 @@ export default {
   "toast.fail": "Não foi possível enviar agora. Tente pelo WhatsApp.",
   "footer.text": "Software, design e tecnologia para transformar ideias em soluções.",
   "footer.rights": "Todos os direitos reservados.",
+  "footer.svc1": "Criação de sites",
+  "footer.svc2": "Landing pages",
+  "footer.svc3": "Sistemas",
   "footer.made": "Feito com código, café e muito cuidado.",
   "toast.lang": "Idioma alterado para Português",
   "toast.error": "Revise os campos destacados.",

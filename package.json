@@ -2,6 +2,7 @@
   "name": "meleiro-tech",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Site institucional da Meleiro Tech — websites, landing pages e sistemas personalizados.",
   "homepage": "https://meleiro.tech",
   "repository": {
@@ -11,6 +12,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "npx --yes serve -l 5173 .",
+    "build:pages": "python3 scripts/build-service-pages.py",
     "format": "npx --yes prettier@3 --write \"assets/**/*.{css,js}\" \"*.{json,md}\"",
     "format:check": "npx --yes prettier@3 --check \"assets/**/*.{css,js}\" \"*.{json,md}\""
   }
