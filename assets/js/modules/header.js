@@ -3,7 +3,14 @@ import { onScroll } from "../core/scroll.js";
 
 const SCROLLED_OFFSET = 24;
 const MOBILE_BREAKPOINT = 960;
-const SECTION_IDS = ["inicio", "servicos", "projetos", "sobre", "contato"];
+const SECTION_LINKS = {
+  inicio: "#inicio",
+  servicos: "#servicos",
+  sobre: "#sobre",
+  projetos: "#projetos",
+  fundadora: "#sobre",
+  contato: "#contato",
+};
 
 export function initHeader() {
   const header = $("#header");
@@ -34,13 +41,14 @@ function highlightCurrentSection() {
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        const href = `#${entry.target.id}`;
+        const href = SECTION_LINKS[entry.target.id];
         links.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === href));
       });
     },
     { rootMargin: "-45% 0px -50% 0px" }
   );
-  SECTION_IDS.map((id) => document.getElementById(id))
+  Object.keys(SECTION_LINKS)
+    .map((id) => document.getElementById(id))
     .filter(Boolean)
     .forEach((section) => observer.observe(section));
 }
