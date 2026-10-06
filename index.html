@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meleiro Tech — Transformamos ideias em software</title>
+  <meta name="description" content="Meleiro Tech desenvolve websites, landing pages e sistemas personalizados para transformar necessidades de negócio em soluções digitais." />
+  <meta name="theme-color" content="#01102F" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="header__logo" aria-label="Meleiro Tech">
+        <img src="assets/img/logo-horizontal.png" alt="Meleiro Tech" width="1070" height="397" />
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Principal">
+        <ul class="nav__list">
+          <li><a href="#inicio" class="nav__link" data-i18n="nav.home">Início</a></li>
+          <li><a href="#servicos" class="nav__link" data-i18n="nav.services">Serviços</a></li>
+          <li><a href="#projetos" class="nav__link" data-i18n="nav.projects">Projetos</a></li>
+          <li><a href="#sobre" class="nav__link" data-i18n="nav.about">Sobre</a></li>
+          <li><a href="#contato" class="nav__link" data-i18n="nav.contact">Contato</a></li>
+        </ul>
+        <div class="nav__mobile-extra">
+          <div class="lang" role="group" aria-label="Idioma / Language">
+            <button class="lang__btn is-active" data-lang="pt">PT</button>
+            <span class="lang__sep">|</span>
+            <button class="lang__btn" data-lang="en">EN</button>
+          </div>
+          <a href="#contato" class="btn btn--primary btn--block" data-i18n="cta.quote">Solicitar orçamento</a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <div class="lang" role="group" aria-label="Idioma / Language">
+          <button class="lang__btn is-active" data-lang="pt">PT</button>
+          <span class="lang__sep">|</span>
+          <button class="lang__btn" data-lang="en">EN</button>
+        </div>
+        <a href="#contato" class="btn btn--primary btn--sm" data-i18n="cta.quote">Solicitar orçamento</a>
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__aurora"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="eyebrow reveal">
+            <span class="eyebrow__dot"></span>
+            <span data-i18n="hero.eyebrow">Software house · Desenvolvimento sob medida</span>
+          </div>
+
+          <h1 class="hero__title reveal" data-delay="1" data-i18n-html="hero.title">
+            Transformamos ideias em <span class="hl">software.</span>
+          </h1>
+
+          <p class="hero__text reveal" data-delay="2" data-i18n="hero.text">
+            Desenvolvemos websites, landing pages e sistemas personalizados para transformar necessidades de negócio em soluções digitais.
+          </p>
+
+          <div class="hero__ctas reveal" data-delay="3">
+            <a href="#servicos" class="btn btn--ghost">
+              <span data-i18n="hero.cta1">Conheça nossos serviços</span>
+            </a>
+            <a href="#contato" class="btn btn--primary">
+              <span data-i18n="hero.cta2">Começar um projeto</span>
+              <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+
+          <ul class="hero__chips reveal" data-delay="4">
+            <li><span>01</span> Websites</li>
+            <li><span>02</span> Landing Pages</li>
+            <li><span>03</span> <b data-i18n="hero.chip3">Sistemas</b></li>
+          </ul>
+        </div>
+
+        <!-- Hero visual: mascote + composição tecnológica -->
+        <div class="hero__visual" id="heroVisual" aria-hidden="true">
+          <canvas class="hv-particles" id="particles"></canvas>
+
+          <svg class="hv-rings" viewBox="0 0 600 600">
+            <defs>
+              <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#D7F300" stop-opacity=".9"/>
+                <stop offset=".5" stop-color="#D7F300" stop-opacity=".05"/>
+                <stop offset="1" stop-color="#D7F300" stop-opacity=".5"/>
+              </linearGradient>
+            </defs>
+            <g class="ring ring--1"><circle cx="300" cy="300" r="270" fill="none" stroke="rgba(215,243,0,.12)" stroke-dasharray="2 10"/></g>
+            <g class="ring ring--2"><circle cx="300" cy="300" r="225" fill="none" stroke="url(#ringGrad)" stroke-width="1.2" stroke-dasharray="140 30 6 30"/></g>
+            <g class="ring ring--3">
+              <circle cx="300" cy="300" r="185" fill="none" stroke="rgba(140,170,230,.14)"/>
+              <circle cx="300" cy="115" r="4" fill="#D7F300"/>
+              <circle cx="485" cy="300" r="2.5" fill="#8fa6d6"/>
+            </g>
+            <g class="ring-ticks">
+              <line x1="300" y1="12" x2="300" y2="34"/><line x1="300" y1="566" x2="300" y2="588"/>
+              <line x1="12" y1="300" x2="34" y2="300"/><line x1="566" y1="300" x2="588" y2="300"/>
+            </g>
+          </svg>
+
+          <div class="hv-glow"></div>
+
+          <div class="hv-core" data-depth="0.35">
+            <div class="hv-frame">
+              <i></i><i></i><i></i><i></i>
+              <span class="hv-frame__label">MT-01 // CORE</span>
+              <span class="hv-frame__coords">x:042 y:117</span>
+            </div>
+            <div class="hv-mascot">
+              <img src="assets/img/mascote.png" alt="" width="697" height="701" />
+              <span class="hv-scan"></span>
+            </div>
+          </div>
+
+          <!-- Floating UI blocks -->
+          <div class="hv-card hv-card--code" data-depth="0.9">
+            <div class="hv-card__bar"><i></i><i></i><i></i><span>build.ts</span></div>
+            <pre><code data-i18n-html="hero.code"><span class="c-k">const</span> <span class="c-v">projeto</span> = <span class="c-k">await</span> meleiro
+  .<span class="c-f">build</span>({
+    ideia: <span class="c-s">'sua'</span>,
+    stack: <span class="c-s">'moderna'</span>,
+  });</code></pre>
+          </div>
+
+          <div class="hv-card hv-card--metric" data-depth="1.2">
+            <div class="hv-card__label" data-i18n="hero.card.perf">Performance</div>
+            <div class="hv-card__value">98<small>/100</small></div>
+            <div class="hv-bars"><i style="--h:40%"></i><i style="--h:62%"></i><i style="--h:48%"></i><i style="--h:80%"></i><i style="--h:70%"></i><i style="--h:95%"></i></div>
+          </div>
+
+          <div class="hv-card hv-card--status" data-depth="0.6">
+            <span class="pulse-dot"></span>
+            <span data-i18n="hero.card.deploy">Deploy concluído</span>
+            <span class="hv-card__time">0.8s</span>
+          </div>
+
+          <div class="hv-card hv-card--api" data-depth="1.5">
+            <span class="hv-tag">GET</span> <span data-i18n="hero.api">/api/solucoes</span> <span class="hv-ok">200</span>
+          </div>
+
+          <span class="hv-node hv-node--a" data-depth="0.5"></span>
+          <span class="hv-node hv-node--b" data-depth="1"></span>
+          <span class="hv-node hv-node--c" data-depth="0.7"></span>
+        </div>
+      </div>
+
+      <a href="#servicos" class="hero__scroll" aria-label="Scroll">
+        <span data-i18n="hero.scroll">Role para explorar</span>
+        <i></i>
+      </a>
+    </section>
+
+    <!-- ================= SERVIÇOS ================= -->
+    <section class="section services" id="servicos">
+      <div class="container">
+        <header class="section__head">
+          <span class="kicker reveal"><b>//</b> <span data-i18n="services.kicker">Serviços</span></span>
+          <h2 class="section__title reveal" data-delay="1" data-i18n="services.title">O que construímos</h2>
+          <p class="section__lead reveal" data-delay="2" data-i18n="services.lead">Três frentes de atuação, uma mesma obsessão: transformar necessidades reais em produtos digitais bem construídos.</p>
+        </header>
+
+        <div class="services__grid">
+          <!-- 01 -->
+          <article class="service-card reveal" data-delay="1">
+            <div class="service-card__top">
+              <span class="service-card__num">01</span>
+              <span class="service-card__tag">WEB</span>
+            </div>
+            <div class="service-card__art art-web" aria-hidden="true">
+              <div class="mock-browser">
+                <div class="mock-browser__bar"><i></i><i></i><i></i><span></span></div>
+                <div class="mock-browser__body">
+                  <div class="aw-nav"><b></b><span></span><span></span><span></span></div>
+                  <div class="aw-hero"><div><b></b><b></b><i></i></div><span></span></div>
+                  <div class="aw-cols"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <h3 class="service-card__title">Websites</h3>
+            <p class="service-card__text" data-i18n="services.s1.text">Experiências digitais modernas para empresas, marcas e profissionais.</p>
+            <ul class="service-card__list">
+              <li data-i18n="services.s1.i1">Sites institucionais</li>
+              <li data-i18n="services.s1.i2">Sites corporativos</li>
+              <li data-i18n="services.s1.i3">Portais</li>
+              <li data-i18n="services.s1.i4">Sites personalizados</li>
+            </ul>
+            <a href="#contato" class="service-card__link"><span data-i18n="services.cta">Iniciar projeto</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+
+          <!-- 02 -->
+          <article class="service-card reveal" data-delay="2">
+            <div class="service-card__top">
+              <span class="service-card__num">02</span>
+              <span class="service-card__tag">CONVERSION</span>
+            </div>
+            <div class="service-card__art art-lp" aria-hidden="true">
+              <div class="lp-page">
+                <b></b><b class="short"></b>
+                <span class="lp-btn"></span>
+                <div class="lp-img"></div>
+              </div>
+              <div class="lp-chart">
+                <svg viewBox="0 0 120 60" preserveAspectRatio="none"><path d="M0 52 L20 46 L40 48 L60 34 L80 26 L100 14 L120 6"/><path class="area" d="M0 52 L20 46 L40 48 L60 34 L80 26 L100 14 L120 6 L120 60 L0 60Z"/></svg>
+                <span>+ conv.</span>
+              </div>
+            </div>
+            <h3 class="service-card__title">Landing Pages</h3>
+            <p class="service-card__text" data-i18n="services.s2.text">Páginas criadas para apresentar produtos, serviços e transformar visitantes em clientes.</p>
+            <ul class="service-card__list">
+              <li data-i18n="services.s2.i1">Campanhas</li>
+              <li data-i18n="services.s2.i2">Lançamentos</li>
+              <li data-i18n="services.s2.i3">Produtos</li>
+              <li data-i18n="services.s2.i4">Serviços</li>
+              <li data-i18n="services.s2.i5">Páginas de conversão</li>
+            </ul>
+            <a href="#contato" class="service-card__link"><span data-i18n="services.cta">Iniciar projeto</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+
+          <!-- 03 -->
+          <article class="service-card service-card--featured reveal" data-delay="3">
+            <div class="service-card__top">
+              <span class="service-card__num">03</span>
+              <span class="service-card__tag">SOFTWARE</span>
+            </div>
+            <div class="service-card__art art-sys" aria-hidden="true">
+              <div class="sys-dash">
+                <aside><i class="on"></i><i></i><i></i><i></i></aside>
+                <div class="sys-main">
+                  <div class="sys-kpis"><span></span><span></span><span></span></div>
+                  <div class="sys-chart"><i style="--h:35%"></i><i style="--h:55%"></i><i style="--h:42%"></i><i style="--h:70%"></i><i style="--h:60%"></i><i style="--h:88%"></i><i style="--h:76%"></i></div>
+                  <div class="sys-rows"><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <h3 class="service-card__title" data-i18n="services.s3.title">Sistemas Personalizados</h3>
+            <p class="service-card__text" data-i18n="services.s3.text">Software desenvolvido sob medida para resolver problemas reais do seu negócio.</p>
+            <ul class="service-card__list">
+              <li data-i18n="services.s3.i1">Sistemas internos</li>
+              <li>Dashboards</li>
+              <li data-i18n="services.s3.i3">Plataformas</li>
+              <li data-i18n="services.s3.i4">Sistemas de gestão</li>
+              <li>APIs</li>
+              <li data-i18n="services.s3.i6">Integrações</li>
+              <li data-i18n="services.s3.i7">Automações</li>
+            </ul>
+            <a href="#contato" class="service-card__link"><span data-i18n="services.cta">Iniciar projeto</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESSO / IMPACTO ================= -->
+    <section class="section process" id="sobre">
+      <div class="process__mascot mascot-dots" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section__head section__head--center">
+          <span class="kicker reveal"><b>//</b> <span data-i18n="process.kicker">Como trabalhamos</span></span>
+          <h2 class="section__title reveal" data-delay="1" data-i18n-html="process.title">Do problema <span class="hl">à solução.</span></h2>
+          <p class="section__lead reveal" data-delay="2" data-i18n="process.lead">Um processo claro, do primeiro diagnóstico ao software rodando em produção.</p>
+        </header>
+
+        <div class="pipeline" id="pipeline">
+          <div class="pipeline__track"><div class="pipeline__fill" id="pipelineFill"></div></div>
+
+          <div class="step" data-step="0">
+            <div class="step__node"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div>
+            <span class="step__idx">01</span>
+            <h3 class="step__title" data-i18n="process.s1.t">Problema</h3>
+            <p class="step__text" data-i18n="process.s1.d">Entendemos a dor, o contexto e o objetivo do negócio.</p>
+          </div>
+          <div class="step__arrow" aria-hidden="true">↓</div>
+          <div class="step" data-step="1">
+            <div class="step__node"><svg viewBox="0 0 24 24"><path d="M4 18l5-5 4 4 7-8"/><path d="M15 9h5v5"/></svg></div>
+            <span class="step__idx">02</span>
+            <h3 class="step__title" data-i18n="process.s2.t">Estratégia</h3>
+            <p class="step__text" data-i18n="process.s2.d">Definimos escopo, arquitetura e o caminho mais eficiente.</p>
+          </div>
+          <div class="step__arrow" aria-hidden="true">↓</div>
+          <div class="step" data-step="2">
+            <div class="step__node"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div>
+            <span class="step__idx">03</span>
+            <h3 class="step__title">Design</h3>
+            <p class="step__text" data-i18n="process.s3.d">Interfaces claras, bonitas e pensadas para o usuário.</p>
+          </div>
+          <div class="step__arrow" aria-hidden="true">↓</div>
+          <div class="step" data-step="3">
+            <div class="step__node"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div>
+            <span class="step__idx">04</span>
+            <h3 class="step__title" data-i18n="process.s4.t">Desenvolvimento</h3>
+            <p class="step__text" data-i18n="process.s4.d">Código limpo, testado e preparado para escalar.</p>
+          </div>
+          <div class="step__arrow" aria-hidden="true">↓</div>
+          <div class="step step--final" data-step="4">
+            <div class="step__node"><img src="assets/img/mascote.png" alt="" /></div>
+            <span class="step__idx">05</span>
+            <h3 class="step__title" data-i18n="process.s5.t">Solução</h3>
+            <p class="step__text" data-i18n="process.s5.d">Software no ar, gerando resultado real para o negócio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PORTFÓLIO ================= -->
+    <section class="section portfolio" id="projetos">
+      <div class="container">
+        <header class="section__head section__head--split">
+          <div>
+            <span class="kicker reveal"><b>//</b> <span data-i18n="portfolio.kicker">Portfólio</span></span>
+            <h2 class="section__title reveal" data-delay="1" data-i18n-html="portfolio.title">Projetos que <span class="hl">ganham vida.</span></h2>
+          </div>
+          <div class="filters reveal" data-delay="2" role="tablist">
+            <button class="filter is-active" data-filter="all" data-i18n="portfolio.f.all">Todos</button>
+            <button class="filter" data-filter="web">Websites</button>
+            <button class="filter" data-filter="lp">Landing Pages</button>
+            <button class="filter" data-filter="sys" data-i18n="portfolio.f.sys">Sistemas</button>
+          </div>
+        </header>
+
+        <div class="projects" id="projects">
+          <!-- Featured: Lumio (real project) -->
+          <article class="project project--featured reveal" data-cat="sys">
+            <div class="project__stage">
+              <div class="dev-combo dev-combo--real">
+                <div class="dev-laptop">
+                  <div class="dev-laptop__screen scr">
+                    <img src="assets/img/projects/lumio-desktop.jpg" alt="Lumio — tela de login no desktop" loading="lazy" width="1440" height="900" />
+                  </div>
+                  <div class="dev-laptop__base"></div>
+                </div>
+                <div class="dev-phone dev-phone--sm">
+                  <div class="scr">
+                    <img src="assets/img/projects/lumio-mobile.jpg" alt="Lumio — tela inicial no celular" loading="lazy" width="780" height="1688" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project__info">
+              <div class="project__badges">
+                <span class="project__live"><span class="pulse-dot"></span><span data-i18n="portfolio.live">No ar</span></span>
+                <span class="project__featured-tag" data-i18n="portfolio.featured">Projeto em destaque</span>
+              </div>
+              <span class="project__cat" data-i18n="portfolio.lumio.cat">Plataforma de aprendizado · Web app</span>
+              <h3 class="project__name">Lumio</h3>
+              <p class="project__desc" data-i18n="portfolio.lumio.desc">Plataforma de microaprendizado com lições diárias, curtas e interativas sobre Bíblia, inteligência emocional, português e tecnologia. Contas de usuário, trilhas de conteúdo e experiência pensada para o celular.</p>
+              <ul class="project__tags">
+                <li>Web app</li>
+                <li data-i18n="portfolio.lumio.t2">Autenticação</li>
+                <li data-i18n="portfolio.lumio.t3">Trilhas de conteúdo</li>
+                <li>Mobile-first</li>
+              </ul>
+              <a href="https://lumio-six-steel.vercel.app/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </article>
+
+          <!-- P1: Website desktop -->
+          <article class="project project--wide reveal" data-cat="web">
+            <div class="project__stage">
+              <div class="dev-desktop">
+                <div class="dev-desktop__screen scr scr-atlas">
+                  <div class="scr-nav"><b>ATLAS</b><span></span><span></span><span></span><em></em></div>
+                  <div class="scr-atlas__hero">
+                    <div><h4 data-i18n-html="mock.atlas">Engenharia que<br/>constrói o futuro.</h4><p></p><p class="s"></p><i></i></div>
+                    <div class="scr-atlas__img"></div>
+                  </div>
+                  <div class="scr-atlas__stats"><span><b>25+</b></span><span><b>340</b></span><span><b>12</b></span></div>
+                </div>
+                <div class="dev-desktop__stand"></div>
+              </div>
+            </div>
+            <div class="project__info">
+              <span class="project__cat" data-i18n="portfolio.p1.cat">Website institucional</span>
+              <h3 class="project__name">Atlas Engenharia</h3>
+              <p class="project__desc" data-i18n="portfolio.p1.desc">Site corporativo com portfólio de obras, área de projetos e foco em credibilidade.</p>
+              <a href="#contato" class="project__cta"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </article>
+
+          <!-- P2: Landing phones -->
+          <article class="project reveal" data-cat="lp" data-delay="1">
+            <div class="project__stage">
+              <div class="dev-phones">
+                <div class="dev-phone dev-phone--back">
+                  <div class="scr scr-pulse scr-pulse--b">
+                    <div class="pp-card"></div><div class="pp-list"><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+                <div class="dev-phone">
+                  <div class="scr scr-pulse">
+                    <div class="pp-notch"></div>
+                    <b class="pp-logo">pulse</b>
+                    <h4 data-i18n-html="mock.pulse">Seu dinheiro,<br/>no seu ritmo.</h4>
+                    <div class="pp-ring"><span>R$</span></div>
+                    <i class="pp-btn"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project__info">
+              <span class="project__cat" data-i18n="portfolio.p2.cat">Landing page · Lançamento</span>
+              <h3 class="project__name">Pulse Fintech</h3>
+              <p class="project__desc" data-i18n="portfolio.p2.desc">Landing de lançamento de app financeiro, mobile-first e otimizada para conversão.</p>
+              <a href="#contato" class="project__cta"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </article>
+
+          <!-- P3: Sistema laptop dashboard -->
+          <article class="project reveal" data-cat="sys" data-delay="2">
+            <div class="project__stage">
+              <div class="dev-laptop">
+                <div class="dev-laptop__screen scr scr-orbit">
+                  <aside><b></b><i class="on"></i><i></i><i></i><i></i><i></i></aside>
+                  <div class="ob-main">
+                    <div class="ob-top"><span></span><em></em></div>
+                    <div class="ob-kpis"><div><small></small><b>R$ 482k</b></div><div><small></small><b>1.284</b></div><div><small></small><b>96%</b></div></div>
+                    <div class="ob-chart">
+                      <svg viewBox="0 0 200 70" preserveAspectRatio="none"><path class="a" d="M0 60 C30 50 40 30 70 36 S120 18 140 22 S180 6 200 10 L200 70 L0 70Z"/><path d="M0 60 C30 50 40 30 70 36 S120 18 140 22 S180 6 200 10"/></svg>
+                    </div>
+                    <div class="ob-table"><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+                <div class="dev-laptop__base"></div>
+              </div>
+            </div>
+            <div class="project__info">
+              <span class="project__cat" data-i18n="portfolio.p3.cat">Sistema de gestão</span>
+              <h3 class="project__name">Orbit ERP</h3>
+              <p class="project__desc" data-i18n="portfolio.p3.desc">Plataforma de gestão com financeiro, estoque e relatórios em tempo real.</p>
+              <a href="#contato" class="project__cta"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </article>
+
+          <!-- P4: Website laptop -->
+          <article class="project project--wide reveal" data-cat="web" data-delay="1">
+            <div class="project__stage">
+              <div class="dev-laptop">
+                <div class="dev-laptop__screen scr scr-nordica">
+                  <div class="scr-nav light"><b>NÓRDICA</b><span></span><span></span><span></span></div>
+                  <div class="nd-hero"><h4 data-i18n-html="mock.nordica">Espaços que<br/>respiram.</h4></div>
+                  <div class="nd-grid"><span></span><span></span><span></span></div>
+                </div>
+                <div class="dev-laptop__base"></div>
+              </div>
+            </div>
+            <div class="project__info">
+              <span class="project__cat" data-i18n="portfolio.p4.cat">Website · Portfólio</span>
+              <h3 class="project__name">Nórdica Arquitetura</h3>
+              <p class="project__desc" data-i18n="portfolio.p4.desc">Site minimalista para escritório de arquitetura, com galeria imersiva de projetos.</p>
+              <a href="#contato" class="project__cta"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </article>
+
+          <!-- P5: Landing desktop + phone -->
+          <article class="project reveal" data-cat="lp" data-delay="2">
+            <div class="project__stage">
+              <div class="dev-combo">
+                <div class="dev-browser">
+                  <div class="mock-browser__bar"><i></i><i></i><i></i><span></span></div>
+                  <div class="scr scr-vertice">
+                    <span class="vt-badge"></span>
+                    <h4 data-i18n-html="mock.vertice">Aprenda a programar<br/>do zero ao deploy.</h4>
+                    <i class="vt-btn"></i>
+                    <div class="vt-video"><em></em></div>
+                  </div>
+                </div>
+                <div class="dev-phone dev-phone--sm">
+                  <div class="scr scr-vertice scr-vertice--m">
+                    <h4 data-i18n-html="mock.vertice2">Do zero<br/>ao deploy.</h4>
+                    <div class="vt-video"><em></em></div>
+                    <i class="vt-btn"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project__info">
+              <span class="project__cat" data-i18n="portfolio.p5.cat">Landing page · Curso</span>
+              <h3 class="project__name">Vértice Academy</h3>
+              <p class="project__desc" data-i18n="portfolio.p5.desc">Página de vendas para curso online, com funil de captura e checkout integrado.</p>
+              <a href="#contato" class="project__cta"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </article>
+
+          <!-- P6: Sistema desktop map -->
+          <article class="project project--wide reveal" data-cat="sys">
+            <div class="project__stage">
+              <div class="dev-desktop">
+                <div class="dev-desktop__screen scr scr-fluxo">
+                  <div class="fx-side"><b></b><i class="on"></i><i></i><i></i><i></i></div>
+                  <div class="fx-map">
+                    <svg viewBox="0 0 300 160" preserveAspectRatio="none">
+                      <path class="route" d="M30 130 C 80 120, 90 60, 150 70 S 230 30, 270 40"/>
+                      <path class="route r2" d="M40 40 C 90 60, 120 120, 200 110 S 260 130, 280 120"/>
+                    </svg>
+                    <span class="pin" style="left:10%;top:81%"></span>
+                    <span class="pin" style="left:50%;top:44%"></span>
+                    <span class="pin pin--live" style="left:90%;top:25%"></span>
+                    <span class="pin" style="left:93%;top:75%"></span>
+                  </div>
+                  <div class="fx-panel">
+                    <div class="fx-kpi"><small></small><b>1.932</b></div>
+                    <div class="fx-kpi"><small></small><b>98,4%</b></div>
+                    <div class="fx-list"><span></span><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+                <div class="dev-desktop__stand"></div>
+              </div>
+            </div>
+            <div class="project__info">
+              <span class="project__cat" data-i18n="portfolio.p6.cat">Plataforma · Dashboard</span>
+              <h3 class="project__name">Fluxo Logística</h3>
+              <p class="project__desc" data-i18n="portfolio.p6.desc">Rastreamento de frota em tempo real, com integrações via API e painéis operacionais.</p>
+              <a href="#contato" class="project__cta"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIFERENCIAIS ================= -->
+    <section class="section why">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <span class="kicker reveal"><b>//</b> <span data-i18n="why.kicker">Diferenciais</span></span>
+          <h2 class="section__title reveal" data-delay="1" data-i18n-html="why.title">Por que <span class="hl">Meleiro Tech?</span></h2>
+        </header>
+
+        <div class="why__grid">
+          <article class="why-card reveal" data-delay="1">
+            <div class="why-card__icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+            <h3 data-i18n="why.c1.t">Sob medida</h3>
+            <p data-i18n="why.c1.d">Cada solução é construída para uma necessidade real.</p>
+            <span class="why-card__idx">/01</span>
+          </article>
+          <article class="why-card reveal" data-delay="2">
+            <div class="why-card__icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><circle cx="17" cy="7" r="4"/><path d="M3 21l4-7 4 7zM14 14h7v7h-7z"/></svg></div>
+            <h3 data-i18n="why.c2.t">Design + tecnologia</h3>
+            <p data-i18n="why.c2.d">Interfaces bonitas sem abrir mão de funcionalidade.</p>
+            <span class="why-card__idx">/02</span>
+          </article>
+          <article class="why-card reveal" data-delay="3">
+            <div class="why-card__icon"><svg viewBox="0 0 24 24"><path d="M4 20V14M10 20V9M16 20V4M2 20h20"/><path d="M18 8l-2-4-2 4"/></svg></div>
+            <h3 data-i18n="why.c3.t">Escalável</h3>
+            <p data-i18n="why.c3.d">Projetos preparados para crescer junto com o negócio.</p>
+            <span class="why-card__idx">/03</span>
+          </article>
+          <article class="why-card reveal" data-delay="4">
+            <div class="why-card__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/></svg></div>
+            <h3 data-i18n="why.c4.t">Visão de produto</h3>
+            <p data-i18n="why.c4.d">Não entregamos apenas código. Criamos soluções.</p>
+            <span class="why-card__idx">/04</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TECNOLOGIA ================= -->
+    <section class="section tech">
+      <div class="container tech__inner">
+        <div class="tech__content">
+          <span class="kicker reveal"><b>//</b> <span data-i18n="tech.kicker">Capacidade técnica</span></span>
+          <h2 class="section__title reveal" data-delay="1" data-i18n-html="tech.title">Um ecossistema completo de <span class="hl">soluções.</span></h2>
+          <p class="section__lead reveal" data-delay="2" data-i18n="tech.lead">Do front-end que o cliente vê à infraestrutura que sustenta tudo. Conectamos as peças certas para o seu negócio funcionar de ponta a ponta.</p>
+          <div class="tech__stats reveal" data-delay="3">
+            <div><b>Front</b><span data-i18n="tech.st1">Interfaces e experiências</span></div>
+            <div><b>Back</b><span data-i18n="tech.st2">Regras, dados e APIs</span></div>
+            <div><b>Ops</b><span data-i18n="tech.st3">Cloud, deploy e escala</span></div>
+          </div>
+        </div>
+
+        <div class="constellation reveal" data-delay="2" id="constellation">
+          <svg class="constellation__lines" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+            <g id="cLines"></g>
+          </svg>
+          <div class="constellation__core">
+            <img src="assets/img/mascote.png" alt="" />
+          </div>
+          <div class="cnode" style="--x:50%;--y:8%"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span>Web</span></div>
+          <div class="cnode" style="--x:81%;--y:21%"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg><span>APIs</span></div>
+          <div class="cnode" style="--x:93%;--y:50%"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg><span>Dashboards</span></div>
+          <div class="cnode" style="--x:81%;--y:79%"><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 01-.6-9.96A6 6 0 0118 9a4.5 4.5 0 01-.5 9z"/></svg><span>Cloud</span></div>
+          <div class="cnode" style="--x:50%;--y:92%"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H14a4 4 0 014 4v5.5M15.5 18H10a4 4 0 01-4-4V8.5"/></svg><span data-i18n="tech.n6">Integrações</span></div>
+          <div class="cnode" style="--x:19%;--y:79%"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span data-i18n="tech.n7">Automação</span></div>
+          <div class="cnode" style="--x:7%;--y:50%"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><span data-i18n="tech.n8">Banco de dados</span></div>
+          <div class="cnode" style="--x:19%;--y:21%"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-i18n="tech.n9">Sistemas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div class="cta-panel__mascot" aria-hidden="true"></div>
+          <div class="cta-panel__grid" aria-hidden="true"></div>
+          <div class="cta-panel__content">
+            <span class="kicker"><b>//</b> <span data-i18n="cta.kicker">Próximo passo</span></span>
+            <h2 class="cta-panel__title">
+              <span data-i18n="cta.title1">Tem uma ideia?</span>
+              <span class="hl" data-i18n="cta.title2">Vamos transformar em software.</span>
+            </h2>
+            <p class="cta-panel__text" data-i18n="cta.text">Conte o que você precisa. A Meleiro Tech transforma ideias, processos e necessidades em soluções digitais.</p>
+            <a href="#contato" class="btn btn--primary btn--lg magnetic">
+              <span data-i18n="cta.btn">Começar um projeto</span>
+              <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTATO ================= -->
+    <section class="section contact" id="contato">
+      <div class="container contact__inner">
+        <div class="contact__info">
+          <span class="kicker reveal"><b>//</b> <span data-i18n="contact.kicker">Contato</span></span>
+          <h2 class="section__title reveal" data-delay="1" data-i18n-html="contact.title">Vamos construir <span class="hl">algo juntos.</span></h2>
+          <p class="section__lead reveal" data-delay="2" data-i18n="contact.lead">Preencha o formulário e retornamos em até 1 dia útil com os próximos passos.</p>
+
+          <ul class="contact__list reveal" data-delay="3">
+            <li>
+              <span class="contact__icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+              <div><small>E-mail</small><a href="mailto:contato@meleirotech.com">contato@meleirotech.com</a></div>
+            </li>
+            <li>
+              <span class="contact__icon"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1112 20a8 8 0 01-4.1-1.1z"/></svg></span>
+              <div><small>WhatsApp</small><a href="https://wa.me/5500000000000" target="_blank" rel="noopener">+55 (00) 00000-0000</a></div>
+            </li>
+            <li>
+              <span class="contact__icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+              <div><small data-i18n="contact.loc.l">Localização</small><span data-i18n="contact.loc.v">Brasil · Atendimento remoto</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <form class="form reveal" data-delay="2" id="contactForm" novalidate>
+          <div class="form__head">
+            <span class="pulse-dot"></span>
+            <span data-i18n="contact.form.status">Novo projeto</span>
+            <span class="form__id">#MT-<span id="formId">0000</span></span>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <input type="text" id="f-name" name="name" placeholder=" " required autocomplete="name" />
+              <label for="f-name" data-i18n="contact.f.name">Nome</label>
+              <span class="field__error" data-i18n="contact.err.required">Campo obrigatório</span>
+            </div>
+            <div class="field">
+              <input type="text" id="f-company" name="company" placeholder=" " autocomplete="organization" />
+              <label for="f-company" data-i18n="contact.f.company">Empresa</label>
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <input type="email" id="f-email" name="email" placeholder=" " required autocomplete="email" />
+              <label for="f-email" data-i18n="contact.f.email">E-mail</label>
+              <span class="field__error" data-i18n="contact.err.email">Informe um e-mail válido</span>
+            </div>
+            <div class="field">
+              <input type="tel" id="f-phone" name="phone" placeholder=" " autocomplete="tel" />
+              <label for="f-phone" data-i18n="contact.f.phone">Telefone</label>
+            </div>
+          </div>
+
+          <fieldset class="needs">
+            <legend data-i18n="contact.f.need">O que você precisa?</legend>
+            <div class="needs__opts">
+              <label class="chip"><input type="radio" name="need" value="website" required /><span>Website</span></label>
+              <label class="chip"><input type="radio" name="need" value="landing" /><span>Landing Page</span></label>
+              <label class="chip"><input type="radio" name="need" value="system" /><span data-i18n="contact.need.sys">Sistema personalizado</span></label>
+              <label class="chip"><input type="radio" name="need" value="other" /><span data-i18n="contact.need.other">Outro</span></label>
+            </div>
+            <span class="field__error" data-i18n="contact.err.need">Selecione uma opção</span>
+          </fieldset>
+
+          <div class="field field--area">
+            <textarea id="f-msg" name="message" rows="4" placeholder=" " required></textarea>
+            <label for="f-msg" data-i18n="contact.f.msg">Conte um pouco sobre seu projeto</label>
+            <span class="field__error" data-i18n="contact.err.required">Campo obrigatório</span>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block btn--lg" id="submitBtn">
+            <span class="btn__label" data-i18n="contact.f.submit">Enviar projeto</span>
+            <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+
+          <div class="form__success" id="formSuccess" role="status" aria-live="polite">
+            <img src="assets/img/mascote.png" alt="" />
+            <h3 data-i18n="contact.ok.t">Projeto recebido!</h3>
+            <p data-i18n="contact.ok.d">Obrigado pelo contato. Nossa equipe vai analisar sua ideia e retornar em breve.</p>
+            <button type="button" class="btn btn--ghost btn--sm" id="formReset" data-i18n="contact.ok.btn">Enviar outro projeto</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="assets/img/logo-horizontal.png" alt="Meleiro Tech" class="footer__logo" />
+          <p data-i18n="footer.text">Software, design e tecnologia para transformar ideias em soluções.</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="#servicos" data-i18n="nav.services">Serviços</a>
+          <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+          <a href="#sobre" data-i18n="nav.about">Sobre</a>
+          <a href="#contato" data-i18n="nav.contact">Contato</a>
+        </nav>
+
+        <div class="footer__side">
+          <div class="lang" role="group" aria-label="Idioma / Language">
+            <button class="lang__btn is-active" data-lang="pt">PT</button>
+            <span class="lang__sep">|</span>
+            <button class="lang__btn" data-lang="en">EN</button>
+          </div>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg></a>
+            <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5a3 3 0 00-.9-2.4c3-.3 6-1.5 6-6.6a5 5 0 00-1.4-3.6 4.7 4.7 0 00-.1-3.5s-1.1-.3-3.6 1.4a12.4 12.4 0 00-6.4 0C6.1 1.1 5 1.4 5 1.4a4.7 4.7 0 00-.1 3.5A5 5 0 003.5 8.5c0 5.1 3 6.3 6 6.6a3 3 0 00-.9 2.4V21"/></svg></a>
+            <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1112 20a8 8 0 01-4.1-1.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 01-1.8-1.8l.8-1-1-2z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> Meleiro Tech. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
+        <span class="footer__mono" data-i18n="footer.made">Feito com código, café e muito cuidado.</span>
+      </div>
+    </div>
+    <div class="footer__mascot mascot-dots" aria-hidden="true"></div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
