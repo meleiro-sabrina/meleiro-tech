@@ -406,25 +406,87 @@
     phone.value = out;
   });
 
-  form.addEventListener("submit", (e) => {
+  const CONTACT_EMAIL = "meleiro.tech@gmail.com";
+  const WHATSAPP = "5583993051956";
+
+  function readForm() {
+    const need = form.querySelector('input[name="need"]:checked');
+    const val = (n) => form.elements[n].value.trim();
+    return {
+      name: val("name"),
+      company: val("company"),
+      email: val("email"),
+      phone: val("phone"),
+      need: need ? need.nextElementSibling.textContent.trim() : "",
+      message: val("message"),
+    };
+  }
+
+  function whatsappUrl(d) {
+    const lines = [t("wa.greeting"), ""];
+    const add = (label, value) => value && lines.push(`*${t(label)}:* ${value}`);
+    add("contact.f.name", d.name);
+    add("contact.f.company", d.company);
+    add("contact.f.email", d.email);
+    add("contact.f.phone", d.phone);
+    add("wa.need", d.need);
+    if (d.message) lines.push("", `*${t("wa.project")}:*`, d.message);
+    return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join("\n"))}`;
+  }
+
+  function failValidation() {
+    toast(t("toast.error"), "error");
+    const first = $(".is-invalid input, .is-invalid textarea", form);
+    if (first) first.focus({ preventScroll: false });
+  }
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (!validate()) {
-      toast(t("toast.error"), "error");
-      const first = $(".is-invalid input, .is-invalid textarea", form);
-      if (first) first.focus({ preventScroll: false });
-      return;
-    }
+    if (!validate()) return failValidation();
+    if (form.elements._honey.value) return;
+
     const btn = $("#submitBtn");
     btn.classList.add("is-loading");
     btn.disabled = true;
 
-    // Integre aqui o envio real (API, serviço de e-mail, CRM etc.).
-    setTimeout(() => {
-      btn.classList.remove("is-loading");
-      btn.disabled = false;
+    const d = readForm();
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Novo projeto pelo site — ${d.name}${d.company ? " (" + d.company + ")" : ""}`,
+          _template: "table",
+          _captcha: "false",
+          _replyto: d.email,
+          Nome: d.name,
+          Empresa: d.company || "—",
+          "E-mail": d.email,
+          Telefone: d.phone || "—",
+          "O que precisa": d.need,
+          Projeto: d.message,
+          Idioma: lang.toUpperCase(),
+          Protocolo: "#MT-" + formId.textContent,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) !== "true") throw new Error(data.message || res.status);
+
+      $("#waAfter").href = whatsappUrl(d);
       form.classList.add("is-sent");
       toast(t("toast.sent"));
-    }, 1300);
+    } catch (err) {
+      console.warn("Form submit failed:", err);
+      toast(t("toast.fail"), "error");
+    } finally {
+      btn.classList.remove("is-loading");
+      btn.disabled = false;
+    }
+  });
+
+  $("#waBtn").addEventListener("click", () => {
+    if (!validate()) return failValidation();
+    window.open(whatsappUrl(readForm()), "_blank", "noopener");
   });
 
   $("#formReset").addEventListener("click", () => {

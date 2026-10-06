@@ -713,11 +713,24 @@
             <span class="btn__spinner" aria-hidden="true"></span>
           </button>
 
+          <div class="form__alt">
+            <span data-i18n="contact.alt">Prefere conversar agora?</span>
+            <button type="button" class="form__wa" id="waBtn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1112 20a8 8 0 01-4.1-1.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 01-1.8-1.8l.8-1-1-2z"/></svg>
+              <span data-i18n="contact.wa">Enviar pelo WhatsApp</span>
+            </button>
+          </div>
+
+          <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
           <div class="form__success" id="formSuccess" role="status" aria-live="polite">
             <img src="assets/img/mascote.png" alt="" />
             <h3 data-i18n="contact.ok.t">Projeto recebido!</h3>
             <p data-i18n="contact.ok.d">Obrigado pelo contato. Nossa equipe vai analisar sua ideia e retornar em breve.</p>
-            <button type="button" class="btn btn--ghost btn--sm" id="formReset" data-i18n="contact.ok.btn">Enviar outro projeto</button>
+            <div class="form__success-actions">
+              <a class="btn btn--primary btn--sm" id="waAfter" href="https://wa.me/5583993051956" target="_blank" rel="noopener" data-i18n="contact.ok.wa">Falar no WhatsApp</a>
+              <button type="button" class="btn btn--ghost btn--sm" id="formReset" data-i18n="contact.ok.btn">Enviar outro projeto</button>
+            </div>
           </div>
         </form>
       </div>
