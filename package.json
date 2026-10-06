@@ -1,0 +1,17 @@
+{
+  "name": "meleiro-tech",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da Meleiro Tech — websites, landing pages e sistemas personalizados.",
+  "homepage": "https://meleiro.tech",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meleiro-sabrina/meleiro-tech.git"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "npx --yes serve -l 5173 .",
+    "format": "npx --yes prettier@3 --write \"assets/**/*.{css,js}\" \"*.{json,md}\"",
+    "format:check": "npx --yes prettier@3 --check \"assets/**/*.{css,js}\" \"*.{json,md}\""
+  }
+}

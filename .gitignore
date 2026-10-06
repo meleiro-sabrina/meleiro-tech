@@ -1,2 +1,8 @@
+# Instagram assets (kept locally, not published)
 instagram/
 /meleiro-tech-perfil.png
+
+# Tooling
+node_modules/
+.DS_Store
+*.log
