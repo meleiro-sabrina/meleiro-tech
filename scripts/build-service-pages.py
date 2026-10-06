@@ -237,8 +237,11 @@ def render(page):
   <meta name="description" content="{e(page["desc"])}" />
   <meta name="theme-color" content="#01102F" />
   <link rel="canonical" href="{url}" />
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
-  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/icons/icon-96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Meleiro Tech" />
