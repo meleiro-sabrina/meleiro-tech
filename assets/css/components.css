@@ -95,13 +95,22 @@
 }
 
 .pulse-dot {
+  position: relative;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--lime);
-  box-shadow: 0 0 0 0 var(--lime-30);
-  animation: ping 2s infinite;
   flex: none;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--lime);
+  opacity: 0;
+  animation: ping 2s infinite;
 }
 
 /* Art: website */

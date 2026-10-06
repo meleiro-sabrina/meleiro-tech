@@ -51,10 +51,10 @@ function initParticles(canvas) {
     particles = [],
     running = false;
 
-  const resize = () => {
+  const resize = (width, height) => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = canvas.clientWidth;
-    h = canvas.clientHeight;
+    w = width;
+    h = height;
     canvas.width = w * dpr;
     canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -100,13 +100,23 @@ function initParticles(canvas) {
     requestAnimationFrame(draw);
   };
 
-  resize();
-  particles = Array.from({ length: count }, () => spawn(true));
-  window.addEventListener("resize", resize);
+  let visible = false;
+  const update = () => {
+    const wasRunning = running;
+    running = visible && !document.hidden && particles.length > 0;
+    if (running && !wasRunning) requestAnimationFrame(draw);
+  };
+
+  // ResizeObserver reports the size after layout, so startup never forces a synchronous reflow.
+  new ResizeObserver(([entry]) => {
+    const { width, height } = entry.contentRect;
+    resize(width, height);
+    if (!particles.length) particles = Array.from({ length: count }, () => spawn(true));
+    update();
+  }).observe(canvas);
 
   new IntersectionObserver(([entry]) => {
-    const wasRunning = running;
-    running = entry.isIntersecting && !document.hidden;
-    if (running && !wasRunning) requestAnimationFrame(draw);
+    visible = entry.isIntersecting;
+    update();
   }).observe(canvas);
 }
