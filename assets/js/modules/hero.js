@@ -44,7 +44,7 @@ function initMouseParallax() {
 function initParticles(canvas) {
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
-  const count = window.innerWidth < 680 ? 26 : 48;
+  const count = window.matchMedia("(max-width: 679px)").matches ? 26 : 48;
   const LINK_DISTANCE_SQ = 80 * 80;
   let w,
     h,

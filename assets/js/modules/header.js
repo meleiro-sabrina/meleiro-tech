@@ -17,7 +17,10 @@ export function initHeader() {
   const burger = $("#burger");
   const nav = $("#nav");
 
-  onScroll(() => header.classList.toggle("is-scrolled", window.scrollY > SCROLLED_OFFSET));
+  onScroll(() => {
+    const scrolled = window.scrollY > SCROLLED_OFFSET;
+    return () => header.classList.toggle("is-scrolled", scrolled);
+  });
 
   const setMenu = (open) => {
     burger.setAttribute("aria-expanded", String(open));

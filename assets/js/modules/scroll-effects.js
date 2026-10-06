@@ -21,19 +21,22 @@ function initParallax() {
   onScroll(() => {
     if (window.innerWidth <= PARALLAX_MIN_WIDTH) return;
     const vh = window.innerHeight;
+    const scrollY = window.scrollY;
+    const rects = layers.map(({ el }) => el.getBoundingClientRect());
 
-    layers.forEach(({ el, speed, fade }) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.bottom < -200 || rect.top > vh + 200) return;
+    return () =>
+      layers.forEach(({ el, speed, fade }, i) => {
+        const rect = rects[i];
+        if (rect.bottom < -200 || rect.top > vh + 200) return;
 
-      if (el === heroVisual || fade) {
-        el.style.transform = `translate3d(0, ${window.scrollY * speed}px, 0)`;
-        if (fade) el.style.opacity = String(Math.max(0, 1 - window.scrollY / (vh * 0.9)));
-      } else {
-        const offset = (rect.top + rect.height / 2 - vh / 2) * speed;
-        el.style.transform = `translate3d(0, ${offset}px, 0)`;
-      }
-    });
+        if (el === heroVisual || fade) {
+          el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+          if (fade) el.style.opacity = String(Math.max(0, 1 - scrollY / (vh * 0.9)));
+        } else {
+          const offset = (rect.top + rect.height / 2 - vh / 2) * speed;
+          el.style.transform = `translate3d(0, ${offset}px, 0)`;
+        }
+      });
   });
 }
 
@@ -48,14 +51,16 @@ function initPipeline(pipeline) {
     const rect = pipeline.getBoundingClientRect();
     const progress = Math.min(1, Math.max(0, (vh * 0.78 - rect.top) / (rect.height + vh * 0.25)));
     const vertical = window.innerWidth <= PIPELINE_VERTICAL_MAX_WIDTH;
+    const active = steps.map((step, i) =>
+      vertical ? step.getBoundingClientRect().top < vh * 0.8 : progress >= i / (steps.length - 1) - 0.02
+    );
 
-    pipeline.style.setProperty("--p", progress.toFixed(3));
-    steps.forEach((step, i) => {
-      const active = vertical
-        ? step.getBoundingClientRect().top < vh * 0.8
-        : progress >= i / (steps.length - 1) - 0.02;
-      step.classList.toggle("is-active", active);
-      arrows[i]?.classList.toggle("is-active", active);
-    });
+    return () => {
+      pipeline.style.setProperty("--p", progress.toFixed(3));
+      steps.forEach((step, i) => {
+        step.classList.toggle("is-active", active[i]);
+        arrows[i]?.classList.toggle("is-active", active[i]);
+      });
+    };
   });
 }
