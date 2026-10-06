@@ -259,6 +259,7 @@ def render(page):
   <link rel="stylesheet" href="/assets/dist/css/page.css" />
   <script type="module" src="/assets/dist/js/page.js"></script>
 {json_ld(page, url)}
+  <script src="/assets/js/analytics.js" defer></script>
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>

@@ -68,6 +68,7 @@
 		if (plugins.isotope.length) {
 			for (var i = 0; i < plugins.isotope.length; i++) {
 				var isotopeItem = plugins.isotope[i];
+				if (!isotopeItem.isotope) continue;
 				isotopeItem.isotope.layout();
 
 				window.addEventListener('resize', function () {
