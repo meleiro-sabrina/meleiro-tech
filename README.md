@@ -24,7 +24,7 @@ Site institucional da **Meleiro Tech** — websites, landing pages e sistemas pe
 ## Destaques
 
 - **Bilíngue** — PT-BR (padrão) e EN-US com troca instantânea e preferência salva no navegador.
-- **Zero dependências** — HTML, CSS e JavaScript puros (ES Modules), sem etapa de build.
+- **Leve e rápido** — HTML, CSS e JavaScript puros, empacotados com [esbuild](https://esbuild.github.io) em um CSS e um JS minificados, com fontes hospedadas no próprio site.
 - **Formulário funcional** — envio para o e-mail via [FormSubmit](https://formsubmit.co) e alternativa de envio pelo WhatsApp com a mensagem já preenchida.
 - **Animações com propósito** — reveal on scroll, parallax, partículas e constelação de tecnologias, todas respeitando `prefers-reduced-motion`.
 - **Responsivo** — layouts dedicados para desktop, tablet e celular.
@@ -40,6 +40,9 @@ Site institucional da **Meleiro Tech** — websites, landing pages e sistemas pe
 ├── sistemas-personalizados/
 ├── assets/
 │   ├── css/
+│   │   ├── main.css           # Entrada da página inicial (importa os demais na ordem certa)
+│   │   ├── page.css           # Entrada das páginas de serviço
+│   │   ├── fonts.css          # Fontes da marca hospedadas localmente
 │   │   ├── base.css           # Tokens da marca, reset e utilitários
 │   │   ├── components.css     # Botões, toast e peças reutilizáveis
 │   │   ├── layout.css         # Header, navegação, seções e footer
@@ -53,6 +56,8 @@ Site institucional da **Meleiro Tech** — websites, landing pages e sistemas pe
 │   │   ├── core/              # DOM helpers, i18n, scroll e toast
 │   │   ├── modules/           # Um módulo por funcionalidade da página
 │   │   └── locales/           # Textos em pt e en
+│   ├── dist/                  # Arquivos gerados pelo build (não editar)
+│   ├── fonts/                 # Chakra Petch, Inter e JetBrains Mono (woff2)
 │   └── img/                   # Imagens otimizadas para a web
 ├── brand/                     # Arquivos originais da identidade visual
 ├── scripts/                   # Gerador das páginas de serviço
@@ -61,15 +66,22 @@ Site institucional da **Meleiro Tech** — websites, landing pages e sistemas pe
 
 ## Rodando localmente
 
-Por usar ES Modules, o site precisa ser servido por HTTP (abrir o `index.html` direto no navegador não funciona).
-
 ```bash
+npm install
 npm run dev
-# ou
-python3 -m http.server 5173
 ```
 
-Acesse <http://localhost:5173>.
+Acesse <http://localhost:5173>. O servidor de desenvolvimento recompila CSS e JS a cada recarregamento.
+
+## Build
+
+Os arquivos editáveis ficam em `assets/css` e `assets/js`. O site publicado usa os pacotes minificados em `assets/dist/`, que precisam ser gerados antes do commit:
+
+```bash
+npm run build   # gera as páginas de serviço e os pacotes em assets/dist/
+```
+
+A CI do GitHub falha se `assets/dist/` ou as páginas de serviço estiverem desatualizados.
 
 ## Configuração
 
@@ -84,7 +96,7 @@ Os textos do site ficam em [`assets/js/locales/`](assets/js/locales). Para edita
 O conteúdo das páginas de serviço fica em [`scripts/build-service-pages.py`](scripts/build-service-pages.py). Depois de editar, gere as páginas novamente:
 
 ```bash
-npm run build:pages
+npm run build
 ```
 
 ## Padrões de código
