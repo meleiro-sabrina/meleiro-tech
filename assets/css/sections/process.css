@@ -1,0 +1,197 @@
+/* "Do problema à solução" — scroll-driven pipeline. */
+
+.process {
+  background: var(--navy-925);
+  overflow: hidden;
+}
+
+.process__mascot {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -140px;
+  top: 60px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.pipeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  --p: 0;
+}
+
+.pipeline__track {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 36px;
+  height: 2px;
+  background: var(--line-2);
+}
+
+.pipeline__fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(var(--p));
+  background: linear-gradient(90deg, var(--lime-30), var(--lime));
+  box-shadow: 0 0 14px rgba(215, 243, 0, 0.6);
+}
+
+.pipeline__fill::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 12px 3px rgba(215, 243, 0, 0.7);
+}
+
+.step__arrow {
+  display: none;
+}
+
+.step {
+  position: relative;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.step__node {
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: var(--navy-850);
+  border: 1px solid var(--line-2);
+  transition:
+    border-color 0.5s,
+    box-shadow 0.5s,
+    background 0.5s,
+    transform 0.5s var(--ease);
+}
+
+.step__node svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--muted-2);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.5s;
+}
+
+.step__node img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  opacity: 0.35;
+  filter: grayscale(1);
+  transition:
+    opacity 0.5s,
+    filter 0.5s;
+}
+
+.step__idx {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--muted-2);
+  margin-bottom: 6px;
+  transition: color 0.5s;
+}
+
+.step__title {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--muted);
+  transition: color 0.5s;
+}
+
+.step__text {
+  font-size: 14.5px;
+  color: var(--muted-2);
+  max-width: 220px;
+  margin: 0 auto;
+  transition: color 0.5s;
+}
+
+.step.is-active .step__node {
+  border-color: var(--lime);
+  box-shadow:
+    0 0 0 6px var(--lime-08),
+    0 0 30px -4px rgba(215, 243, 0, 0.45);
+  transform: translateY(-4px);
+}
+
+.step.is-active .step__node svg {
+  stroke: var(--lime);
+}
+
+.step.is-active .step__idx {
+  color: var(--lime);
+}
+
+.step.is-active .step__title {
+  color: var(--text);
+}
+
+.step.is-active .step__text {
+  color: var(--muted);
+}
+
+.step--final.is-active .step__node {
+  background: radial-gradient(circle, rgba(215, 243, 0, 0.18), var(--navy-850));
+  box-shadow:
+    0 0 0 8px var(--lime-08),
+    0 0 50px rgba(215, 243, 0, 0.55);
+}
+
+.step--final.is-active .step__node img {
+  opacity: 1;
+  filter: none;
+}
+
+.step--final.is-active .step__title {
+  color: var(--lime);
+}
+
+@media (max-width: 960px) {
+  .pipeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .pipeline__track {
+    display: none;
+  }
+  .step__arrow {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    color: var(--muted-2);
+    padding: 12px 0;
+    transition: color 0.5s;
+  }
+  .step__arrow.is-active {
+    color: var(--lime);
+  }
+  .step__node {
+    margin-bottom: 14px;
+  }
+}

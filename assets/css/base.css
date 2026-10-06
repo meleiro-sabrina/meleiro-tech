@@ -1,0 +1,145 @@
+/* Design tokens, reset and global primitives. */
+
+:root {
+  --navy-950: #000817;
+  --navy-925: #000b22;
+  --navy-900: #01102f;
+  --navy-850: #041639;
+  --navy-800: #071c45;
+  --navy-700: #0d2659;
+  --navy-600: #173570;
+  --steel: #8fa6d6;
+
+  --lime: #d7f300;
+  --lime-hi: #e6ff3d;
+  --lime-08: rgba(215, 243, 0, 0.08);
+  --lime-15: rgba(215, 243, 0, 0.15);
+  --lime-30: rgba(215, 243, 0, 0.3);
+
+  --text: #f2f5fa;
+  --muted: #a3b0ca;
+  --muted-2: #6e7c9c;
+  --line: rgba(143, 166, 214, 0.12);
+  --line-2: rgba(143, 166, 214, 0.2);
+  --danger: #ff6b6b;
+
+  --f-display: "Chakra Petch", "Inter", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 20px;
+  --radius-sm: 12px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --header-h: 84px;
+  --container: 1240px;
+
+  --cut: 10px;
+  --clip: polygon(
+    var(--cut) 0,
+    100% 0,
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    0 100%,
+    0 var(--cut)
+  );
+  /* Root-relative: url() inside a custom property resolves against the stylesheet that uses it. */
+  --mascot: url("/assets/img/mascote.png");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--navy-900);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--navy-900);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.hl {
+  color: var(--lime);
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Mascot as graphic element (shape preserved via mask) */
+
+.mascot-dots {
+  background-image: radial-gradient(circle, var(--lime) 1.2px, transparent 1.6px);
+  background-size: 9px 9px;
+  -webkit-mask: var(--mascot) center / contain no-repeat;
+  mask: var(--mascot) center / contain no-repeat;
+}
+
+@media (max-width: 960px) {
+  :root {
+    --header-h: 72px;
+  }
+}
+
+@media (max-width: 680px) {
+  .container {
+    padding: 0 20px;
+  }
+}

@@ -1,0 +1,194 @@
+/* Reusable UI components: buttons, language switch, status dot, browser mockup, toast. */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 26px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  clip-path: var(--clip);
+  transition:
+    transform 0.35s var(--ease),
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+  white-space: nowrap;
+  isolation: isolate;
+}
+
+.btn--primary {
+  background: var(--lime);
+  color: var(--navy-900);
+}
+
+.btn--primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease);
+}
+
+.btn--primary:hover {
+  background: var(--lime-hi);
+  transform: translateY(-2px);
+}
+
+.btn--primary:hover::before {
+  transform: translateX(120%);
+}
+
+.btn--ghost {
+  color: var(--text);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--navy-900), var(--navy-900)) padding-box,
+    linear-gradient(135deg, var(--lime-30), var(--line-2) 40%, var(--line-2) 60%, var(--lime-30)) border-box;
+}
+
+.btn--ghost:hover {
+  color: var(--lime);
+  transform: translateY(-2px);
+  background:
+    linear-gradient(var(--navy-850), var(--navy-850)) padding-box,
+    linear-gradient(135deg, var(--lime), var(--lime-30)) border-box;
+}
+
+.btn--sm {
+  height: 42px;
+  padding: 0 18px;
+  font-size: 14px;
+  --cut: 8px;
+}
+
+.btn--lg {
+  height: 60px;
+  padding: 0 34px;
+  font-size: 16px;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn__arrow {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.35s var(--ease);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 0 var(--lime-30);
+  animation: ping 2s infinite;
+  flex: none;
+}
+
+/* Art: website */
+
+.mock-browser {
+  width: 78%;
+  border-radius: 10px;
+  background: var(--navy-850);
+  border: 1px solid var(--line-2);
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  transition: transform 0.6s var(--ease);
+}
+
+.mock-browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.mock-browser__bar i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--navy-600);
+}
+
+.mock-browser__bar span {
+  flex: 1;
+  height: 7px;
+  margin-left: 8px;
+  border-radius: 4px;
+  background: rgba(143, 166, 214, 0.1);
+  max-width: 60%;
+}
+
+.mock-browser__body {
+  padding: 10px 12px 12px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 200;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(7, 28, 69, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--lime-30);
+  color: var(--text);
+  font-size: 14px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  transition:
+    opacity 0.35s,
+    transform 0.45s var(--ease-out);
+}
+
+.toast::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 10px var(--lime);
+}
+
+.toast.is-error {
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+.toast.is-error::before {
+  background: var(--danger);
+  box-shadow: 0 0 10px var(--danger);
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
