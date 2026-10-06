@@ -10,7 +10,10 @@ export function initPortfolio() {
   filters.forEach((btn) =>
     btn.addEventListener("click", () => {
       const category = btn.dataset.filter;
-      filters.forEach((b) => b.classList.toggle("is-active", b === btn));
+      filters.forEach((b) => {
+        b.classList.toggle("is-active", b === btn);
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
       grid.classList.toggle("is-filtered", category !== "all");
 
       projects.forEach((project, i) => {

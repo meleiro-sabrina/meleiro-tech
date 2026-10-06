@@ -361,11 +361,11 @@
             <span class="kicker reveal"><b>//</b> <span data-i18n="portfolio.kicker">Portfólio</span></span>
             <h2 class="section__title reveal" data-delay="1" data-i18n-html="portfolio.title">Projetos que <span class="hl">ganham vida.</span></h2>
           </div>
-          <div class="filters reveal" data-delay="2" role="tablist">
-            <button class="filter is-active" data-filter="all" data-i18n="portfolio.f.all">Todos</button>
-            <button class="filter" data-filter="web">Websites</button>
-            <button class="filter" data-filter="lp">Landing Pages</button>
-            <button class="filter" data-filter="sys" data-i18n="portfolio.f.sys">Sistemas</button>
+          <div class="filters reveal" data-delay="2" role="group" aria-label="Filtrar projetos / Filter projects">
+            <button type="button" class="filter is-active" data-filter="all" aria-pressed="true" data-i18n="portfolio.f.all">Todos</button>
+            <button type="button" class="filter" data-filter="web" aria-pressed="false">Websites</button>
+            <button type="button" class="filter" data-filter="lp" aria-pressed="false">Landing Pages</button>
+            <button type="button" class="filter" data-filter="sys" aria-pressed="false" data-i18n="portfolio.f.sys">Sistemas</button>
           </div>
         </header>
 
