@@ -1,6 +1,4 @@
 import { $, $$ } from "../core/dom.js";
-import { t } from "../core/i18n.js";
-import { toast } from "../core/toast.js";
 
 const STAGGER_MS = 70;
 
@@ -25,15 +23,6 @@ export function initPortfolio() {
         project.style.animationDelay = `${(i % 3) * STAGGER_MS}ms`;
         project.classList.add("is-entering");
       });
-    })
-  );
-
-  // Concept projects without a public URL point to "#contato".
-  $$('.project__cta[href^="#"]').forEach((link) =>
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      toast(t("toast.soon"));
     })
   );
 }
