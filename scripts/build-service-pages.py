@@ -251,18 +251,10 @@ def render(page):
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="/assets/css/base.css" />
-  <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="stylesheet" href="/assets/css/layout.css" />
-  <link rel="stylesheet" href="/assets/css/sections/cta.css" />
-  <link rel="stylesheet" href="/assets/css/pages/service.css" />
-  <link rel="stylesheet" href="/assets/css/animations.css" />
-
-  <script type="module" src="/assets/js/page.js"></script>
+  <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/dist/css/page.css" />
+  <script type="module" src="/assets/dist/js/page.js"></script>
 {json_ld(page, url)}
 </head>
 <body>
@@ -272,7 +264,7 @@ def render(page):
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="/" class="header__logo" aria-label="Meleiro Tech">
-        <img src="/assets/img/logo-horizontal.png" alt="Meleiro Tech" width="1070" height="397" />
+        <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" width="377" height="140" />
       </a>
 
       <nav class="nav" id="nav" aria-label="Principal">
@@ -413,7 +405,7 @@ def render(page):
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <img src="/assets/img/logo-horizontal.png" alt="Meleiro Tech" class="footer__logo" />
+          <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" class="footer__logo" width="377" height="140" loading="lazy" />
           <p>Software, design e tecnologia para transformar ideias em soluções.</p>
         </div>
 

@@ -1,0 +1,9 @@
+/* Service pages stylesheet entry. Order matters: animations.css must stay last. */
+
+@import "./fonts.css";
+@import "./base.css";
+@import "./components.css";
+@import "./layout.css";
+@import "./sections/cta.css";
+@import "./pages/service.css";
+@import "./animations.css";

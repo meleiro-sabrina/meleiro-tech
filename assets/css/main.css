@@ -1,0 +1,16 @@
+/* Home page stylesheet entry. Order matters: animations.css must stay last. */
+
+@import "./fonts.css";
+@import "./base.css";
+@import "./components.css";
+@import "./layout.css";
+@import "./sections/hero.css";
+@import "./sections/services.css";
+@import "./sections/process.css";
+@import "./sections/portfolio.css";
+@import "./sections/why.css";
+@import "./sections/tech.css";
+@import "./sections/founder.css";
+@import "./sections/cta.css";
+@import "./sections/contact.css";
+@import "./animations.css";

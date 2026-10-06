@@ -22,25 +22,10 @@
   <meta property="og:locale:alternate" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/layout.css" />
-  <link rel="stylesheet" href="assets/css/sections/hero.css" />
-  <link rel="stylesheet" href="assets/css/sections/services.css" />
-  <link rel="stylesheet" href="assets/css/sections/process.css" />
-  <link rel="stylesheet" href="assets/css/sections/portfolio.css" />
-  <link rel="stylesheet" href="assets/css/sections/why.css" />
-  <link rel="stylesheet" href="assets/css/sections/tech.css" />
-  <link rel="stylesheet" href="assets/css/sections/founder.css" />
-  <link rel="stylesheet" href="assets/css/sections/cta.css" />
-  <link rel="stylesheet" href="assets/css/sections/contact.css" />
-  <link rel="stylesheet" href="assets/css/animations.css" />
-
-  <script type="module" src="assets/js/main.js"></script>
+  <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/dist/css/main.css" />
+  <script type="module" src="/assets/dist/js/main.js"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://meleiro.tech/#organization", "name": "Meleiro Tech", "url": "https://meleiro.tech/", "logo": "https://meleiro.tech/assets/img/logo-horizontal.png", "image": "https://meleiro.tech/assets/img/og-image.jpg", "description": "Criação de sites profissionais, landing pages e sistemas personalizados para empresas de todo o Brasil. Design moderno, rápido e otimizado para o Google. Orçamento grátis.", "email": "meleiro.tech@gmail.com", "telephone": "+55-83-99304-1956", "address": {"@type": "PostalAddress", "addressLocality": "João Pessoa", "addressRegion": "PB", "addressCountry": "BR"}, "areaServed": {"@type": "Country", "name": "Brasil"}, "founder": {"@type": "Person", "name": "Sabrina Meleiro", "jobTitle": "Fundadora", "sameAs": "https://www.linkedin.com/in/sabrina-meleiro-195940142/"}, "sameAs": ["https://www.instagram.com/meleiro.tech/", "https://www.linkedin.com/in/sabrina-meleiro-195940142/"], "knowsLanguage": ["pt-BR", "en"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Serviços", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Criação de Sites", "url": "https://meleiro.tech/criacao-de-sites/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Landing Pages", "url": "https://meleiro.tech/landing-pages/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sistemas Personalizados", "url": "https://meleiro.tech/sistemas-personalizados/"}}]}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Meleiro Tech", "url": "https://meleiro.tech/", "inLanguage": "pt-BR", "publisher": {"@id": "https://meleiro.tech/#organization"}}</script>
 </head>
@@ -51,7 +36,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="#inicio" class="header__logo" aria-label="Meleiro Tech">
-        <img src="assets/img/logo-horizontal.png" alt="Meleiro Tech" width="1070" height="397" />
+        <img src="assets/img/logo-horizontal.webp" alt="Meleiro Tech" width="377" height="140" />
       </a>
 
       <nav class="nav" id="nav" aria-label="Principal">
@@ -160,7 +145,7 @@
               <span class="hv-frame__coords">x:042 y:117</span>
             </div>
             <div class="hv-mascot">
-              <img src="assets/img/mascote.png" alt="" width="697" height="701" />
+              <img src="assets/img/mascote.png" alt="" width="697" height="701" fetchpriority="high" />
               <span class="hv-scan"></span>
             </div>
           </div>
@@ -774,7 +759,7 @@
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <img src="assets/img/logo-horizontal.png" alt="Meleiro Tech" class="footer__logo" />
+          <img src="assets/img/logo-horizontal.webp" alt="Meleiro Tech" class="footer__logo" width="377" height="140" loading="lazy" />
           <p data-i18n="footer.text">Software, design e tecnologia para transformar ideias em soluções.</p>
         </div>
 

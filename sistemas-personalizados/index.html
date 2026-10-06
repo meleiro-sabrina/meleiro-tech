@@ -21,18 +21,10 @@
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="/assets/css/base.css" />
-  <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="stylesheet" href="/assets/css/layout.css" />
-  <link rel="stylesheet" href="/assets/css/sections/cta.css" />
-  <link rel="stylesheet" href="/assets/css/pages/service.css" />
-  <link rel="stylesheet" href="/assets/css/animations.css" />
-
-  <script type="module" src="/assets/js/page.js"></script>
+  <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/dist/css/page.css" />
+  <script type="module" src="/assets/dist/js/page.js"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Sistemas Personalizados", "serviceType": "Sistemas Personalizados", "description": "Desenvolvimento de sistemas web sob medida: sistemas de gestão, dashboards, plataformas, APIs, integrações e automações para empresas de todo o Brasil. Orçamento grátis.", "url": "https://meleiro.tech/sistemas-personalizados/", "areaServed": {"@type": "Country", "name": "Brasil"}, "provider": {"@id": "https://meleiro.tech/#organization"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://meleiro.tech/"}, {"@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://meleiro.tech/#servicos"}, {"@type": "ListItem", "position": 3, "name": "Sistemas Personalizados", "item": "https://meleiro.tech/sistemas-personalizados/"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa desenvolver um sistema personalizado?", "acceptedAnswer": {"@type": "Answer", "text": "Cada sistema é único, então o investimento depende das funcionalidades, integrações e do número de usuários. Começamos com uma conversa sem custo para entender o processo e enviar uma proposta."}}, {"@type": "Question", "name": "Quanto tempo leva o desenvolvimento?", "acceptedAnswer": {"@type": "Answer", "text": "Trabalhamos com entregas em etapas. Uma primeira versão funcional costuma ficar pronta em algumas semanas, e o sistema evolui a partir do uso real."}}, {"@type": "Question", "name": "Por que um sistema sob medida em vez de um pronto?", "acceptedAnswer": {"@type": "Answer", "text": "Sistemas prontos obrigam sua empresa a se adaptar a eles. Um sistema sob medida segue o seu processo, elimina retrabalho e cresce junto com o negócio."}}, {"@type": "Question", "name": "O sistema pode se integrar com as ferramentas que já uso?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Integramos com ERPs, planilhas, gateways de pagamento, WhatsApp e outros serviços que ofereçam API."}}, {"@type": "Question", "name": "Vocês dão suporte depois da entrega?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Oferecemos suporte e evolução contínua, com novas funcionalidades e ajustes conforme a necessidade da sua empresa."}}]}</script>
@@ -44,7 +36,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="/" class="header__logo" aria-label="Meleiro Tech">
-        <img src="/assets/img/logo-horizontal.png" alt="Meleiro Tech" width="1070" height="397" />
+        <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" width="377" height="140" />
       </a>
 
       <nav class="nav" id="nav" aria-label="Principal">
@@ -230,7 +222,7 @@
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <img src="/assets/img/logo-horizontal.png" alt="Meleiro Tech" class="footer__logo" />
+          <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" class="footer__logo" width="377" height="140" loading="lazy" />
           <p>Software, design e tecnologia para transformar ideias em soluções.</p>
         </div>
 

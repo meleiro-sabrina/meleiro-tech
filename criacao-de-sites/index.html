@@ -21,18 +21,10 @@
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="/assets/css/base.css" />
-  <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="stylesheet" href="/assets/css/layout.css" />
-  <link rel="stylesheet" href="/assets/css/sections/cta.css" />
-  <link rel="stylesheet" href="/assets/css/pages/service.css" />
-  <link rel="stylesheet" href="/assets/css/animations.css" />
-
-  <script type="module" src="/assets/js/page.js"></script>
+  <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/dist/css/page.css" />
+  <script type="module" src="/assets/dist/js/page.js"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Criação de Sites", "serviceType": "Criação de Sites", "description": "Criação de sites profissionais, rápidos e otimizados para o Google. Sites institucionais e corporativos sob medida para empresas de todo o Brasil. Orçamento grátis.", "url": "https://meleiro.tech/criacao-de-sites/", "areaServed": {"@type": "Country", "name": "Brasil"}, "provider": {"@id": "https://meleiro.tech/#organization"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://meleiro.tech/"}, {"@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://meleiro.tech/#servicos"}, {"@type": "ListItem", "position": 3, "name": "Criação de Sites", "item": "https://meleiro.tech/criacao-de-sites/"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa a criação de um site?", "acceptedAnswer": {"@type": "Answer", "text": "O valor depende do número de páginas, funcionalidades e conteúdo. Enviamos um orçamento gratuito e sem compromisso em até 1 dia útil depois de entender o seu projeto."}}, {"@type": "Question", "name": "Quanto tempo leva para o site ficar pronto?", "acceptedAnswer": {"@type": "Answer", "text": "Um site institucional costuma levar de 2 a 4 semanas, dependendo do conteúdo e da quantidade de páginas. O prazo exato é definido no orçamento."}}, {"@type": "Question", "name": "O site vai aparecer no Google?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Todo site é entregue com a estrutura técnica de SEO, cadastrado no Google Search Console e com sitemap. O posicionamento depende também da concorrência e de ações contínuas, que podemos orientar."}}, {"@type": "Question", "name": "Vocês atendem empresas de outras cidades?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Somos de João Pessoa (PB) e atendemos empresas de todo o Brasil de forma remota, com reuniões online e acompanhamento pelo WhatsApp."}}, {"@type": "Question", "name": "Eu consigo atualizar o site depois?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Combinamos no projeto a melhor forma: ajustes sob demanda com a nossa equipe ou uma área para você editar conteúdos."}}, {"@type": "Question", "name": "O domínio e a hospedagem estão inclusos?", "acceptedAnswer": {"@type": "Answer", "text": "Ajudamos você a registrar o domínio e cuidamos da publicação. Os custos de domínio e hospedagem, quando houver, são informados de forma transparente no orçamento."}}]}</script>
@@ -44,7 +36,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="/" class="header__logo" aria-label="Meleiro Tech">
-        <img src="/assets/img/logo-horizontal.png" alt="Meleiro Tech" width="1070" height="397" />
+        <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" width="377" height="140" />
       </a>
 
       <nav class="nav" id="nav" aria-label="Principal">
@@ -231,7 +223,7 @@
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <img src="/assets/img/logo-horizontal.png" alt="Meleiro Tech" class="footer__logo" />
+          <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" class="footer__logo" width="377" height="140" loading="lazy" />
           <p>Software, design e tecnologia para transformar ideias em soluções.</p>
         </div>
 

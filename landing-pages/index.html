@@ -21,18 +21,10 @@
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="/assets/css/base.css" />
-  <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="stylesheet" href="/assets/css/layout.css" />
-  <link rel="stylesheet" href="/assets/css/sections/cta.css" />
-  <link rel="stylesheet" href="/assets/css/pages/service.css" />
-  <link rel="stylesheet" href="/assets/css/animations.css" />
-
-  <script type="module" src="/assets/js/page.js"></script>
+  <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/dist/css/page.css" />
+  <script type="module" src="/assets/dist/js/page.js"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Landing Pages", "serviceType": "Landing Pages", "description": "Criação de landing pages de alta conversão para campanhas, lançamentos, produtos e serviços. Páginas rápidas, persuasivas e prontas para anúncios. Orçamento grátis.", "url": "https://meleiro.tech/landing-pages/", "areaServed": {"@type": "Country", "name": "Brasil"}, "provider": {"@id": "https://meleiro.tech/#organization"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://meleiro.tech/"}, {"@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://meleiro.tech/#servicos"}, {"@type": "ListItem", "position": 3, "name": "Landing Pages", "item": "https://meleiro.tech/landing-pages/"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual a diferença entre landing page e site?", "acceptedAnswer": {"@type": "Answer", "text": "O site apresenta a empresa como um todo, com várias páginas. A landing page é uma página única e focada em um objetivo, como gerar contatos ou vender um produto, por isso converte mais em campanhas."}}, {"@type": "Question", "name": "Quanto custa uma landing page?", "acceptedAnswer": {"@type": "Answer", "text": "Depende da quantidade de seções, da produção de textos e das integrações. Enviamos um orçamento gratuito em até 1 dia útil."}}, {"@type": "Question", "name": "Em quanto tempo a landing page fica pronta?", "acceptedAnswer": {"@type": "Answer", "text": "Uma landing page costuma ficar pronta entre 1 e 2 semanas após a aprovação do conteúdo. Para lançamentos com data marcada, planejamos o cronograma junto com você."}}, {"@type": "Question", "name": "Vocês escrevem os textos da página?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Podemos criar a copy a partir do briefing ou adaptar os textos que você já tem para uma estrutura que converte melhor."}}, {"@type": "Question", "name": "A página funciona com Google Ads e Meta Ads?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Configuramos Google Analytics, Meta Pixel e as tags de conversão para você medir o retorno de cada campanha."}}]}</script>
@@ -44,7 +36,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="/" class="header__logo" aria-label="Meleiro Tech">
-        <img src="/assets/img/logo-horizontal.png" alt="Meleiro Tech" width="1070" height="397" />
+        <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" width="377" height="140" />
       </a>
 
       <nav class="nav" id="nav" aria-label="Principal">
@@ -230,7 +222,7 @@
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <img src="/assets/img/logo-horizontal.png" alt="Meleiro Tech" class="footer__logo" />
+          <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" class="footer__logo" width="377" height="140" loading="lazy" />
           <p>Software, design e tecnologia para transformar ideias em soluções.</p>
         </div>
 
