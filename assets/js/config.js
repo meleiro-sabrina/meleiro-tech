@@ -1,6 +1,6 @@
 export const CONTACT = {
   email: "meleiro.tech@gmail.com",
-  whatsapp: "5583993051956",
+  whatsapp: "5583993041956",
 };
 
 /** FormSubmit relays form posts to the inbox above (activated once via e-mail). */

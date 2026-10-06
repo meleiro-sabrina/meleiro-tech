@@ -6,7 +6,7 @@
 
 Site institucional da **Meleiro Tech** — websites, landing pages e sistemas personalizados.
 
-[**meleiro.tech**](https://meleiro.tech) · [Instagram](https://instagram.com/meleiro.tech) · [WhatsApp](https://wa.me/5583993051956)
+[**meleiro.tech**](https://meleiro.tech) · [Instagram](https://instagram.com/meleiro.tech) · [WhatsApp](https://wa.me/5583993041956)
 
 </div>
 
@@ -70,7 +70,7 @@ Acesse <http://localhost:5173>.
 Os dados de contato ficam centralizados em [`assets/js/config.js`](assets/js/config.js):
 
 ```js
-export const CONTACT = { email: "meleiro.tech@gmail.com", whatsapp: "5583993051956" };
+export const CONTACT = { email: "meleiro.tech@gmail.com", whatsapp: "5583993041956" };
 ```
 
 Os textos do site ficam em [`assets/js/locales/`](assets/js/locales). Para editar um texto, altere a mesma chave em `pt.js` e `en.js`.
