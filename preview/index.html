@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preview · Meleiro Tech (protótipo)</title>
+  <meta name="description" content="Protótipo de nova home Meleiro Tech — animações, vídeo de código e cases em GIF. Não substitui o site atual." />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#01102F" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="preview.css" />
+</head>
+<body>
+  <div class="notice">
+    <span>Protótipo para comparar — o site atual continua em meleiro.tech</span>
+    <a href="https://meleiro.tech/">Ver site atual</a>
+  </div>
+
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="#topo">
+        <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" width="120" height="45" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="#cases">Cases</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#como">Como trabalhamos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a class="btn btn--lime" href="https://wa.me/5583993041956?text=Oi%21%20Vi%20o%20prot%C3%B3tipo%20e%20quero%20conversar." target="_blank" rel="noopener">Falar com especialista</a>
+    </div>
+  </header>
+
+  <section class="hero" id="topo">
+    <div class="hero__media" aria-hidden="true">
+      <video autoplay muted loop playsinline poster="/assets/img/og-image.jpg">
+        <source src="media/code-typing.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__shade"></div>
+    </div>
+    <div class="wrap hero__content">
+      <p class="kicker"><i></i> Meleiro Tech</p>
+      <h1 data-split>Desenvolvemos software <em>moldado</em> ao seu negócio.</h1>
+      <p class="hero__lead">
+        Mais do que entregar telas: entendemos a operação, desenhamos a solução e evoluímos junto —
+        sites, landing pages e sistemas sob medida.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--lime" href="https://wa.me/5583993041956" target="_blank" rel="noopener">Falar com especialista</a>
+        <a class="btn btn--ghost" href="#cases">Conhecer os cases</a>
+      </div>
+    </div>
+    <p class="scroll-hint"><span></span> Role para explorar</p>
+  </section>
+
+  <section class="section" id="sobre">
+    <div class="wrap about">
+      <div class="section__head reveal">
+        <p class="kicker"><i></i> Quem somos</p>
+        <h2>Projetamos software alinhado aos seus processos.</h2>
+        <p>
+          Recusamos o genérico. Conversamos com quem usa o sistema, mapeamos a rotina e moldamos a
+          tecnologia ao negócio — nunca o contrário.
+        </p>
+      </div>
+      <div class="about__stat reveal">
+        <strong>+ de 4 anos</strong>
+        <span>em software, do diagnóstico à entrega em produção.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="cases">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <p class="kicker"><i></i> Cases</p>
+        <h2>Feito para quem constrói operação de verdade.</h2>
+        <p>Projetos exemplo em movimento — abra cada um para ver a demo completa.</p>
+      </div>
+      <div class="cases">
+        <article class="case reveal">
+          <a href="https://meleiro.tech/projetos/spectrum/" target="_blank" rel="noopener">
+            <div class="case__media">
+              <img src="media/spectrum.gif" alt="Demo animada do Spectrum" width="960" height="600" loading="lazy" />
+            </div>
+            <div class="case__body">
+              <span class="case__cat">Landing page</span>
+              <h3>Spectrum</h3>
+              <p>Construtora de casas modernas, com obras, orçamento e portfólio.</p>
+              <span class="case__cta">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M8 7h9v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </article>
+
+        <article class="case reveal">
+          <a href="https://meleiro.tech/projetos/worky/" target="_blank" rel="noopener">
+            <div class="case__media">
+              <img src="media/worky.gif" alt="Demo animada do Worky" width="960" height="600" loading="lazy" />
+            </div>
+            <div class="case__body">
+              <span class="case__cat">Portfólio</span>
+              <h3>Worky</h3>
+              <p>Site para escritório de arquitetura: serviços, sobre e blog.</p>
+              <span class="case__cta">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M8 7h9v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </article>
+
+        <article class="case reveal">
+          <a href="https://lumio-six-steel.vercel.app/" target="_blank" rel="noopener">
+            <div class="case__media">
+              <img src="media/lumio.gif" alt="Demo animada do Lumio" width="960" height="600" loading="lazy" />
+            </div>
+            <div class="case__body">
+              <span class="case__cat">Jogo educacional</span>
+              <h3>Lumio</h3>
+              <p>Microaprendizado com lições curtas, contas e trilhas no celular.</p>
+              <span class="case__cta">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M8 7h9v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </article>
+
+        <article class="case reveal">
+          <a href="https://meleiro.tech/controle-gastos/" target="_blank" rel="noopener">
+            <div class="case__media">
+              <img src="media/vista.gif" alt="Demo animada do Vista" width="960" height="600" loading="lazy" />
+            </div>
+            <div class="case__body">
+              <span class="case__cat">Dashboard empresarial</span>
+              <h3>Vista</h3>
+              <p>Painel financeiro por setor, lançamentos e tesouraria.</p>
+              <span class="case__cta">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M8 7h9v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="servicos">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <p class="kicker"><i></i> Serviços</p>
+        <h2>Do site ao sistema, no mesmo padrão de cuidado.</h2>
+      </div>
+      <div class="services">
+        <details class="svc reveal" open>
+          <summary>Criação de sites</summary>
+          <div class="svc__body">
+            Sites institucionais e corporativos com performance, SEO e visual alinhado à marca —
+            do primeiro esboço ao projeto no ar.
+          </div>
+        </details>
+        <details class="svc reveal">
+          <summary>Landing pages</summary>
+          <div class="svc__body">
+            Páginas de campanha e conversão: mensagem clara, prova social e CTA no lugar certo
+            para transformar visita em lead.
+          </div>
+        </details>
+        <details class="svc reveal">
+          <summary>Sistemas personalizados</summary>
+          <div class="svc__body">
+            Dashboards, APIs, integrações e automações desenhados para a sua operação — quando o
+            software de prateleira já não dá conta.
+          </div>
+        </details>
+        <details class="svc reveal">
+          <summary>Consultoria & evolução</summary>
+          <div class="svc__body">
+            Diagnóstico, priorização e acompanhamento contínuo. Quem desenvolve continua perto
+            depois do go-live.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="como">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <p class="kicker"><i></i> Modelos de entrega</p>
+        <h2>Escopo fechado, dedicação ou demanda pontual.</h2>
+        <p>A gente se encaixa no estágio do seu produto.</p>
+      </div>
+      <div class="models">
+        <article class="model reveal">
+          <h3>Escopo fechado</h3>
+          <p>Entregas, prazo e investimento alinhados no início. Pagamento por etapa concluída.</p>
+        </article>
+        <article class="model reveal">
+          <h3>Horas sob demanda</h3>
+          <p>Crédito de horas para melhorias, ajustes e manutenção em sistemas já publicados.</p>
+        </article>
+        <article class="model reveal">
+          <h3>Propriedade do código</h3>
+          <p>Código-fonte e documentação entregues. Sem depender de plataforma fechada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="wrap">
+      <div class="cta reveal">
+        <p class="kicker"><i></i> Próximo passo</p>
+        <h2>Imagine a operação rodando sem atrito.</h2>
+        <p>
+          Conte o que você precisa. Respondemos com um caminho possível e os próximos passos —
+          sem enrolação.
+        </p>
+        <div class="hero__actions" style="opacity:1;animation:none">
+          <a class="btn btn--lime" href="https://wa.me/5583993041956" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          <a class="btn btn--ghost" href="mailto:meleiro.tech@gmail.com">meleiro.tech@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap foot">
+    <span>© 2026 Meleiro Tech · protótipo</span>
+    <span>
+      <a href="https://meleiro.tech/">Site atual</a>
+      ·
+      <a href="https://meleiro.tech/links/">Links Instagram</a>
+    </span>
+  </footer>
+
+  <script src="preview.js"></script>
+</body>
+</html>
