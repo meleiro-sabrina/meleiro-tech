@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vista — Painel financeiro empresarial | Demo Meleiro Tech</title>
+    <meta
+      name="description"
+      content="Demo de dashboard financeiro no estilo Power BI: KPIs executivos, áreas com evolução e tesouraria. Exemplo Meleiro Tech."
+    />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <nav class="float-nav" aria-label="Menu">
+        <a class="float-nav__brand" href="https://meleiro.tech/" target="_blank" rel="noopener">
+          <img
+            src="/assets/img/logo-horizontal.webp"
+            srcset="/assets/img/logo-horizontal-130.webp 129w, /assets/img/logo-horizontal-260.webp 259w, /assets/img/logo-horizontal.webp 377w"
+            sizes="120px"
+            alt="Meleiro Tech"
+            width="377"
+            height="140"
+          />
+          <span class="float-nav__product">Vista</span>
+        </a>
+        <div class="float-nav__links">
+          <a class="nav__item is-active" href="#executivo">Executivo</a>
+          <a class="nav__item" href="#tesouraria">Tesouraria</a>
+          <a class="nav__item" href="#contas">Contas</a>
+          <a class="nav__item" href="#planejamento">Planejamento</a>
+          <a class="nav__item" href="#areas">Por área</a>
+          <a class="nav__item" href="#lancamentos">Lançamentos</a>
+        </div>
+        <a
+          class="float-nav__cta"
+          href="https://meleiro.tech/sistemas-personalizados/"
+          target="_blank"
+          rel="noopener"
+          >Quer um sistema assim?</a
+        >
+      </nav>
+
+      <div class="main">
+        <header class="topbar">
+          <div class="topbar__title">
+            <p class="eyebrow">Meleiro Tech · exemplo</p>
+            <h1>Visão financeira da empresa</h1>
+          </div>
+          <div class="topbar__actions">
+            <label class="field">
+              <select id="period" aria-label="Período">
+                <option value="2026-10" selected>Outubro 2026</option>
+                <option value="2026-09">Setembro 2026</option>
+                <option value="2026-08">Agosto 2026</option>
+              </select>
+            </label>
+            <div class="user-chip"><span class="user-chip__av">SM</span> Financeiro</div>
+          </div>
+        </header>
+
+        <main class="content">
+          <div class="banner" id="viewBanner">
+            <strong>Dados fictícios</strong> — visão por setor, lançamentos com NFS-e para rastreio e tesouraria com
+            entradas/saídas dos bancos.
+          </div>
+          <div class="alert-strip" id="alertStrip" hidden></div>
+
+          <!-- Cada visão é exclusiva (o menu troca o conteúdo) -->
+          <section class="exec view-panel" id="executivo" data-view="executivo" aria-label="Visão executiva de crescimento"></section>
+
+          <section class="treasury view-panel" id="tesouraria" data-view="tesouraria" hidden>
+            <article class="card card--wide">
+              <header class="card__head">
+                <div>
+                  <h2>Tesouraria</h2>
+                  <p>Posição de caixa e fluxo de entradas/saídas por banco</p>
+                </div>
+                <span class="pill" id="bankTotal">—</span>
+              </header>
+              <div class="bank-grid" id="bankList"></div>
+            </article>
+
+            <article class="card card--wide">
+              <header class="card__head card__head--wrap">
+                <div>
+                  <h2>Movimentações bancárias</h2>
+                  <p>Fluxo de caixa: recebimentos, transferências, folha e tarifas — não é a lista de NFS-e</p>
+                </div>
+                <div class="ledger__filters">
+                  <label class="field">
+                    <select id="bankFilter" aria-label="Filtrar por banco">
+                      <option value="all">Todos os bancos</option>
+                    </select>
+                  </label>
+                  <button type="button" class="btn-export" id="exportBankCsv">CSV</button>
+                  <button type="button" class="btn-export btn-export--ghost" id="exportBankPdf">PDF</button>
+                </div>
+              </header>
+              <div class="flow-kpis" id="flowKpis"></div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Data</th>
+                      <th>Banco</th>
+                      <th>Tipo</th>
+                      <th>Histórico</th>
+                      <th>Origem / destino</th>
+                      <th class="num">Valor</th>
+                      <th class="num">Saldo após</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bankMoveBody"></tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <section class="plan view-panel" id="planejamento" data-view="planejamento" hidden>
+            <div class="plan-kpis" id="planKpis"></div>
+            <div class="plan-grid">
+              <article class="card card--wide">
+                <header class="card__head">
+                  <div>
+                    <h2>Previsão de caixa</h2>
+                    <p>Saldo projetado em 30, 60 e 90 dias com pagar, receber e custos recorrentes</p>
+                  </div>
+                  <span class="pill" id="planCashPill">—</span>
+                </header>
+                <div class="plan-cash" id="planCash"></div>
+                <canvas id="planCashChart" width="720" height="220" aria-label="Projeção de caixa"></canvas>
+              </article>
+              <article class="card">
+                <header class="card__head">
+                  <div>
+                    <h2>Metas × realizado</h2>
+                    <p>Orçamento do mês por setor</p>
+                  </div>
+                </header>
+                <div class="plan-goals" id="planGoals"></div>
+              </article>
+              <article class="card">
+                <header class="card__head">
+                  <div>
+                    <h2>Margem por cliente</h2>
+                    <p>Receita − custo direto no mês</p>
+                  </div>
+                </header>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Cliente</th>
+                        <th class="num">Receita</th>
+                        <th class="num">Custo</th>
+                        <th class="num">Margem</th>
+                        <th class="num">%</th>
+                      </tr>
+                    </thead>
+                    <tbody id="planClientsBody"></tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <div class="view-panel" id="areas" data-view="areas" hidden>
+            <section class="compose" id="composicao" aria-label="Composição das despesas">
+              <article class="card compose__card">
+                <header class="card__head">
+                  <div>
+                    <h2>Onde está o maior gasto?</h2>
+                    <p>Participação de cada setor no total do mês</p>
+                  </div>
+                  <span class="pill" id="topSlice">—</span>
+                </header>
+                <div class="compose__body">
+                  <canvas id="pieAreas" width="280" height="280" aria-label="Pizza de gastos por área"></canvas>
+                  <ul class="compose__legend" id="pieLegend"></ul>
+                </div>
+              </article>
+            </section>
+            <section class="areas" id="areasCards" aria-label="Gastos por área"></section>
+          </div>
+
+          <!-- Rastreio de gastos (só tabela — sem gráficos de composição) -->
+          <section class="ledger view-panel" id="lancamentos" data-view="lancamentos" hidden>
+            <article class="card card--wide">
+              <header class="card__head card__head--wrap">
+                <div>
+                  <h2>Lançamentos de gastos</h2>
+                  <p>Rastreio completo: categoria, fornecedor, data, NFS-e e conta</p>
+                </div>
+                <div class="ledger__filters">
+                  <label class="field">
+                    <select id="expenseArea" aria-label="Filtrar por setor">
+                      <option value="all">Todos os setores</option>
+                    </select>
+                  </label>
+                  <input type="search" id="expenseSearch" placeholder="Buscar NFSe, fornecedor…" aria-label="Buscar lançamentos" />
+                  <button type="button" class="btn-export" id="exportExpensesCsv">CSV</button>
+                  <button type="button" class="btn-export btn-export--ghost" id="exportExpensesPdf">PDF</button>
+                </div>
+              </header>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Data</th>
+                      <th>Setor</th>
+                      <th>Categoria</th>
+                      <th>Descrição</th>
+                      <th>Fornecedor</th>
+                      <th>NFS-e</th>
+                      <th>Conta</th>
+                      <th class="num">Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody id="expenseBody"></tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <!-- Contas a pagar / receber -->
+          <section class="payables view-panel" id="contas" data-view="contas" hidden>
+            <div class="pay-summary" id="paySummary"></div>
+            <article class="card card--wide pay-agenda">
+              <header class="card__head">
+                <div>
+                  <h2>Agenda de vencimentos</h2>
+                  <p>Próximos 14 dias · pagar e receber no mesmo calendário</p>
+                </div>
+                <span class="pill" id="payAgendaPill">—</span>
+              </header>
+              <div class="pay-timeline" id="payTimeline"></div>
+            </article>
+            <div class="pay-toolbar">
+              <div class="pay-filters" id="payFilters" role="tablist" aria-label="Filtrar por status"></div>
+            </div>
+            <div class="pay-grid">
+              <article class="card pay-panel pay-panel--out">
+                <header class="card__head">
+                  <div>
+                    <h2>Contas a pagar</h2>
+                    <p id="payHeadMeta">Obrigações com vencimento</p>
+                  </div>
+                  <span class="pill pill--rose" id="payHeadTotal">—</span>
+                </header>
+                <div class="table-wrap">
+                  <table class="data-table data-table--contas">
+                    <thead>
+                      <tr>
+                        <th>Vencimento</th>
+                        <th>Fornecedor</th>
+                        <th>Descrição</th>
+                        <th>Setor</th>
+                        <th>Status</th>
+                        <th class="num">Valor</th>
+                      </tr>
+                    </thead>
+                    <tbody id="payBody"></tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="card pay-panel pay-panel--in">
+                <header class="card__head">
+                  <div>
+                    <h2>Contas a receber</h2>
+                    <p id="recvHeadMeta">Valores a entrar</p>
+                  </div>
+                  <span class="pill pill--mint" id="recvHeadTotal">—</span>
+                </header>
+                <div class="table-wrap">
+                  <table class="data-table data-table--contas">
+                    <thead>
+                      <tr>
+                        <th>Vencimento</th>
+                        <th>Cliente</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                        <th class="num">Valor</th>
+                      </tr>
+                    </thead>
+                    <tbody id="recvBody"></tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <footer class="demo-foot">
+            Sistema de exemplo ·
+            <a href="https://meleiro.tech/" target="_blank" rel="noopener">Meleiro Tech</a>
+            ·
+            <a href="https://meleiro.tech/sistemas-personalizados/" target="_blank" rel="noopener"
+              >Sistemas personalizados</a
+            >
+          </footer>
+        </main>
+      </div>
+    </div>
+    <div class="chart-tip" id="chartTip" hidden></div>
+    <script src="app.js"></script>
+  </body>
+</html>
