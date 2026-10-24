@@ -179,7 +179,7 @@
 			// Custom validator - phone number
 			regula.custom({
 				name: 'PhoneNumber',
-				defaultMessage: 'Invalid phone number format',
+				defaultMessage: 'Formato de telefone inválido',
 				validator: function() {
 					if ( this.value === '' ) return true;
 					else return /^(\+\d)?[0-9\-\(\) ]{5,}$/i.test( this.value );
@@ -211,19 +211,19 @@
 			var regularConstraintsMessages = [
 				{
 					type: regula.Constraint.Required,
-					newMessage: "The text field is required."
+					newMessage: "Este campo é obrigatório."
 				},
 				{
 					type: regula.Constraint.Email,
-					newMessage: "The email is not a valid email."
+					newMessage: "Informe um e-mail válido."
 				},
 				{
 					type: regula.Constraint.Numeric,
-					newMessage: "Only numbers are required"
+					newMessage: "Informe apenas números"
 				},
 				{
 					type: regula.Constraint.Selected,
-					newMessage: "Please choose an option."
+					newMessage: "Selecione uma opção."
 				}
 			];
 
@@ -283,7 +283,7 @@
 			if (captchaToken.length === 0) {
 				captcha
 					.siblings('.form-validation')
-					.html('Please, prove that you are not robot.')
+					.html('Comprove que você não é um robô.')
 					.addClass('active');
 				captcha
 					.closest('.form-wrap')
@@ -379,7 +379,7 @@
 
 		// Google ReCaptcha
 		if (plugins.captcha.length) {
-			$.getScript("//www.google.com/recaptcha/api.js?onload=onloadCaptchaCallback&render=explicit&hl=en");
+			$.getScript("//www.google.com/recaptcha/api.js?onload=onloadCaptchaCallback&render=explicit&hl=pt-BR");
 		}
 
 		// Additional class on html if mac os.
@@ -514,13 +514,13 @@
 		if (plugins.rdMailForm.length) {
 			var i, j, k,
 				msg = {
-					'MF000': 'Successfully sent!',
-					'MF001': 'Recipients are not set!',
-					'MF002': 'Form will not work locally!',
-					'MF003': 'Please, define email field in your form!',
-					'MF004': 'Please, define type of your form!',
-					'MF254': 'Something went wrong with PHPMailer!',
-					'MF255': 'Aw, snap! Something went wrong.'
+					'MF000': 'Enviado com sucesso!',
+					'MF001': 'Destinatários não configurados!',
+					'MF002': 'O formulário não funciona localmente!',
+					'MF003': 'Defina o campo de e-mail no formulário!',
+					'MF004': 'Defina o tipo do formulário!',
+					'MF254': 'Ocorreu um erro com o PHPMailer!',
+					'MF255': 'Ops! Algo deu errado.'
 				};
 
 			for (i = 0; i < plugins.rdMailForm.length; i++) {
@@ -550,8 +550,8 @@
 							if (captcha.length) {
 								var captchaToken = captcha.find('.g-recaptcha-response').val(),
 									captchaMsg = {
-										'CPT001': 'Please, setup you "site key" and "secret key" of reCaptcha',
-										'CPT002': 'Something wrong with google reCaptcha'
+										'CPT001': 'Configure a "site key" e a "secret key" do reCaptcha',
+										'CPT002': 'Algo deu errado com o Google reCaptcha'
 									};
 
 								formHasCaptcha = true;
@@ -588,7 +588,7 @@
 							form.addClass('form-in-process');
 
 							if (output.hasClass("snackbars")) {
-								output.html('<p><span class="icon text-middle fa fa-circle-o-notch fa-spin icon-xxs"></span><span>Sending</span></p>');
+								output.html('<p><span class="icon text-middle fa fa-circle-o-notch fa-spin icon-xxs"></span><span>Enviando</span></p>');
 								output.addClass("active");
 							}
 						} else {
