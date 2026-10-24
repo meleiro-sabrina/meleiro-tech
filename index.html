@@ -27,700 +27,430 @@
 
   <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/img/mascote.webp" as="image" type="image/webp" fetchpriority="high" />
   <link rel="stylesheet" href="/assets/dist/css/main.css" />
+  <script>
+    /* Esconde textos para animar só se o movimento for permitido.
+       Se o JS principal não marcar __mtReady em 2,5s, tudo volta a ficar visível. */
+    (function (d) {
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        d.documentElement.classList.add("anim");
+        setTimeout(function () {
+          if (!window.__mtReady) d.documentElement.classList.remove("anim");
+        }, 2500);
+      }
+    })(document);
+  </script>
+  <script defer src="/assets/js/vendor/lenis.min.js"></script>
+  <script defer src="/assets/js/vendor/gsap.min.js"></script>
+  <script defer src="/assets/js/vendor/ScrollTrigger.min.js"></script>
   <script type="module" src="/assets/dist/js/main.js"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://meleiro.tech/#organization", "name": "Meleiro Tech", "url": "https://meleiro.tech/", "logo": "https://meleiro.tech/assets/img/logo-horizontal.png", "image": "https://meleiro.tech/assets/img/og-image.jpg", "description": "Criação de sites profissionais, landing pages e sistemas personalizados para empresas de todo o Brasil. Design moderno, rápido e otimizado para o Google. Orçamento grátis.", "email": "meleiro.tech@gmail.com", "telephone": "+55-83-99304-1956", "address": {"@type": "PostalAddress", "addressLocality": "João Pessoa", "addressRegion": "PB", "addressCountry": "BR"}, "areaServed": {"@type": "Country", "name": "Brasil"}, "founder": {"@type": "Person", "name": "Sabrina Meleiro", "jobTitle": "Fundadora", "sameAs": "https://www.linkedin.com/in/sabrina-meleiro-195940142/"}, "sameAs": ["https://www.instagram.com/meleiro.tech/", "https://www.linkedin.com/in/sabrina-meleiro-195940142/"], "knowsLanguage": ["pt-BR", "en"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Serviços", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Criação de Sites", "url": "https://meleiro.tech/criacao-de-sites/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Landing Pages", "url": "https://meleiro.tech/landing-pages/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sistemas Personalizados", "url": "https://meleiro.tech/sistemas-personalizados/"}}]}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Meleiro Tech", "url": "https://meleiro.tech/", "inLanguage": "pt-BR", "publisher": {"@id": "https://meleiro.tech/#organization"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa um site ou sistema?", "acceptedAnswer": {"@type": "Answer", "text": "O valor depende do número de páginas, funcionalidades e integrações. Enviamos um orçamento gratuito e sem compromisso em até 1 dia útil — e você pode pagar no plano mensal ou em parcelas."}}, {"@type": "Question", "name": "Quanto tempo leva para ficar pronto?", "acceptedAnswer": {"@type": "Answer", "text": "Um site institucional costuma levar de 2 a 4 semanas; uma landing page, entre 1 e 2 semanas após a aprovação do conteúdo. Sistemas são entregues em etapas. O prazo exato é definido no orçamento."}}, {"@type": "Question", "name": "O site vai aparecer no Google?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Todo site é entregue com a estrutura técnica de SEO, cadastrado no Google Search Console e com sitemap. O posicionamento depende também da concorrência e de ações contínuas, que podemos orientar."}}, {"@type": "Question", "name": "Vocês atendem empresas de outras cidades?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Somos de João Pessoa (PB) e atendemos empresas de todo o Brasil de forma remota, com reuniões online e acompanhamento pelo WhatsApp."}}, {"@type": "Question", "name": "Vocês dão suporte depois da entrega?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Oferecemos suporte e evolução contínua, com ajustes e novas funcionalidades conforme a necessidade da sua empresa."}}]}</script>
   <script src="/assets/js/analytics.js" defer></script>
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
+  <a class="skip" href="#conteudo" data-i18n="skip">Pular para o conteúdo</a>
 
-  <!-- ================= HEADER ================= -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="#inicio" class="header__logo" aria-label="Meleiro Tech">
-        <img src="assets/img/logo-horizontal.webp" srcset="assets/img/logo-horizontal-130.webp 129w, assets/img/logo-horizontal-260.webp 259w, assets/img/logo-horizontal.webp 377w" sizes="97px" alt="Meleiro Tech" width="377" height="140" />
-      </a>
-
-      <nav class="nav" id="nav" aria-label="Principal">
-        <ul class="nav__list">
-          <li><a href="#inicio" class="nav__link" data-i18n="nav.home">Início</a></li>
-          <li><a href="#servicos" class="nav__link" data-i18n="nav.services">Serviços</a></li>
-          <li><a href="#projetos" class="nav__link" data-i18n="nav.projects">Projetos</a></li>
-          <li><a href="#sobre" class="nav__link" data-i18n="nav.about">Sobre</a></li>
-          <li><a href="#contato" class="nav__link" data-i18n="nav.contact">Contato</a></li>
-        </ul>
-        <div class="nav__mobile-extra">
-          <div class="lang" role="group" aria-label="Idioma / Language">
-            <button class="lang__btn is-active" data-lang="pt">PT</button>
-            <span class="lang__sep">|</span>
-            <button class="lang__btn" data-lang="en">EN</button>
-          </div>
-          <a href="#contato" class="btn btn--primary btn--block" data-i18n="cta.quote">Solicitar orçamento</a>
-        </div>
-      </nav>
-
-      <div class="header__actions">
-        <div class="lang" role="group" aria-label="Idioma / Language">
-          <button class="lang__btn is-active" data-lang="pt">PT</button>
-          <span class="lang__sep">|</span>
-          <button class="lang__btn" data-lang="en">EN</button>
-        </div>
-        <a href="#contato" class="btn btn--primary btn--sm" data-i18n="cta.quote">Solicitar orçamento</a>
-        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
-          <span></span><span></span>
-        </button>
+  <header class="header" id="topo">
+    <a class="header__logo" href="#inicio" aria-label="Meleiro Tech — início">
+      <img src="/assets/img/logo-horizontal.webp" srcset="/assets/img/logo-horizontal-130.webp 129w, /assets/img/logo-horizontal-260.webp 259w, /assets/img/logo-horizontal.webp 377w" sizes="97px" alt="Meleiro Tech" width="377" height="140" />
+    </a>
+    <nav class="header__nav" aria-label="Principal">
+      <a href="#servicos" data-i18n="nav.services">Serviços</a>
+      <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+      <a href="#pagamento" data-i18n="nav.payment">Pagamento</a>
+      <a href="#sobre" data-i18n="nav.about">Sobre</a>
+      <a href="#faq" data-i18n="nav.faq">Dúvidas</a>
+    </nav>
+    <div class="header__tools">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang__btn is-active" data-lang="pt" lang="pt-BR" aria-pressed="true">PT</button>
+        <span class="lang__sep" aria-hidden="true">|</span>
+        <button type="button" class="lang__btn" data-lang="en" lang="en" aria-pressed="false">EN</button>
       </div>
+      <a class="btn btn--primary btn--sm header__cta" href="#contato" data-i18n="cta.quote">Solicitar orçamento</a>
     </div>
   </header>
 
-  <main>
-    <!-- ================= HERO ================= -->
-    <section class="hero" id="inicio">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__grid"></div>
-        <div class="hero__aurora"></div>
-      </div>
-
-      <div class="container hero__inner">
-        <div class="hero__content">
-          <div class="eyebrow reveal">
-            <span class="eyebrow__dot"></span>
-            <span data-i18n="hero.eyebrow">Criação de sites e sistemas · Todo o Brasil</span>
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <p class="eyebrow hero__eyebrow" data-fade><span class="dot"></span><span data-i18n="hero.eyebrow">Sites e sistemas · Atendimento em todo o Brasil</span></p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="line"><span data-i18n="hero.l1">Sua empresa</span></span>
+          <span class="line"><span data-i18n="hero.l2">encontrada,</span></span>
+          <span class="line"><span data-i18n="hero.l3">lembrada e</span></span>
+          <span class="line"><span data-i18n-html="hero.l4"><em>escolhida.</em></span></span>
+        </h1>
+        <div class="hero__bottom">
+          <p class="hero__lead" data-fade data-i18n-html="hero.lead">Sites institucionais, landing pages e sistemas sob medida que transformam visitas em clientes e organizam o seu negócio. <strong>Pagamento mensal ou em parcelas que cabem no caixa.</strong></p>
+          <div class="hero__ctas" data-fade>
+            <a class="btn btn--primary btn--lg" href="https://wa.me/5583993041956?text=Ol%C3%A1%2C%20Meleiro%20Tech%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener"><span data-i18n="hero.cta.wa">Pedir orçamento no WhatsApp</span> <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost btn--lg" href="#projetos" data-i18n="hero.cta.work">Ver projetos</a>
           </div>
-
-          <h1 class="hero__title reveal" data-delay="1" data-i18n-html="hero.title">
-            Transformamos ideias em <span class="hl">software.</span>
-          </h1>
-
-          <p class="hero__text reveal" data-delay="2" data-i18n="hero.text">
-            Criação de sites profissionais, landing pages e sistemas personalizados para empresas de todo o Brasil — do primeiro esboço ao projeto no ar.
-          </p>
-
-          <div class="hero__ctas reveal" data-delay="3">
-            <a href="#servicos" class="btn btn--ghost">
-              <span data-i18n="hero.cta1">Conheça nossos serviços</span>
-            </a>
-            <a href="#contato" class="btn btn--primary">
-              <span data-i18n="hero.cta2">Começar um projeto</span>
-              <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-
-          <ul class="hero__chips reveal" data-delay="4">
-            <li><span>01</span> Websites</li>
-            <li><span>02</span> Landing Pages</li>
-            <li><span>03</span> <b data-i18n="hero.chip3">Sistemas</b></li>
-          </ul>
-        </div>
-
-        <!-- Hero visual: mascote + composição tecnológica -->
-        <div class="hero__visual" id="heroVisual" aria-hidden="true">
-          <canvas class="hv-particles" id="particles"></canvas>
-
-          <svg class="hv-rings" viewBox="0 0 600 600">
-            <defs>
-              <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#D7F300" stop-opacity=".9"/>
-                <stop offset=".5" stop-color="#D7F300" stop-opacity=".05"/>
-                <stop offset="1" stop-color="#D7F300" stop-opacity=".5"/>
-              </linearGradient>
-            </defs>
-            <g class="ring ring--1"><circle cx="300" cy="300" r="270" fill="none" stroke="rgba(215,243,0,.12)" stroke-dasharray="2 10"/></g>
-            <g class="ring ring--2"><circle cx="300" cy="300" r="225" fill="none" stroke="url(#ringGrad)" stroke-width="1.2" stroke-dasharray="140 30 6 30"/></g>
-            <g class="ring ring--3">
-              <circle cx="300" cy="300" r="185" fill="none" stroke="rgba(140,170,230,.14)"/>
-              <circle cx="300" cy="115" r="4" fill="#D7F300"/>
-              <circle cx="485" cy="300" r="2.5" fill="#8fa6d6"/>
-            </g>
-            <g class="ring-ticks">
-              <line x1="300" y1="12" x2="300" y2="34"/><line x1="300" y1="566" x2="300" y2="588"/>
-              <line x1="12" y1="300" x2="34" y2="300"/><line x1="566" y1="300" x2="588" y2="300"/>
-            </g>
-          </svg>
-
-          <div class="hv-glow"></div>
-
-          <div class="hv-core" data-depth="0.35">
-            <div class="hv-frame">
-              <i></i><i></i><i></i><i></i>
-              <span class="hv-frame__label">MT-01 // CORE</span>
-              <span class="hv-frame__coords">x:042 y:117</span>
-            </div>
-            <div class="hv-mascot">
-              <img src="assets/img/mascote.png" alt="" width="697" height="701" fetchpriority="high" />
-              <span class="hv-scan"></span>
-            </div>
-          </div>
-
-          <!-- Floating UI blocks -->
-          <div class="hv-card hv-card--code" data-depth="0.9">
-            <div class="hv-card__bar"><i></i><i></i><i></i><span>build.ts</span></div>
-            <pre><code data-i18n-html="hero.code"><span class="c-k">const</span> <span class="c-v">projeto</span> = <span class="c-k">await</span> meleiro
-  .<span class="c-f">build</span>({
-    ideia: <span class="c-s">'sua'</span>,
-    stack: <span class="c-s">'moderna'</span>,
-  });</code></pre>
-          </div>
-
-          <div class="hv-card hv-card--metric" data-depth="1.2">
-            <div class="hv-card__label" data-i18n="hero.card.perf">Performance</div>
-            <div class="hv-card__value">98<small>/100</small></div>
-            <div class="hv-bars"><i style="--h:40%"></i><i style="--h:62%"></i><i style="--h:48%"></i><i style="--h:80%"></i><i style="--h:70%"></i><i style="--h:95%"></i></div>
-          </div>
-
-          <div class="hv-card hv-card--status" data-depth="0.6">
-            <span class="pulse-dot"></span>
-            <span data-i18n="hero.card.deploy">Deploy concluído</span>
-            <span class="hv-card__time">0.8s</span>
-          </div>
-
-          <div class="hv-card hv-card--api" data-depth="1.5">
-            <span class="hv-tag">GET</span> <span data-i18n="hero.api">/api/solucoes</span> <span class="hv-ok">200</span>
-          </div>
-
-          <span class="hv-node hv-node--a" data-depth="0.5"></span>
-          <span class="hv-node hv-node--b" data-depth="1"></span>
-          <span class="hv-node hv-node--c" data-depth="0.7"></span>
         </div>
       </div>
-
-      <a href="#servicos" class="hero__scroll" aria-label="Scroll">
-        <span data-i18n="hero.scroll">Role para explorar</span>
-        <i></i>
-      </a>
+      <div class="hero__mascot" aria-hidden="true">
+        <img src="/assets/img/mascote.webp" alt="" width="697" height="701" fetchpriority="high" />
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span data-i18n="marquee.sites">Sites institucionais</span><span>✦</span><span data-i18n="marquee.lp">Landing pages</span><span>✦</span><span data-i18n="marquee.systems">Sistemas sob medida</span><span>✦</span><span data-i18n="marquee.dash">Dashboards</span><span>✦</span><span data-i18n="marquee.integrations">Integrações</span><span>✦</span><span data-i18n="marquee.automations">Automações</span><span>✦</span>
+          <span data-i18n="marquee.sites">Sites institucionais</span><span>✦</span><span data-i18n="marquee.lp">Landing pages</span><span>✦</span><span data-i18n="marquee.systems">Sistemas sob medida</span><span>✦</span><span data-i18n="marquee.dash">Dashboards</span><span>✦</span><span data-i18n="marquee.integrations">Integrações</span><span>✦</span><span data-i18n="marquee.automations">Automações</span><span>✦</span>
+        </div>
+      </div>
+      <a class="hero__scroll" href="#servicos" aria-label="Rolar para o conteúdo"><span></span></a>
     </section>
 
-    <!-- ================= SERVIÇOS ================= -->
-    <section class="section services" id="servicos">
+    <!--
+      PROVA SOCIAL DESLIGADA.
+      Esta seção não é publicada enquanto estiver comentada.
+      Para religar, com depoimentos e logos reais (nada inventado):
+      1. Substitua os textos entre colchetes e apague a classe placeholder.
+      2. Remova o atributo hidden.
+      3. Feche este comentário antes da section e apague o marcador final.
+      4. Mude SHOW_SOCIAL_PROOF para true em assets/js/social-proof.js.
+      5. Se quiser, aponte .hero__scroll de #servicos para #prova.
+    <section class="proof section" id="prova" data-social-proof hidden aria-labelledby="proof-title">
       <div class="container">
-        <header class="section__head">
-          <span class="kicker reveal"><b>//</b> <span data-i18n="services.kicker">Serviços</span></span>
-          <h2 class="section__title reveal" data-delay="1" data-i18n="services.title">Criação de sites, landing pages e sistemas</h2>
-          <p class="section__lead reveal" data-delay="2" data-i18n="services.lead">Três frentes de atuação, uma mesma obsessão: transformar necessidades reais em produtos digitais bem construídos.</p>
-        </header>
+        <p class="eyebrow">// Quem já confiou</p>
+        <h2 class="h2" id="proof-title" data-lines>
+          <span class="line"><span>Resultados contados</span></span>
+          <span class="line"><span>por quem contratou.</span></span>
+        </h2>
+        <div class="proof__grid">
+          <figure class="quote placeholder">
+            <blockquote>[Depoimento de cliente aqui]</blockquote>
+            <figcaption>[Nome do cliente] · [Empresa / cargo]</figcaption>
+          </figure>
+          <figure class="quote placeholder">
+            <blockquote>[Depoimento de cliente aqui]</blockquote>
+            <figcaption>[Nome do cliente] · [Empresa / cargo]</figcaption>
+          </figure>
+          <figure class="quote placeholder">
+            <blockquote>[Depoimento de cliente aqui]</blockquote>
+            <figcaption>[Nome do cliente] · [Empresa / cargo]</figcaption>
+          </figure>
+        </div>
+        <div class="logos placeholder">
+          <span>[Logo de cliente]</span><span>[Logo de cliente]</span><span>[Logo de cliente]</span><span>[Logo de cliente]</span>
+        </div>
+      </div>
+    </section>
+    -->
 
-        <div class="services__grid">
-          <!-- 01 -->
-          <article class="service-card reveal" data-delay="1">
-            <div class="service-card__top">
-              <span class="service-card__num">01</span>
-              <span class="service-card__tag">WEB</span>
-            </div>
-            <div class="service-card__art art-web" aria-hidden="true">
-              <div class="mock-browser">
-                <div class="mock-browser__bar"><i></i><i></i><i></i><span></span></div>
-                <div class="mock-browser__body">
-                  <div class="aw-nav"><b></b><span></span><span></span><span></span></div>
-                  <div class="aw-hero"><div><b></b><b></b><i></i></div><span></span></div>
-                  <div class="aw-cols"><span></span><span></span><span></span></div>
-                </div>
-              </div>
-            </div>
-            <h3 class="service-card__title">Websites</h3>
-            <p class="service-card__text" data-i18n="services.s1.text">Experiências digitais modernas para empresas, marcas e profissionais.</p>
-            <ul class="service-card__list">
-              <li data-i18n="services.s1.i1">Sites institucionais</li>
-              <li data-i18n="services.s1.i2">Sites corporativos</li>
-              <li data-i18n="services.s1.i3">Portais</li>
-              <li data-i18n="services.s1.i4">Sites personalizados</li>
+    <section class="services" id="servicos" aria-labelledby="services-title">
+      <div class="services__track">
+        <div class="panel panel--intro">
+          <p class="eyebrow" data-fade data-i18n="services.kicker">// Serviços</p>
+          <h2 class="h1" id="services-title" data-lines>
+            <span class="line"><span data-i18n="services.l1">Três formas</span></span>
+            <span class="line"><span data-i18n="services.l2">de fazer sua</span></span>
+            <span class="line"><span data-i18n-html="services.l3">empresa <em>crescer.</em></span></span>
+          </h2>
+          <p class="lead" data-fade data-i18n="services.lead">Do site que apresenta sua marca ao sistema que organiza a operação — tudo sob medida, do primeiro esboço ao projeto no ar.</p>
+          <p class="services__hint" aria-hidden="true" data-i18n="services.hint">Role para explorar →</p>
+        </div>
+
+        <article class="panel panel--service">
+          <span class="panel__num">01</span>
+          <div class="panel__body">
+            <h3 class="h2" data-i18n="services.s1.title">Sites institucionais</h3>
+            <p class="lead" data-i18n="services.s1.text">Apresente sua empresa, serviços e diferenciais com design exclusivo, carregamento rápido e estrutura pensada para aparecer no Google.</p>
+            <ul class="tags">
+              <li data-i18n="services.s1.t1">Sites institucionais</li>
+              <li data-i18n="services.s1.t2">Sites corporativos</li>
+              <li data-i18n="services.s1.t3">Profissionais liberais</li>
+              <li data-i18n="services.s1.t4">Portfólios</li>
+              <li data-i18n="services.s1.t5">Site com blog</li>
+              <li data-i18n="services.s1.t6">Site bilíngue</li>
             </ul>
-            <a href="/criacao-de-sites/" class="service-card__link"><span data-i18n="services.cta">Ver detalhes</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </article>
-
-          <!-- 02 -->
-          <article class="service-card reveal" data-delay="2">
-            <div class="service-card__top">
-              <span class="service-card__num">02</span>
-              <span class="service-card__tag">CONVERSION</span>
-            </div>
-            <div class="service-card__art art-lp" aria-hidden="true">
-              <div class="lp-page">
-                <b></b><b class="short"></b>
-                <span class="lp-btn"></span>
-                <div class="lp-img"></div>
-              </div>
-              <div class="lp-chart">
-                <svg viewBox="0 0 120 60" preserveAspectRatio="none"><path d="M0 52 L20 46 L40 48 L60 34 L80 26 L100 14 L120 6"/><path class="area" d="M0 52 L20 46 L40 48 L60 34 L80 26 L100 14 L120 6 L120 60 L0 60Z"/></svg>
-                <span>+ conv.</span>
-              </div>
-            </div>
-            <h3 class="service-card__title">Landing Pages</h3>
-            <p class="service-card__text" data-i18n="services.s2.text">Páginas criadas para apresentar produtos, serviços e transformar visitantes em clientes.</p>
-            <ul class="service-card__list">
-              <li data-i18n="services.s2.i1">Campanhas</li>
-              <li data-i18n="services.s2.i2">Lançamentos</li>
-              <li data-i18n="services.s2.i3">Produtos</li>
-              <li data-i18n="services.s2.i4">Serviços</li>
-              <li data-i18n="services.s2.i5">Páginas de conversão</li>
+            <ul class="checks">
+              <li data-i18n="services.s1.c1">Design exclusivo, sem templates genéricos</li>
+              <li data-i18n="services.s1.c2">100% responsivo</li>
+              <li data-i18n="services.s1.c3">SEO desde o início</li>
+              <li data-i18n="services.s1.c4">HTTPS, domínio e publicação inclusos</li>
             </ul>
-            <a href="/landing-pages/" class="service-card__link"><span data-i18n="services.cta">Ver detalhes</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </article>
+            <a class="link-arrow" href="/criacao-de-sites/"><span data-i18n="services.s1.link">Conhecer criação de sites</span> <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="panel__media" data-parallax><img src="/assets/img/projects/herber-desktop.webp" alt="Herber — página inicial no desktop" width="1200" height="750" loading="lazy" decoding="async" /></div>
+        </article>
 
-          <!-- 03 -->
-          <article class="service-card service-card--featured reveal" data-delay="3">
-            <div class="service-card__top">
-              <span class="service-card__num">03</span>
-              <span class="service-card__tag">SOFTWARE</span>
-            </div>
-            <div class="service-card__art art-sys" aria-hidden="true">
-              <div class="sys-dash">
-                <aside><i class="on"></i><i></i><i></i><i></i></aside>
-                <div class="sys-main">
-                  <div class="sys-kpis"><span></span><span></span><span></span></div>
-                  <div class="sys-chart"><i style="--h:35%"></i><i style="--h:55%"></i><i style="--h:42%"></i><i style="--h:70%"></i><i style="--h:60%"></i><i style="--h:88%"></i><i style="--h:76%"></i></div>
-                  <div class="sys-rows"><span></span><span></span></div>
-                </div>
-              </div>
-            </div>
-            <h3 class="service-card__title" data-i18n="services.s3.title">Sistemas Personalizados</h3>
-            <p class="service-card__text" data-i18n="services.s3.text">Software desenvolvido sob medida para resolver problemas reais do seu negócio.</p>
-            <ul class="service-card__list">
-              <li data-i18n="services.s3.i1">Sistemas internos</li>
-              <li>Dashboards</li>
-              <li data-i18n="services.s3.i3">Plataformas</li>
-              <li data-i18n="services.s3.i4">Sistemas de gestão</li>
-              <li>APIs</li>
-              <li data-i18n="services.s3.i6">Integrações</li>
-              <li data-i18n="services.s3.i7">Automações</li>
+        <article class="panel panel--service">
+          <span class="panel__num">02</span>
+          <div class="panel__body">
+            <h3 class="h2" data-i18n="services.s2.title">Landing pages</h3>
+            <p class="lead" data-i18n="services.s2.text">Páginas de alta conversão para campanhas, lançamentos, produtos e serviços — prontas para Google Ads e Meta Ads.</p>
+            <ul class="tags">
+              <li data-i18n="services.s2.t1">Captura de leads</li>
+              <li data-i18n="services.s2.t2">Lançamentos</li>
+              <li data-i18n="services.s2.t3">Venda de produto</li>
+              <li data-i18n="services.s2.t4">Serviços</li>
+              <li data-i18n="services.s2.t5">Eventos e cursos</li>
             </ul>
-            <a href="/sistemas-personalizados/" class="service-card__link"><span data-i18n="services.cta">Ver detalhes</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= PROCESSO / IMPACTO ================= -->
-    <section class="section process" id="sobre">
-      <div class="process__mascot mascot-dots" aria-hidden="true"></div>
-      <div class="container">
-        <header class="section__head section__head--center">
-          <span class="kicker reveal"><b>//</b> <span data-i18n="process.kicker">Como trabalhamos</span></span>
-          <h2 class="section__title reveal" data-delay="1" data-i18n-html="process.title">Do problema <span class="hl">à solução.</span></h2>
-          <p class="section__lead reveal" data-delay="2" data-i18n="process.lead">Um processo claro, do primeiro diagnóstico ao software rodando em produção.</p>
-        </header>
-
-        <div class="pipeline" id="pipeline">
-          <div class="pipeline__track"><div class="pipeline__fill" id="pipelineFill"></div></div>
-
-          <div class="step" data-step="0">
-            <div class="step__node"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg></div>
-            <span class="step__idx">01</span>
-            <h3 class="step__title" data-i18n="process.s1.t">Problema</h3>
-            <p class="step__text" data-i18n="process.s1.d">Entendemos a dor, o contexto e o objetivo do negócio.</p>
-          </div>
-          <div class="step__arrow" aria-hidden="true">↓</div>
-          <div class="step" data-step="1">
-            <div class="step__node"><svg viewBox="0 0 24 24"><path d="M4 18l5-5 4 4 7-8"/><path d="M15 9h5v5"/></svg></div>
-            <span class="step__idx">02</span>
-            <h3 class="step__title" data-i18n="process.s2.t">Estratégia</h3>
-            <p class="step__text" data-i18n="process.s2.d">Definimos escopo, arquitetura e o caminho mais eficiente.</p>
-          </div>
-          <div class="step__arrow" aria-hidden="true">↓</div>
-          <div class="step" data-step="2">
-            <div class="step__node"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div>
-            <span class="step__idx">03</span>
-            <h3 class="step__title">Design</h3>
-            <p class="step__text" data-i18n="process.s3.d">Interfaces claras, bonitas e pensadas para o usuário.</p>
-          </div>
-          <div class="step__arrow" aria-hidden="true">↓</div>
-          <div class="step" data-step="3">
-            <div class="step__node"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div>
-            <span class="step__idx">04</span>
-            <h3 class="step__title" data-i18n="process.s4.t">Desenvolvimento</h3>
-            <p class="step__text" data-i18n="process.s4.d">Código limpo, testado e preparado para escalar.</p>
-          </div>
-          <div class="step__arrow" aria-hidden="true">↓</div>
-          <div class="step step--final" data-step="4">
-            <div class="step__node"><img src="assets/img/mascote.png" alt="" width="697" height="701" loading="lazy" /></div>
-            <span class="step__idx">05</span>
-            <h3 class="step__title" data-i18n="process.s5.t">Solução</h3>
-            <p class="step__text" data-i18n="process.s5.d">Software no ar, gerando resultado real para o negócio.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= PORTFÓLIO ================= -->
-    <section class="section portfolio" id="projetos">
-      <div class="container">
-        <header class="section__head section__head--split">
-          <div>
-            <span class="kicker reveal"><b>//</b> <span data-i18n="portfolio.kicker">Portfólio</span></span>
-            <h2 class="section__title reveal" data-delay="1" data-i18n-html="portfolio.title">Projetos que <span class="hl">ganham vida.</span></h2>
-          </div>
-          <div class="filters reveal" data-delay="2" role="group" aria-label="Filtrar projetos / Filter projects">
-            <button type="button" class="filter is-active" data-filter="all" aria-pressed="true" data-i18n="portfolio.f.all">Todos</button>
-            <button type="button" class="filter" data-filter="web" aria-pressed="false">Websites</button>
-            <button type="button" class="filter" data-filter="lp" aria-pressed="false">Landing Pages</button>
-            <button type="button" class="filter" data-filter="sys" aria-pressed="false" data-i18n="portfolio.f.sys">Sistemas</button>
-          </div>
-        </header>
-
-        <div class="projects" id="projects">
-          <!-- Featured: Lumio (real project) -->
-          <article class="project project--featured reveal" data-cat="sys">
-            <div class="project__stage">
-              <div class="dev-combo dev-combo--real">
-                <div class="dev-laptop">
-                  <div class="dev-laptop__screen scr">
-                    <img src="assets/img/projects/lumio-desktop.jpg" alt="Lumio — tela de login no desktop" loading="lazy" width="1440" height="900" />
-                  </div>
-                  <div class="dev-laptop__base"></div>
-                </div>
-                <div class="dev-phone dev-phone--sm">
-                  <div class="scr">
-                    <img src="assets/img/projects/lumio-mobile.jpg" alt="Lumio — tela inicial no celular" loading="lazy" width="780" height="1688" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project__info">
-              <div class="project__badges">
-                <span class="project__live"><span class="pulse-dot"></span><span data-i18n="portfolio.live">No ar</span></span>
-                <span class="project__featured-tag" data-i18n="portfolio.featured">Projeto em destaque</span>
-              </div>
-              <span class="project__cat" data-i18n="portfolio.lumio.cat">Plataforma de aprendizado · Web app</span>
-              <h3 class="project__name">Lumio</h3>
-              <p class="project__desc" data-i18n="portfolio.lumio.desc">Plataforma de microaprendizado com lições diárias, curtas e interativas sobre Bíblia, inteligência emocional, português e tecnologia. Contas de usuário, trilhas de conteúdo e experiência pensada para o celular.</p>
-              <ul class="project__tags">
-                <li>Web app</li>
-                <li data-i18n="portfolio.lumio.t2">Autenticação</li>
-                <li data-i18n="portfolio.lumio.t3">Trilhas de conteúdo</li>
-                <li>Mobile-first</li>
-              </ul>
-              <a href="https://lumio-six-steel.vercel.app/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-            </div>
-          </article>
-
-          <!-- Vista: expense dashboard demo -->
-          <article class="project project--wide reveal" data-cat="sys">
-            <div class="project__stage">
-              <div class="dev-combo">
-                <div class="dev-browser">
-                  <div class="mock-browser__bar"><i></i><i></i><i></i><span></span></div>
-                  <div class="scr">
-                    <img src="assets/img/projects/vista-desktop.jpg" alt="Vista — dashboard de gastos no desktop" loading="lazy" width="1440" height="900" />
-                  </div>
-                </div>
-                <div class="dev-phone dev-phone--sm">
-                  <div class="scr">
-                    <img src="assets/img/projects/vista-mobile.jpg" alt="Vista — dashboard de gastos no celular" loading="lazy" width="780" height="1688" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project__info">
-              <div class="project__badges">
-                <span class="project__live"><span class="pulse-dot"></span><span data-i18n="portfolio.live">No ar</span></span>
-              </div>
-              <span class="project__cat" data-i18n="portfolio.vista.cat">Sistema · Painel financeiro</span>
-              <h3 class="project__name">Vista</h3>
-              <p class="project__desc" data-i18n="portfolio.vista.desc">Painel financeiro empresarial com visão executiva, tesouraria, contas a pagar e receber, planejamento de caixa, gastos por setor e lançamentos com NFS-e — demo interativa de sistema sob medida.</p>
-              <ul class="project__tags">
-                <li data-i18n="portfolio.vista.t1">Dashboard</li>
-                <li data-i18n="portfolio.vista.t2">Contas e caixa</li>
-                <li data-i18n="portfolio.vista.t3">Planejamento</li>
-                <li>NFS-e</li>
-              </ul>
-              <a href="/controle-gastos/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-            </div>
-          </article>
-
-          <!-- Spectrum: landing page desktop -->
-          <article class="project project--wide reveal" data-cat="lp">
-            <div class="project__stage">
-              <div class="dev-desktop">
-                <div class="dev-desktop__screen scr">
-                  <img src="assets/img/projects/spectrum-desktop.jpg" alt="Spectrum — página inicial no desktop" loading="lazy" width="1440" height="900" />
-                </div>
-                <div class="dev-desktop__stand"></div>
-              </div>
-            </div>
-            <div class="project__info">
-              <span class="project__cat" data-i18n="portfolio.spectrum.cat">Landing page · Arquitetura</span>
-              <h3 class="project__name">Spectrum</h3>
-              <p class="project__desc" data-i18n="portfolio.spectrum.desc">Landing page para construtora de casas modernas, com slider de obras, simulação de orçamento e portfólio de projetos.</p>
-              <a href="projetos/spectrum/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-            </div>
-          </article>
-
-          <!-- Profit: landing page browser + phone -->
-          <article class="project reveal" data-cat="lp" data-delay="1">
-            <div class="project__stage">
-              <div class="dev-combo">
-                <div class="dev-browser">
-                  <div class="mock-browser__bar"><i></i><i></i><i></i><span></span></div>
-                  <div class="scr">
-                    <img src="assets/img/projects/profit-desktop.jpg" alt="Profit — página inicial no desktop" loading="lazy" width="1440" height="900" />
-                  </div>
-                </div>
-                <div class="dev-phone dev-phone--sm">
-                  <div class="scr">
-                    <img src="assets/img/projects/profit-mobile.jpg" alt="Profit — página inicial no celular" loading="lazy" width="780" height="1688" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project__info">
-              <span class="project__cat" data-i18n="portfolio.profit.cat">Landing page · Academia</span>
-              <h3 class="project__name">Profit</h3>
-              <p class="project__desc" data-i18n="portfolio.profit.desc">Página única para estúdio de fitness, com serviços, galeria, equipe de treinadores e chamada para matrícula.</p>
-              <a href="projetos/profit/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-            </div>
-          </article>
-
-          <!-- PizzaHouse: website laptop -->
-          <article class="project reveal" data-cat="web">
-            <div class="project__stage">
-              <div class="dev-laptop">
-                <div class="dev-laptop__screen scr">
-                  <img src="assets/img/projects/pizzahouse-desktop.jpg" alt="PizzaHouse — página inicial no desktop" loading="lazy" width="1440" height="900" />
-                </div>
-                <div class="dev-laptop__base"></div>
-              </div>
-            </div>
-            <div class="project__info">
-              <span class="project__cat" data-i18n="portfolio.pizzahouse.cat">Website · Restaurante</span>
-              <h3 class="project__name">PizzaHouse</h3>
-              <p class="project__desc" data-i18n="portfolio.pizzahouse.desc">Site de pizzaria com cardápio, galeria de fotos, equipe e página de contato.</p>
-              <a href="projetos/pizzahouse/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-            </div>
-          </article>
-
-          <!-- Worky: WordPress laptop + phone -->
-          <article class="project project--wide reveal" data-cat="web" data-delay="1">
-            <div class="project__stage">
-              <div class="dev-combo dev-combo--real">
-                <div class="dev-laptop">
-                  <div class="dev-laptop__screen scr">
-                    <img src="assets/img/projects/worky-desktop.jpg" alt="Worky — página inicial no desktop" loading="lazy" width="1440" height="900" />
-                  </div>
-                  <div class="dev-laptop__base"></div>
-                </div>
-                <div class="dev-phone dev-phone--sm">
-                  <div class="scr">
-                    <img src="assets/img/projects/worky-mobile.jpg" alt="Worky — página inicial no celular" loading="lazy" width="780" height="1688" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project__info">
-              <span class="project__cat" data-i18n="portfolio.worky.cat">Website WordPress · Arquitetura</span>
-              <h3 class="project__name">Worky</h3>
-              <p class="project__desc" data-i18n="portfolio.worky.desc">Tema WordPress com Elementor para escritório de arquitetura, com páginas de serviços, sobre e blog.</p>
-              <a href="projetos/worky/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-            </div>
-          </article>
-
-          <!-- Webion: WordPress desktop -->
-          <article class="project project--wide reveal" data-cat="web">
-            <div class="project__stage">
-              <div class="dev-desktop">
-                <div class="dev-desktop__screen scr">
-                  <img src="assets/img/projects/webion-desktop.jpg" alt="Webion — página inicial no desktop" loading="lazy" width="1440" height="900" />
-                </div>
-                <div class="dev-desktop__stand"></div>
-              </div>
-            </div>
-            <div class="project__info">
-              <span class="project__cat" data-i18n="portfolio.webion.cat">Website WordPress · Agência</span>
-              <h3 class="project__name">Webion</h3>
-              <p class="project__desc" data-i18n="portfolio.webion.desc">Tema WordPress minimalista para agência criativa, com serviços, números da empresa, equipe e blog.</p>
-              <a href="projetos/webion/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-            </div>
-          </article>
-
-          <!-- Herber: website browser + phone -->
-          <article class="project reveal" data-cat="web" data-delay="1">
-            <div class="project__stage">
-              <div class="dev-combo">
-                <div class="dev-browser">
-                  <div class="mock-browser__bar"><i></i><i></i><i></i><span></span></div>
-                  <div class="scr">
-                    <img src="assets/img/projects/herber-desktop.jpg" alt="Herber — página inicial no desktop" loading="lazy" width="1440" height="900" />
-                  </div>
-                </div>
-                <div class="dev-phone dev-phone--sm">
-                  <div class="scr">
-                    <img src="assets/img/projects/herber-mobile.jpg" alt="Herber — página inicial no celular" loading="lazy" width="780" height="1688" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project__info">
-              <span class="project__cat" data-i18n="portfolio.herber.cat">Website · Alimentos orgânicos</span>
-              <h3 class="project__name">Herber</h3>
-              <p class="project__desc" data-i18n="portfolio.herber.desc">Site para loja de produtos orgânicos, com galeria, equipe, depoimentos e páginas institucionais.</p>
-              <a href="projetos/herber/" class="project__cta" target="_blank" rel="noopener"><span data-i18n="portfolio.cta">Ver projeto</span> <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= DIFERENCIAIS ================= -->
-    <section class="section why">
-      <div class="container">
-        <header class="section__head section__head--center">
-          <span class="kicker reveal"><b>//</b> <span data-i18n="why.kicker">Diferenciais</span></span>
-          <h2 class="section__title reveal" data-delay="1" data-i18n-html="why.title">Por que <span class="hl">Meleiro Tech?</span></h2>
-        </header>
-
-        <div class="why__grid">
-          <article class="why-card reveal" data-delay="1">
-            <div class="why-card__icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
-            <h3 data-i18n="why.c1.t">Sob medida</h3>
-            <p data-i18n="why.c1.d">Cada solução é construída para uma necessidade real.</p>
-            <span class="why-card__idx">/01</span>
-          </article>
-          <article class="why-card reveal" data-delay="2">
-            <div class="why-card__icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><circle cx="17" cy="7" r="4"/><path d="M3 21l4-7 4 7zM14 14h7v7h-7z"/></svg></div>
-            <h3 data-i18n="why.c2.t">Design + tecnologia</h3>
-            <p data-i18n="why.c2.d">Interfaces bonitas sem abrir mão de funcionalidade.</p>
-            <span class="why-card__idx">/02</span>
-          </article>
-          <article class="why-card reveal" data-delay="3">
-            <div class="why-card__icon"><svg viewBox="0 0 24 24"><path d="M4 20V14M10 20V9M16 20V4M2 20h20"/><path d="M18 8l-2-4-2 4"/></svg></div>
-            <h3 data-i18n="why.c3.t">Escalável</h3>
-            <p data-i18n="why.c3.d">Projetos preparados para crescer junto com o negócio.</p>
-            <span class="why-card__idx">/03</span>
-          </article>
-          <article class="why-card reveal" data-delay="4">
-            <div class="why-card__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/></svg></div>
-            <h3 data-i18n="why.c4.t">Visão de produto</h3>
-            <p data-i18n="why.c4.d">Não entregamos apenas código. Criamos soluções.</p>
-            <span class="why-card__idx">/04</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= TECNOLOGIA ================= -->
-    <section class="section tech">
-      <div class="container tech__inner">
-        <div class="tech__content">
-          <span class="kicker reveal"><b>//</b> <span data-i18n="tech.kicker">Capacidade técnica</span></span>
-          <h2 class="section__title reveal" data-delay="1" data-i18n-html="tech.title">Um ecossistema completo de <span class="hl">soluções.</span></h2>
-          <p class="section__lead reveal" data-delay="2" data-i18n="tech.lead">Do front-end que o cliente vê à infraestrutura que sustenta tudo. Conectamos as peças certas para o seu negócio funcionar de ponta a ponta.</p>
-          <div class="tech__stats reveal" data-delay="3">
-            <div><b>Front</b><span data-i18n="tech.st1">Interfaces e experiências</span></div>
-            <div><b>Back</b><span data-i18n="tech.st2">Regras, dados e APIs</span></div>
-            <div><b>Ops</b><span data-i18n="tech.st3">Cloud, deploy e escala</span></div>
-          </div>
-        </div>
-
-        <div class="constellation reveal" data-delay="2" id="constellation">
-          <svg class="constellation__lines" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
-            <g id="cLines"></g>
-          </svg>
-          <div class="constellation__core">
-            <img src="assets/img/mascote.png" alt="" width="697" height="701" loading="lazy" />
-          </div>
-          <div class="cnode" style="--x:50%;--y:8%"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span>Web</span></div>
-          <div class="cnode" style="--x:81%;--y:21%"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg><span>APIs</span></div>
-          <div class="cnode" style="--x:93%;--y:50%"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg><span>Dashboards</span></div>
-          <div class="cnode" style="--x:81%;--y:79%"><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 01-.6-9.96A6 6 0 0118 9a4.5 4.5 0 01-.5 9z"/></svg><span>Cloud</span></div>
-          <div class="cnode" style="--x:50%;--y:92%"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H14a4 4 0 014 4v5.5M15.5 18H10a4 4 0 01-4-4V8.5"/></svg><span data-i18n="tech.n6">Integrações</span></div>
-          <div class="cnode" style="--x:19%;--y:79%"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span data-i18n="tech.n7">Automação</span></div>
-          <div class="cnode" style="--x:7%;--y:50%"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><span data-i18n="tech.n8">Banco de dados</span></div>
-          <div class="cnode" style="--x:19%;--y:21%"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-i18n="tech.n9">Sistemas</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= FUNDADORA ================= -->
-    <section class="founder" id="fundadora">
-      <div class="container">
-        <article class="founder-banner reveal">
-          <div class="founder-banner__photo">
-            <img src="assets/img/founder/sabrina-meleiro.jpg" alt="Sabrina Meleiro, fundadora da Meleiro Tech" width="400" height="400" loading="lazy" />
-            <span class="founder-banner__corner" aria-hidden="true"></span>
-          </div>
-
-          <div class="founder-banner__body">
-            <div class="founder-banner__head">
-              <span class="kicker"><b>//</b> <span data-i18n="founder.kicker">Quem está por trás</span></span>
-              <h2 class="founder-banner__name">Sabrina Meleiro</h2>
-              <p class="founder-banner__role" data-i18n="founder.role">Fundadora & Coordenadora de Desenvolvimento</p>
-            </div>
-            <p class="founder-banner__bio" data-i18n="founder.bio">Mais de 4 anos em software — de QA e requisitos à coordenação de times. A ponte entre o negócio e a tecnologia em cada projeto.</p>
-            <ul class="founder-banner__tags">
-              <li data-i18n="founder.t1">Produto & requisitos</li>
-              <li>Scrum · Kanban</li>
-              <li>Figma</li>
-              <li>Jira</li>
-              <li>Bizagi</li>
-              <li class="is-hl" data-i18n="founder.t2">3 certificações Scrum</li>
+            <ul class="checks">
+              <li data-i18n="services.s2.c1">Copy estratégica</li>
+              <li data-i18n="services.s2.c2">Mobile first</li>
+              <li data-i18n="services.s2.c3">Analytics, Meta Pixel e Google Ads</li>
+              <li data-i18n="services.s2.c4">Formulários ligados ao seu e-mail, CRM ou WhatsApp</li>
             </ul>
+            <a class="link-arrow" href="/landing-pages/"><span data-i18n="services.s2.link">Conhecer landing pages</span> <span aria-hidden="true">→</span></a>
           </div>
+          <div class="panel__media" data-parallax><img src="/assets/img/projects/profit-desktop.webp" alt="Profit — página inicial no desktop" width="1200" height="750" loading="lazy" decoding="async" /></div>
+        </article>
 
-          <a href="https://www.linkedin.com/in/sabrina-meleiro-195940142/" target="_blank" rel="noopener" class="btn btn--ghost founder-banner__cta">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V16M8 7.5v.01M11.5 16v-5.5M11.5 13c0-1.6 1-2.5 2.3-2.5S16 11.4 16 13v3"/></svg>
-            <span>LinkedIn</span>
-          </a>
+        <article class="panel panel--service">
+          <span class="panel__num">03</span>
+          <div class="panel__body">
+            <h3 class="h2" data-i18n="services.s3.title">Sistemas sob medida</h3>
+            <p class="lead" data-i18n="services.s3.text">Menos planilha, mais controle. Sistemas de gestão, dashboards, plataformas, APIs, integrações e automações feitos para o seu processo.</p>
+            <ul class="tags">
+              <li data-i18n="services.s3.t1">Sistemas de gestão</li>
+              <li data-i18n="services.s3.t2">Dashboards</li>
+              <li data-i18n="services.s3.t3">Plataformas web</li>
+              <li data-i18n="services.s3.t4">APIs</li>
+              <li data-i18n="services.s3.t5">Integrações</li>
+              <li data-i18n="services.s3.t6">Automações</li>
+            </ul>
+            <ul class="checks">
+              <li data-i18n="services.s3.c1">Requisitos mapeados com quem usa</li>
+              <li data-i18n="services.s3.c2">Protótipo validado antes do código</li>
+              <li data-i18n="services.s3.c3">Integra com ERPs, pagamentos e WhatsApp</li>
+              <li data-i18n="services.s3.c4">Suporte e evolução contínua</li>
+            </ul>
+            <a class="link-arrow" href="/sistemas-personalizados/"><span data-i18n="services.s3.link">Conhecer sistemas</span> <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="panel__media" data-parallax><img src="/assets/img/projects/vista-desktop.webp" alt="Vista — dashboard financeiro no desktop" width="1200" height="750" loading="lazy" decoding="async" /></div>
         </article>
       </div>
     </section>
 
-    <!-- ================= CTA ================= -->
-    <section class="cta-section">
+    <section class="work" id="projetos" aria-labelledby="work-title">
+      <div class="container work__head">
+        <p class="eyebrow" data-fade data-i18n="work.kicker">// Portfólio</p>
+        <h2 class="h1" id="work-title" data-lines>
+          <span class="line"><span data-i18n="work.l1">Projetos que</span></span>
+          <span class="line"><span data-i18n-html="work.l2"><em>ganham vida.</em></span></span>
+        </h2>
+      </div>
+
+      <article class="case">
+        <div class="case__media" data-parallax>
+          <img src="/assets/img/projects/lumio-desktop.webp" alt="Lumio — tela de login no desktop" width="1200" height="750" loading="lazy" decoding="async" />
+          <img class="case__phone" src="/assets/img/projects/lumio-mobile.webp" alt="Lumio — tela inicial no celular" width="520" height="1125" loading="lazy" decoding="async" />
+        </div>
+        <div class="case__info">
+          <span class="badge badge--live" data-i18n="badge.live">No ar</span>
+          <p class="case__cat" data-i18n="lumio.cat">Plataforma de aprendizado · Web app</p>
+          <h3 class="case__title">Lumio</h3>
+          <p data-i18n="lumio.desc">Plataforma de microaprendizado com lições diárias, curtas e interativas. Contas de usuário, trilhas de conteúdo e experiência pensada para o celular.</p>
+          <a class="link-arrow" href="https://lumio-six-steel.vercel.app/" target="_blank" rel="noopener"><span data-i18n="case.cta">Ver projeto</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="case case--alt">
+        <div class="case__media" data-parallax>
+          <img src="/assets/img/projects/vista-desktop.webp" alt="Vista — dashboard de gastos no desktop" width="1200" height="750" loading="lazy" decoding="async" />
+          <img class="case__phone" src="/assets/img/projects/vista-mobile.webp" alt="Vista — dashboard de gastos no celular" width="520" height="1125" loading="lazy" decoding="async" />
+        </div>
+        <div class="case__info">
+          <span class="badge" data-i18n="badge.concept">Projeto conceito</span>
+          <p class="case__cat" data-i18n="vista.cat">Sistema · Painel financeiro</p>
+          <h3 class="case__title">Vista</h3>
+          <p data-i18n="vista.desc">Painel financeiro empresarial com visão executiva, tesouraria, contas a pagar e receber, planejamento de caixa e lançamentos com NFS-e. Demo interativa com dados fictícios.</p>
+          <a class="link-arrow" href="/controle-gastos/" target="_blank" rel="noopener"><span data-i18n="case.demo">Abrir demo</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case__media" data-parallax>
+          <img src="/assets/img/projects/spectrum-desktop.webp" alt="Spectrum — página inicial no desktop" width="1200" height="750" loading="lazy" decoding="async" />
+          <img class="case__phone" src="/assets/img/projects/spectrum-mobile.webp" alt="Spectrum — página inicial no celular" width="520" height="1125" loading="lazy" decoding="async" />
+        </div>
+        <div class="case__info">
+          <p class="case__cat" data-i18n="spectrum.cat">Landing page · Arquitetura</p>
+          <h3 class="case__title">Spectrum</h3>
+          <p data-i18n="spectrum.desc">Landing page para construtora de casas modernas, com slider de obras, simulação de orçamento e portfólio de projetos.</p>
+          <a class="link-arrow" href="/projetos/spectrum/" target="_blank" rel="noopener"><span data-i18n="case.cta">Ver projeto</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="case case--alt">
+        <div class="case__media" data-parallax>
+          <img src="/assets/img/projects/pizzahouse-desktop.webp" alt="PizzaHouse — página inicial no desktop" width="1200" height="750" loading="lazy" decoding="async" />
+          <img class="case__phone" src="/assets/img/projects/pizzahouse-mobile.webp" alt="PizzaHouse — página inicial no celular" width="520" height="1125" loading="lazy" decoding="async" />
+        </div>
+        <div class="case__info">
+          <p class="case__cat" data-i18n="pizza.cat">Website · Restaurante</p>
+          <h3 class="case__title">PizzaHouse</h3>
+          <p data-i18n="pizza.desc">Site de pizzaria com cardápio, galeria de fotos, equipe e página de contato.</p>
+          <a class="link-arrow" href="/projetos/pizzahouse/" target="_blank" rel="noopener"><span data-i18n="case.cta">Ver projeto</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <div class="container more">
+        <p class="eyebrow" data-fade data-i18n="more.kicker">// Mais projetos</p>
+        <div class="more__grid">
+          <a class="mini" href="/projetos/profit/" target="_blank" rel="noopener" data-fade>
+            <img src="/assets/img/projects/profit-desktop.webp" alt="Profit — página inicial no desktop" width="1200" height="750" loading="lazy" decoding="async" />
+            <strong>Profit</strong><span data-i18n="profit.cat">Landing page · Academia</span>
+          </a>
+          <a class="mini" href="/projetos/herber/" target="_blank" rel="noopener" data-fade>
+            <img src="/assets/img/projects/herber-desktop.webp" alt="Herber — página inicial no desktop" width="1200" height="750" loading="lazy" decoding="async" />
+            <strong>Herber</strong><span data-i18n="herber.cat">Website · Alimentos orgânicos</span>
+          </a>
+          <a class="mini" href="/projetos/worky/" target="_blank" rel="noopener" data-fade>
+            <img src="/assets/img/projects/worky-desktop.webp" alt="Worky — página inicial no desktop" width="1200" height="750" loading="lazy" decoding="async" />
+            <span class="badge" data-i18n="badge.concept">Projeto conceito</span>
+            <strong>Worky</strong><span data-i18n="worky.cat">Website WordPress · Arquitetura</span>
+          </a>
+          <a class="mini" href="/projetos/webion/" target="_blank" rel="noopener" data-fade>
+            <img src="/assets/img/projects/webion-desktop.webp" alt="Webion — página inicial no desktop" width="1200" height="750" loading="lazy" decoding="async" />
+            <span class="badge" data-i18n="badge.concept">Projeto conceito</span>
+            <strong>Webion</strong><span data-i18n="webion.cat">Website WordPress · Agência</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="process section" id="processo" aria-labelledby="process-title">
+      <div class="container process__wrap">
+        <div class="process__head">
+          <p class="eyebrow" data-fade data-i18n="process.kicker">// Como trabalhamos</p>
+          <h2 class="h1" id="process-title" data-lines>
+            <span class="line"><span data-i18n="process.l1">Do problema</span></span>
+            <span class="line"><span data-i18n-html="process.l2"><em>à solução.</em></span></span>
+          </h2>
+          <p class="lead" data-fade data-i18n="process.lead">Um processo claro, do primeiro diagnóstico ao projeto rodando — com você aprovando cada etapa.</p>
+        </div>
+        <ol class="steps">
+          <li class="step"><span class="step__n">01</span><div><h3 data-i18n="process.s1.t">Problema</h3><p data-i18n="process.s1.d">Entendemos a dor, o contexto e o objetivo do negócio.</p></div></li>
+          <li class="step"><span class="step__n">02</span><div><h3 data-i18n="process.s2.t">Estratégia</h3><p data-i18n="process.s2.d">Definimos escopo, arquitetura e o caminho mais eficiente.</p></div></li>
+          <li class="step"><span class="step__n">03</span><div><h3 data-i18n="process.s3.t">Design</h3><p data-i18n="process.s3.d">Interfaces claras, bonitas e pensadas para o usuário. Você aprova antes do desenvolvimento.</p></div></li>
+          <li class="step"><span class="step__n">04</span><div><h3 data-i18n="process.s4.t">Desenvolvimento</h3><p data-i18n="process.s4.d">Código limpo, testado e preparado para escalar.</p></div></li>
+          <li class="step"><span class="step__n">05</span><div><h3 data-i18n="process.s5.t">Solução no ar</h3><p data-i18n="process.s5.d">Publicação, métricas configuradas e projeto gerando resultado real.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pay section" id="pagamento" aria-labelledby="pay-title">
       <div class="container">
-        <div class="cta-panel reveal">
-          <div class="cta-panel__mascot" aria-hidden="true"></div>
-          <div class="cta-panel__grid" aria-hidden="true"></div>
-          <div class="cta-panel__content">
-            <span class="kicker"><b>//</b> <span data-i18n="cta.kicker">Próximo passo</span></span>
-            <h2 class="cta-panel__title">
-              <span data-i18n="cta.title1">Tem uma ideia?</span>
-              <span class="hl" data-i18n="cta.title2">Vamos transformar em software.</span>
-            </h2>
-            <p class="cta-panel__text" data-i18n="cta.text">Conte o que você precisa. A Meleiro Tech transforma ideias, processos e necessidades em soluções digitais.</p>
-            <a href="#contato" class="btn btn--primary btn--lg magnetic">
-              <span data-i18n="cta.btn">Começar um projeto</span>
-              <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+        <p class="eyebrow" data-fade data-i18n="pay.kicker">// Pagamento facilitado</p>
+        <h2 class="h1" id="pay-title" data-lines>
+          <span class="line"><span data-i18n="pay.l1">Um projeto profissional</span></span>
+          <span class="line"><span data-i18n-html="pay.l2"><em>sem pesar no caixa.</em></span></span>
+        </h2>
+        <div class="pay__grid">
+          <div class="pay__card" data-fade>
+            <span class="pay__icon" aria-hidden="true">↻</span>
+            <h3 data-i18n="pay.m.title">Plano mensal</h3>
+            <p data-i18n="pay.m.text">Seu site ou sistema com um valor mensal previsível, para começar agora e investir aos poucos.</p>
+          </div>
+          <div class="pay__card" data-fade>
+            <span class="pay__icon" aria-hidden="true">÷</span>
+            <h3 data-i18n="pay.p.title">Parcelas confortáveis</h3>
+            <p data-i18n="pay.p.text">Prefere contratar o projeto fechado? Dividimos o investimento em parcelas que cabem no seu planejamento.</p>
+          </div>
+          <div class="pay__card pay__card--cta" data-fade>
+            <h3 data-i18n="pay.cta.title">Orçamento grátis</h3>
+            <p data-i18n="pay.cta.text">Você recebe a proposta com as condições em até 1 dia útil, sem compromisso.</p>
+            <a class="btn btn--primary" href="https://wa.me/5583993041956?text=Ol%C3%A1%2C%20Meleiro%20Tech%21%20Quero%20saber%20sobre%20o%20pagamento%20mensal%20ou%20parcelado." target="_blank" rel="noopener" data-i18n="pay.cta.btn">Quero saber as condições</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= CONTATO ================= -->
-    <section class="section contact" id="contato">
-      <div class="container contact__inner">
-        <div class="contact__info">
-          <span class="kicker reveal"><b>//</b> <span data-i18n="contact.kicker">Contato</span></span>
-          <h2 class="section__title reveal" data-delay="1" data-i18n-html="contact.title">Vamos construir <span class="hl">algo juntos.</span></h2>
-          <p class="section__lead reveal" data-delay="2" data-i18n="contact.lead">Preencha o formulário e retornamos em até 1 dia útil com os próximos passos.</p>
-
-          <ul class="contact__list reveal" data-delay="3">
-            <li>
-              <span class="contact__icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-              <div><small>E-mail</small><a href="mailto:meleiro.tech@gmail.com">meleiro.tech@gmail.com</a></div>
-            </li>
-            <li>
-              <span class="contact__icon"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1112 20a8 8 0 01-4.1-1.1z"/></svg></span>
-              <div><small>WhatsApp</small><a href="https://wa.me/5583993041956" target="_blank" rel="noopener">+55 (83) 99304-1956</a></div>
-            </li>
-            <li>
-              <span class="contact__icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></span>
-              <div><small>Instagram</small><a href="https://www.instagram.com/meleiro.tech/" target="_blank" rel="noopener">@meleiro.tech</a></div>
-            </li>
-            <li>
-              <span class="contact__icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
-              <div><small data-i18n="contact.loc.l">Localização</small><span data-i18n="contact.loc.v">Brasil · Atendimento remoto</span></div>
-            </li>
+    <section class="founder section" id="sobre" aria-labelledby="founder-title">
+      <div class="container founder__wrap">
+        <div class="founder__photo" data-parallax>
+          <img src="/assets/img/founder/sabrina-meleiro.webp" alt="Sabrina Meleiro, fundadora da Meleiro Tech" width="400" height="400" loading="lazy" decoding="async" />
+        </div>
+        <div class="founder__text">
+          <p class="eyebrow" data-fade data-i18n="founder.kicker">// Quem está por trás</p>
+          <h2 class="h1" id="founder-title" data-lines>
+            <span class="line"><span data-i18n="founder.l1">Sabrina</span></span>
+            <span class="line"><span data-i18n-html="founder.l2"><em>Meleiro</em></span></span>
+          </h2>
+          <p class="founder__role" data-fade data-i18n="founder.role">Fundadora &amp; Coordenadora de Desenvolvimento</p>
+          <p class="lead" data-fade data-i18n="founder.bio">Mais de 4 anos em software — de QA e requisitos à coordenação de times. A ponte entre o negócio e a tecnologia em cada projeto: você fala direto com quem coordena o seu desenvolvimento.</p>
+          <ul class="tags" data-fade>
+            <li data-i18n="founder.t1">Produto &amp; requisitos</li>
+            <li data-i18n="founder.t2">Scrum · Kanban</li>
+            <li data-i18n="founder.t3">Figma</li>
+            <li data-i18n="founder.t4">Jira</li>
+            <li data-i18n="founder.t5">Bizagi</li>
+            <li data-i18n="founder.t6">3 certificações Scrum</li>
           </ul>
+          <a class="link-arrow" href="https://www.linkedin.com/in/sabrina-meleiro-195940142/" target="_blank" rel="noopener"><span data-i18n="founder.linkedin">LinkedIn</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq__wrap">
+        <div>
+          <p class="eyebrow" data-fade data-i18n="faq.kicker">// Dúvidas frequentes</p>
+          <h2 class="h2" id="faq-title" data-lines>
+            <span class="line"><span data-i18n="faq.l1">Perguntas que</span></span>
+            <span class="line"><span data-i18n="faq.l2">sempre chegam.</span></span>
+          </h2>
+        </div>
+        <div class="faq__list">
+          <details data-fade><summary data-i18n="faq.q1">Quanto custa um site ou sistema?</summary><p data-i18n="faq.a1">O valor depende do número de páginas, funcionalidades e integrações. Enviamos um orçamento gratuito e sem compromisso em até 1 dia útil — e você pode pagar no plano mensal ou em parcelas.</p></details>
+          <details data-fade><summary data-i18n="faq.q2">Quanto tempo leva para ficar pronto?</summary><p data-i18n="faq.a2">Um site institucional costuma levar de 2 a 4 semanas; uma landing page, entre 1 e 2 semanas após a aprovação do conteúdo. Sistemas são entregues em etapas. O prazo exato é definido no orçamento.</p></details>
+          <details data-fade><summary data-i18n="faq.q3">O site vai aparecer no Google?</summary><p data-i18n="faq.a3">Sim. Todo site é entregue com a estrutura técnica de SEO, cadastrado no Google Search Console e com sitemap. O posicionamento depende também da concorrência e de ações contínuas, que podemos orientar.</p></details>
+          <details data-fade><summary data-i18n="faq.q4">Vocês atendem empresas de outras cidades?</summary><p data-i18n="faq.a4">Sim. Somos de João Pessoa (PB) e atendemos empresas de todo o Brasil de forma remota, com reuniões online e acompanhamento pelo WhatsApp.</p></details>
+          <details data-fade><summary data-i18n="faq.q5">Vocês dão suporte depois da entrega?</summary><p data-i18n="faq.a5">Sim. Oferecemos suporte e evolução contínua, com ajustes e novas funcionalidades conforme a necessidade da sua empresa.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" id="contato" aria-labelledby="final-title">
+      <div class="final__glow" aria-hidden="true"></div>
+      <div class="container final__inner">
+        <p class="eyebrow" data-fade data-i18n="final.kicker">// Próximo passo</p>
+        <h2 class="final__title" id="final-title" data-lines>
+          <span class="line"><span data-i18n="final.l1">Tem uma ideia?</span></span>
+          <span class="line"><span data-i18n-html="final.l2"><em>Vamos tirar</em></span></span>
+          <span class="line"><span data-i18n-html="final.l3"><em>do papel.</em></span></span>
+        </h2>
+        <p class="lead" data-fade data-i18n="final.lead">Conte o que você precisa. Retornamos em até 1 dia útil com os próximos passos e as condições de pagamento.</p>
+        <div class="hero__ctas" data-fade>
+          <a class="btn btn--primary btn--lg" href="https://wa.me/5583993041956?text=Ol%C3%A1%2C%20Meleiro%20Tech%21%20Vim%20pelo%20site%20e%20quero%20come%C3%A7ar%20um%20projeto." target="_blank" rel="noopener"><span data-i18n="final.wa">Falar no WhatsApp</span> <span aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="mailto:meleiro.tech@gmail.com">meleiro.tech@gmail.com</a>
+        </div>
+        <p class="final__alt" data-fade><a href="#mensagem" data-i18n="final.formlink">Prefere enviar por formulário?</a></p>
+        <ul class="contacts" data-fade>
+          <li><span data-i18n="contact.wa.label">WhatsApp</span><a href="https://wa.me/5583993041956" target="_blank" rel="noopener">+55 (83) 99304-1956</a></li>
+          <li><span data-i18n="contact.mail.label">E-mail</span><a href="mailto:meleiro.tech@gmail.com">meleiro.tech@gmail.com</a></li>
+          <li><span data-i18n="contact.ig.label">Instagram</span><a href="https://www.instagram.com/meleiro.tech/" target="_blank" rel="noopener">@meleiro.tech</a></li>
+          <li><span data-i18n="contact.li.label">LinkedIn</span><a href="https://www.linkedin.com/in/sabrina-meleiro-195940142/" target="_blank" rel="noopener">Sabrina Meleiro</a></li>
+          <li><span data-i18n="contact.loc.label">Localização</span><span data-i18n="contact.loc.value">João Pessoa (PB) · Atendimento remoto em todo o Brasil</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="message section" id="mensagem" aria-labelledby="message-title">
+      <div class="container message__wrap">
+        <div>
+          <p class="eyebrow" data-fade data-i18n="message.kicker">// Ou escreva</p>
+          <h2 class="h2" id="message-title" data-lines>
+            <span class="line"><span data-i18n="message.l1">Conte o projeto</span></span>
+            <span class="line"><span data-i18n-html="message.l2"><em>por aqui.</em></span></span>
+          </h2>
+          <p class="lead" data-fade data-i18n="message.lead">O mesmo retorno em até 1 dia útil. Se preferir, o formulário também monta a mensagem no WhatsApp.</p>
         </div>
 
-        <form class="form reveal" data-delay="2" id="contactForm" novalidate>
+        <form class="form" id="contactForm" novalidate>
           <div class="form__head">
             <span class="pulse-dot"></span>
             <span data-i18n="contact.form.status">Novo projeto</span>
             <span class="form__id">#MT-<span id="formId">0000</span></span>
           </div>
-
           <div class="form__row">
             <div class="field">
               <input type="text" id="f-name" name="name" placeholder=" " required autocomplete="name" />
@@ -732,7 +462,6 @@
               <label for="f-company" data-i18n="contact.f.company">Empresa</label>
             </div>
           </div>
-
           <div class="form__row">
             <div class="field">
               <input type="email" id="f-email" name="email" placeholder=" " required autocomplete="email" />
@@ -744,30 +473,25 @@
               <label for="f-phone" data-i18n="contact.f.phone">Telefone</label>
             </div>
           </div>
-
           <fieldset class="needs">
             <legend data-i18n="contact.f.need">O que você precisa?</legend>
             <div class="needs__opts">
-              <label class="chip"><input type="radio" name="need" value="website" required /><span>Website</span></label>
-              <label class="chip"><input type="radio" name="need" value="landing" /><span>Landing Page</span></label>
+              <label class="chip"><input type="radio" name="need" value="website" required /><span data-i18n="contact.need.web">Website</span></label>
+              <label class="chip"><input type="radio" name="need" value="landing" /><span data-i18n="contact.need.lp">Landing page</span></label>
               <label class="chip"><input type="radio" name="need" value="system" /><span data-i18n="contact.need.sys">Sistema personalizado</span></label>
               <label class="chip"><input type="radio" name="need" value="other" /><span data-i18n="contact.need.other">Outro</span></label>
             </div>
             <span class="field__error" data-i18n="contact.err.need">Selecione uma opção</span>
           </fieldset>
-
           <div class="field field--area">
             <textarea id="f-msg" name="message" rows="4" placeholder=" " required></textarea>
             <label for="f-msg" data-i18n="contact.f.msg">Conte um pouco sobre seu projeto</label>
             <span class="field__error" data-i18n="contact.err.required">Campo obrigatório</span>
           </div>
-
           <button type="submit" class="btn btn--primary btn--block btn--lg" id="submitBtn">
             <span class="btn__label" data-i18n="contact.f.submit">Enviar projeto</span>
-            <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             <span class="btn__spinner" aria-hidden="true"></span>
           </button>
-
           <div class="form__alt">
             <span data-i18n="contact.alt">Prefere conversar agora?</span>
             <button type="button" class="form__wa" id="waBtn">
@@ -775,13 +499,11 @@
               <span data-i18n="contact.wa">Enviar pelo WhatsApp</span>
             </button>
           </div>
-
           <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
           <div class="form__success" id="formSuccess" role="status" aria-live="polite">
-            <img src="assets/img/mascote.png" alt="" width="697" height="701" loading="lazy" />
+            <img src="/assets/img/mascote.webp" alt="" width="697" height="701" />
             <h3 data-i18n="contact.ok.t">Projeto recebido!</h3>
-            <p data-i18n="contact.ok.d">Obrigado pelo contato. Nossa equipe vai analisar sua ideia e retornar em breve.</p>
+            <p data-i18n="contact.ok.d">Obrigado pelo contato. Nossa equipe vai analisar sua ideia e retornar em até 1 dia útil.</p>
             <div class="form__success-actions">
               <a class="btn btn--primary btn--sm" id="waAfter" href="https://wa.me/5583993041956" target="_blank" rel="noopener" data-i18n="contact.ok.wa">Falar no WhatsApp</a>
               <button type="button" class="btn btn--ghost btn--sm" id="formReset" data-i18n="contact.ok.btn">Enviar outro projeto</button>
@@ -792,46 +514,25 @@
     </section>
   </main>
 
-  <!-- ================= FOOTER ================= -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__brand">
-          <img src="assets/img/logo-horizontal.webp" srcset="assets/img/logo-horizontal-130.webp 129w, assets/img/logo-horizontal-260.webp 259w, assets/img/logo-horizontal.webp 377w" sizes="124px" alt="Meleiro Tech" class="footer__logo" width="377" height="140" loading="lazy" />
-          <p data-i18n="footer.text">Software, design e tecnologia para transformar ideias em soluções.</p>
-        </div>
-
-        <nav class="footer__nav" aria-label="Footer">
-          <a href="/criacao-de-sites/" data-i18n="footer.svc1">Criação de sites</a>
-          <a href="/landing-pages/" data-i18n="footer.svc2">Landing pages</a>
-          <a href="/sistemas-personalizados/" data-i18n="footer.svc3">Sistemas</a>
-          <a href="#projetos" data-i18n="nav.projects">Projetos</a>
-          <a href="#contato" data-i18n="nav.contact">Contato</a>
-        </nav>
-
-        <div class="footer__side">
-          <div class="lang" role="group" aria-label="Idioma / Language">
-            <button class="lang__btn is-active" data-lang="pt">PT</button>
-            <span class="lang__sep">|</span>
-            <button class="lang__btn" data-lang="en">EN</button>
-          </div>
-          <div class="socials">
-            <a href="https://www.instagram.com/meleiro.tech/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
-            <a href="https://www.linkedin.com/in/sabrina-meleiro-195940142/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V16M8 7.5v.01M11.5 16v-5.5M11.5 13c0-1.6 1-2.5 2.3-2.5S16 11.4 16 13v3"/></svg></a>
-            <a href="mailto:meleiro.tech@gmail.com" aria-label="E-mail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
-            <a href="https://wa.me/5583993041956" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1112 20a8 8 0 01-4.1-1.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 01-1.8-1.8l.8-1-1-2z"/></svg></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <span>© <span id="year">2026</span> Meleiro Tech. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
-        <span class="footer__mono" data-i18n="footer.made">Feito com código, café e muito cuidado.</span>
-      </div>
+    <div class="container footer__inner">
+      <img src="/assets/img/logo-horizontal.webp" srcset="/assets/img/logo-horizontal-130.webp 129w, /assets/img/logo-horizontal-260.webp 259w, /assets/img/logo-horizontal.webp 377w" sizes="90px" alt="Meleiro Tech" width="377" height="140" loading="lazy" />
+      <p data-i18n="footer.text">Software, design e tecnologia para transformar ideias em soluções.</p>
+      <nav class="footer__links" aria-label="Serviços">
+        <a href="/criacao-de-sites/" data-i18n="footer.svc1">Criação de sites</a>
+        <a href="/landing-pages/" data-i18n="footer.svc2">Landing pages</a>
+        <a href="/sistemas-personalizados/" data-i18n="footer.svc3">Sistemas</a>
+        <a href="#projetos" data-i18n="footer.projects">Projetos</a>
+      </nav>
+      <p class="footer__copy">© <span id="year">2026</span> Meleiro Tech. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
     </div>
-    <div class="footer__mascot mascot-dots" aria-hidden="true"></div>
   </footer>
 
+  <a class="wa-float" href="https://wa.me/5583993041956?text=Ol%C3%A1%2C%20Meleiro%20Tech%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Fale no WhatsApp com a Meleiro Tech (abre em nova aba)">
+    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.2 1.2-4-.3-.4c-1.1-1.7-1.7-3.6-1.7-5.6C5.3 9.8 10.1 5 16 5s10.7 4.8 10.7 10.6S21.9 26.2 16 26.2zm5.9-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+    <span class="wa-float__label">Fale no WhatsApp</span>
+  </a>
+  <div class="cursor" aria-hidden="true"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

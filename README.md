@@ -24,37 +24,43 @@ Site institucional da **Meleiro Tech** — websites, landing pages e sistemas pe
 ## Destaques
 
 - **Bilíngue** — PT-BR (padrão) e EN-US com troca instantânea e preferência salva no navegador.
-- **Leve e rápido** — HTML, CSS e JavaScript puros, empacotados com [esbuild](https://esbuild.github.io) em um CSS e um JS minificados, com fontes hospedadas no próprio site.
-- **Formulário funcional** — envio para o e-mail via [FormSubmit](https://formsubmit.co) e alternativa de envio pelo WhatsApp com a mensagem já preenchida.
-- **Animações com propósito** — reveal on scroll, parallax, partículas e constelação de tecnologias, todas respeitando `prefers-reduced-motion`.
-- **Responsivo** — layouts dedicados para desktop, tablet e celular.
+- **Homepage imersiva** — scroll suave (Lenis), serviços em painéis horizontais no desktop e reveal com GSAP. No celular o toque continua nativo. Tudo respeita `prefers-reduced-motion`, e o texto fica visível sem JavaScript.
+- **Leve e rápido** — a lógica da página é empacotada com [esbuild](https://esbuild.github.io). GSAP, ScrollTrigger e Lenis ficam em `assets/js/vendor/` (scripts clássicos, como no protótipo aprovado) para não inflar o bundle da aplicação.
+- **Formulário funcional** — envio para o e-mail via [FormSubmit](https://formsubmit.co), campo anti-spam e alternativa de envio pelo WhatsApp com a mensagem já preenchida.
+- **Responsivo** — painéis horizontais só a partir de 1024px; no celular as seções empilham.
 - **SEO** — páginas dedicadas por serviço, dados estruturados (Schema.org), Open Graph, `sitemap.xml` e `robots.txt`.
+
+### Prova social
+
+Depoimentos e logos de clientes **não** entram no ar enquanto forem placeholder. O HTML está comentado em `index.html` (seção `#prova`) e o interruptor `SHOW_SOCIAL_PROOF` em [`assets/js/social-proof.js`](assets/js/social-proof.js) continua `false`. Para publicar, troque os textos entre colchetes por conteúdo real, descomente a seção e mude a flag para `true`. Não inventar clientes, números ou logos.
 
 ## Estrutura
 
 ```text
 .
-├── index.html                 # Página inicial com todas as seções
+├── index.html                 # Homepage imersiva
 ├── criacao-de-sites/          # Páginas de serviço (geradas por scripts/)
 ├── landing-pages/
 ├── sistemas-personalizados/
 ├── assets/
 │   ├── css/
-│   │   ├── main.css           # Entrada da página inicial (importa os demais na ordem certa)
-│   │   ├── page.css           # Entrada das páginas de serviço
-│   │   ├── fonts.css          # Fontes da marca hospedadas localmente
+│   │   ├── main.css           # CSS autossuficiente da homepage
+│   │   ├── page.css           # Entrada das páginas de serviço (layout anterior)
+│   │   ├── fonts.css          # Fontes usadas pelas páginas de serviço
 │   │   ├── base.css           # Tokens da marca, reset e utilitários
-│   │   ├── components.css     # Botões, toast e peças reutilizáveis
-│   │   ├── layout.css         # Header, navegação, seções e footer
-│   │   ├── sections/          # Um arquivo por seção da página inicial
+│   │   ├── components.css     # Botões e peças das páginas de serviço
+│   │   ├── layout.css         # Header, navegação e footer das páginas de serviço
+│   │   ├── sections/          # CTA compartilhado pelas páginas de serviço
 │   │   ├── pages/             # Estilos das páginas de serviço
-│   │   └── animations.css     # Reveal, keyframes e reduced motion (carregar por último)
+│   │   └── animations.css     # Reveal das páginas de serviço
 │   ├── js/
-│   │   ├── main.js            # Ponto de entrada da página inicial
-│   │   ├── page.js            # Ponto de entrada das páginas de serviço
+│   │   ├── main.js            # Entrada da homepage (i18n, formulário, scroll)
+│   │   ├── page.js            # Entrada das páginas de serviço
+│   │   ├── social-proof.js    # Flag para religar depoimentos reais
+│   │   ├── vendor/            # GSAP, ScrollTrigger e Lenis (não editar)
 │   │   ├── config.js          # Contatos, endpoint do formulário e idioma padrão
 │   │   ├── core/              # DOM helpers, i18n, scroll e toast
-│   │   ├── modules/           # Um módulo por funcionalidade da página
+│   │   ├── modules/           # Comportamento da homepage e das páginas de serviço
 │   │   └── locales/           # Textos em pt e en
 │   ├── dist/                  # Arquivos gerados pelo build (não editar)
 │   ├── fonts/                 # Chakra Petch, Inter e JetBrains Mono (woff2)
