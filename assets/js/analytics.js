@@ -83,7 +83,11 @@
   banner.querySelector(".mt-consent__accept").addEventListener("click", () => decide("granted"));
   banner.querySelector(".mt-consent__decline").addEventListener("click", () => decide("denied"));
 
-  const mount = () => document.body.append(style, banner);
+  const mount = () => {
+    document.body.append(style, banner);
+    /* The homepage WhatsApp button sits in the same corner. Lift the banner so both stay usable. */
+    if (document.querySelector(".wa-float")) banner.style.bottom = "92px";
+  };
   if (document.body) mount();
   else document.addEventListener("DOMContentLoaded", mount);
 })();

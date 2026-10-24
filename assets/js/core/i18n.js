@@ -28,8 +28,13 @@ function apply(next, { animate = false } = {}) {
     el.innerHTML = t(el.dataset.i18nHtml);
     if (animate) replayClass(el, "i18n-swap");
   });
-  $$(".lang__btn").forEach((btn) => btn.classList.toggle("is-active", btn.dataset.lang === lang));
+  $$(".lang__btn").forEach((btn) => {
+    const active = btn.dataset.lang === lang;
+    btn.classList.toggle("is-active", active);
+    btn.setAttribute("aria-pressed", String(active));
+  });
   localStorage.setItem(LANG_STORAGE_KEY, lang);
+  document.dispatchEvent(new CustomEvent("mt:lang", { detail: lang }));
 }
 
 export function initI18n() {
