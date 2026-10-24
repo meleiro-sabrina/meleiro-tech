@@ -162,6 +162,7 @@
   const BANKS = [
     { id: "bb", name: "Banco do Brasil", short: "BB", color: "#fbbf24", balance: 186420 },
     { id: "santander", name: "Santander", short: "SAN", color: "#fb7185", balance: 94210 },
+    { id: "itau", name: "Itaú Empresas", short: "ITAU", color: "#60a5fa", balance: 61280 },
     { id: "ml", name: "Mercado Livre", short: "ML", color: "#5eead4", balance: 38750 },
   ];
 
@@ -175,13 +176,15 @@
   };
 
   const TODAY = "2026-10-24";
-  const CAIXA_MINIMO = 280000;
+  const CAIXA_MINIMO = 320000;
 
   // Custos recorrentes usados na previsão de caixa (média mensal)
   const RECURRING = [
     { label: "Folha de pagamento", day: 21, value: 118000 },
     { label: "Impostos / DAS", day: 20, value: 8700 },
     { label: "Aluguel + utilidades", day: 15, value: 26800 },
+    { label: "Plano de saúde (apólice)", day: 10, value: 9600 },
+    { label: "Internet / telefonia", day: 8, value: 1850 },
   ];
 
   // Margem por cliente (receita − custo direto no mês de referência)
@@ -192,6 +195,10 @@
     { name: "Casa Verde", receita: 18500, custo: 9100 },
     { name: "Alfa Serviços", receita: 28000, custo: 9800 },
     { name: "Loja Aurora", receita: 12400, custo: 7600 },
+    { name: "Clínica Horizonte", receita: 22600, custo: 8400 },
+    { name: "Construtora Paraíba", receita: 67000, custo: 41200 },
+    { name: "EduMais Cursos", receita: 15800, custo: 6200 },
+    { name: "Farmácia Rede Sul", receita: 30400, custo: 18900 },
   ];
 
   // Lançamentos rastreados (NFSe / fornecedor / conta)
@@ -201,40 +208,78 @@
     { date: "2026-10-22", area: "administrativo", category: "Limpeza", desc: "Kit higiene e conservação", supplier: "CleanPro Distribuidora", nfse: "2026/10455", bank: "santander", value: 1860, paid: false },
     { date: "2026-10-21", area: "operacoes", category: "Frete e logística", desc: "Entregas regionais semana 42", supplier: "LogiSul Transportes", nfse: "2026/10440", bank: "bb", value: 4200, paid: true },
     { date: "2026-10-20", area: "rh", category: "Benefícios", desc: "VR/VA competência outubro", supplier: "Alelo", nfse: "2026/10428", bank: "bb", value: 14200, paid: true },
+    { date: "2026-10-19", area: "comercial", category: "Comissões", desc: "Comissão equipe — fechamentos semana 42", supplier: "Folha comercial", nfse: "2026/10420", bank: "itau", value: 6800, paid: true },
     { date: "2026-10-18", area: "comercial", category: "Viagens", desc: "Passagens + hospedagem cliente João Pessoa", supplier: "Decolar Corporativo", nfse: "2026/10412", bank: "santander", value: 3100, paid: true },
     { date: "2026-10-17", area: "tecnologia", category: "Cloud", desc: "AWS — consumo outubro (parcial)", supplier: "Amazon Web Services", nfse: "2026/10398", bank: "bb", value: 3900, paid: true },
+    { date: "2026-10-16", area: "marketing", category: "Mídia paga", desc: "Google Ads — search marca", supplier: "Google Cloud Brasil", nfse: "2026/10390", bank: "ml", value: 5200, paid: true },
     { date: "2026-10-15", area: "administrativo", category: "Aluguel", desc: "Aluguel sede — outubro/2026", supplier: "Imobiliária Horizonte", nfse: "2026/10380", bank: "bb", value: 22000, paid: true },
     { date: "2026-10-14", area: "operacoes", category: "Almoxarifado", desc: "Reposição de estoque operacional", supplier: "MegaSupply Atacado", nfse: "2026/10366", bank: "santander", value: 5600, paid: true },
+    { date: "2026-10-13", area: "rh", category: "Plano de saúde", desc: "Mensalidade apólice colaboradores", supplier: "Unimed JP", nfse: "2026/10358", bank: "itau", value: 9600, paid: true },
     { date: "2026-10-12", area: "marketing", category: "Agência", desc: "Produção de conteúdo mensal", supplier: "Agência Norte Criativo", nfse: "2026/10351", bank: "ml", value: 4200, paid: false },
+    { date: "2026-10-11", area: "tecnologia", category: "Software", desc: "Assinatura Notion + Figma (time)", supplier: "Notion / Figma", nfse: "2026/10342", bank: "bb", value: 1480, paid: true },
     { date: "2026-10-10", area: "rh", category: "Treinamentos", desc: "Workshop liderança (12 pessoas)", supplier: "EduCorp Treinamentos", nfse: "2026/10330", bank: "santander", value: 5200, paid: true },
+    { date: "2026-10-09", area: "operacoes", category: "Manutenção", desc: "Troca de peça empilhadeira", supplier: "TechFix Industrial", nfse: "2026/10321", bank: "santander", value: 2300, paid: true },
     { date: "2026-10-08", area: "administrativo", category: "Luz e água", desc: "Energia + água sede", supplier: "Energisa / Cagepa", nfse: "2026/10312", bank: "bb", value: 4830, paid: true },
+    { date: "2026-10-07", area: "comercial", category: "Viagens", desc: "Combustível frota comercial", supplier: "Shell Fleet", nfse: "2026/10301", bank: "itau", value: 1920, paid: true },
     { date: "2026-10-06", area: "tecnologia", category: "Software", desc: "Licenças Microsoft 365 + Slack", supplier: "Microsoft / Slack", nfse: "2026/10290", bank: "bb", value: 3100, paid: true },
+    { date: "2026-10-04", area: "administrativo", category: "Internet", desc: "Link dedicado + telefonia", supplier: "Vivo Empresas", nfse: "2026/10278", bank: "santander", value: 1850, paid: true },
     { date: "2026-10-03", area: "comercial", category: "CRM", desc: "Assinatura HubSpot Starter", supplier: "HubSpot", nfse: "2026/10271", bank: "ml", value: 1550, paid: true },
     { date: "2026-10-02", area: "administrativo", category: "Papelaria", desc: "Material de escritório", supplier: "Kalunga Empresas", nfse: "2026/10255", bank: "santander", value: 980, paid: true },
+    { date: "2026-10-01", area: "operacoes", category: "Frete e logística", desc: "Coletas urgentes início do mês", supplier: "LogiSul Transportes", nfse: "2026/10240", bank: "bb", value: 2750, paid: true },
+    { date: "2026-09-30", area: "rh", category: "Benefícios", desc: "VR/VA competência setembro", supplier: "Alelo", nfse: "2026/09910", bank: "bb", value: 13800, paid: true },
     { date: "2026-09-28", area: "tecnologia", category: "Hardware", desc: "Monitores e periféricos", supplier: "Kabum B2B", nfse: "2026/09880", bank: "bb", value: 7400, paid: true },
+    { date: "2026-09-26", area: "comercial", category: "Comissões", desc: "Comissão fechamento #C-218", supplier: "Folha comercial", nfse: "2026/09850", bank: "itau", value: 4200, paid: true },
+    { date: "2026-09-24", area: "operacoes", category: "Almoxarifado", desc: "EPIs e insumos de segurança", supplier: "SafetyMax", nfse: "2026/09820", bank: "santander", value: 3100, paid: true },
     { date: "2026-09-22", area: "marketing", category: "Eventos", desc: "Stand feira local", supplier: "ExpoNordeste", nfse: "2026/09740", bank: "santander", value: 4800, paid: true },
+    { date: "2026-09-20", area: "marketing", category: "Mídia paga", desc: "Meta Ads — setembro", supplier: "Meta Platforms", nfse: "2026/09710", bank: "ml", value: 7200, paid: true },
+    { date: "2026-09-18", area: "tecnologia", category: "Cloud", desc: "AWS — setembro", supplier: "Amazon Web Services", nfse: "2026/09680", bank: "bb", value: 6100, paid: true },
     { date: "2026-09-15", area: "administrativo", category: "Aluguel", desc: "Aluguel sede — setembro/2026", supplier: "Imobiliária Horizonte", nfse: "2026/09610", bank: "bb", value: 22000, paid: true },
+    { date: "2026-09-12", area: "rh", category: "Recrutamento", desc: "Vaga analista financeiro", supplier: "Gupy", nfse: "2026/09570", bank: "ml", value: 1800, paid: true },
+    { date: "2026-09-08", area: "administrativo", category: "Luz e água", desc: "Energia + água — setembro", supplier: "Energisa / Cagepa", nfse: "2026/09520", bank: "bb", value: 4520, paid: true },
+    { date: "2026-09-05", area: "comercial", category: "Viagens", desc: "Visita cliente Recife", supplier: "LATAM Corporativo", nfse: "2026/09480", bank: "santander", value: 2680, paid: true },
     { date: "2026-08-30", area: "operacoes", category: "Manutenção", desc: "Manutenção preventiva equipamentos", supplier: "TechFix Industrial", nfse: "2026/09120", bank: "santander", value: 4100, paid: true },
+    { date: "2026-08-25", area: "marketing", category: "Agência", desc: "Pacote criativo agosto", supplier: "Agência Norte Criativo", nfse: "2026/09040", bank: "ml", value: 3800, paid: true },
+    { date: "2026-08-20", area: "tecnologia", category: "Hardware", desc: "SSD e memória upgrade", supplier: "Kabum B2B", nfse: "2026/08960", bank: "bb", value: 3200, paid: true },
+    { date: "2026-08-15", area: "administrativo", category: "Aluguel", desc: "Aluguel sede — agosto/2026", supplier: "Imobiliária Horizonte", nfse: "2026/08900", bank: "bb", value: 22000, paid: true },
     { date: "2026-08-12", area: "rh", category: "Recrutamento", desc: "Anúncios + testes seletivos", supplier: "Gupy", nfse: "2026/08840", bank: "ml", value: 2100, paid: true },
+    { date: "2026-08-08", area: "operacoes", category: "Frete e logística", desc: "Fretes quinzena 1", supplier: "LogiSul Transportes", nfse: "2026/08790", bank: "bb", value: 3900, paid: true },
   ];
 
   const PAYABLES = [
+    { due: "2026-10-18", supplier: "Unimed JP", desc: "Ajuste apólice saúde", area: "rh", value: 2100, status: "atrasado" },
     { due: "2026-10-20", supplier: "Dell Brasil", desc: "Notebooks — NFS-e 2026/10482", area: "tecnologia", value: 12800, status: "atrasado" },
     { due: "2026-10-25", supplier: "CleanPro Distribuidora", desc: "Limpeza — NFS-e 2026/10455", area: "administrativo", value: 1860, status: "vence" },
+    { due: "2026-10-26", supplier: "Google Cloud Brasil", desc: "Google Ads — fatura parcial", area: "marketing", value: 3200, status: "vence" },
     { due: "2026-10-28", supplier: "Agência Norte Criativo", desc: "Conteúdo — NFS-e 2026/10351", area: "marketing", value: 4200, status: "aberto" },
     { due: "2026-10-30", supplier: "Imobiliária Horizonte", desc: "Aluguel novembro (antecipado)", area: "administrativo", value: 22000, status: "aberto" },
+    { due: "2026-11-02", supplier: "Alelo", desc: "VR/VA novembro", area: "rh", value: 14500, status: "aberto" },
     { due: "2026-11-05", supplier: "Amazon Web Services", desc: "Cloud novembro", area: "tecnologia", value: 4100, status: "aberto" },
+    { due: "2026-11-08", supplier: "LogiSul Transportes", desc: "Contrato frete mensal", area: "operacoes", value: 6500, status: "aberto" },
+    { due: "2026-11-12", supplier: "HubSpot", desc: "CRM — renovação anual (parcela)", area: "comercial", value: 2800, status: "aberto" },
+    { due: "2026-11-15", supplier: "Vivo Empresas", desc: "Telecom novembro", area: "administrativo", value: 1850, status: "aberto" },
+    { due: "2026-11-20", supplier: "Meta Platforms", desc: "Pré-pago ads novembro", area: "marketing", value: 9000, status: "aberto" },
     { due: "2026-10-10", supplier: "LogiSul Transportes", desc: "Frete semana 41", area: "operacoes", value: 2800, status: "pago" },
+    { due: "2026-10-08", supplier: "Shell Fleet", desc: "Combustível frota", area: "comercial", value: 1920, status: "pago" },
     { due: "2026-09-30", supplier: "EduCorp Treinamentos", desc: "Workshop liderança", area: "rh", value: 5200, status: "pago" },
+    { due: "2026-09-22", supplier: "ExpoNordeste", desc: "Stand feira", area: "marketing", value: 4800, status: "pago" },
   ];
 
   const RECEIVABLES = [
+    { due: "2026-10-16", client: "Farmácia Rede Sul", desc: "Pedido #9012 — saldo", value: 3800, status: "atrasado" },
     { due: "2026-10-18", client: "Cliente Casa Verde", desc: "Fatura #F-904 — restante", value: 4500, status: "atrasado" },
     { due: "2026-10-26", client: "Cliente Nordeste Alimentos", desc: "Parcela 2/3 contrato #C-221", value: 28000, status: "vence" },
+    { due: "2026-10-27", client: "Clínica Horizonte", desc: "Mensalidade sistema", value: 4200, status: "vence" },
     { due: "2026-10-30", client: "Cliente TecnoSul", desc: "Manutenção mensal", value: 6500, status: "aberto" },
+    { due: "2026-11-03", client: "EduMais Cursos", desc: "Implantação módulo 1", value: 9500, status: "aberto" },
+    { due: "2026-11-08", client: "Construtora Paraíba", desc: "Parcela 1/4 obra digital", value: 22000, status: "aberto" },
     { due: "2026-11-10", client: "Cliente Porto Tech", desc: "Sinal projeto fase 2", value: 18000, status: "aberto" },
+    { due: "2026-11-15", client: "Loja Aurora", desc: "Pedido #8920", value: 7400, status: "aberto" },
+    { due: "2026-11-22", client: "Cliente Alfa Serviços", desc: "Renovação anual", value: 24000, status: "aberto" },
+    { due: "2026-11-28", client: "Nordeste Alimentos", desc: "Parcela 3/3 contrato #C-221", value: 28000, status: "aberto" },
     { due: "2026-10-12", client: "Loja Aurora", desc: "Pedido #8841", value: 6200, status: "recebido" },
+    { due: "2026-10-08", client: "Clínica Horizonte", desc: "Setup inicial", value: 8500, status: "recebido" },
     { due: "2026-10-05", client: "Cliente Alfa Serviços", desc: "Contrato #C-198", value: 18000, status: "recebido" },
+    { due: "2026-09-28", client: "Porto Tech", desc: "Fatura #F-881", value: 22000, status: "recebido" },
   ];
 
   // Tesouraria: só fluxo de caixa (não repetir NFS-e / compras dos lançamentos)
@@ -242,21 +287,187 @@
     { date: "2026-10-24", bank: "bb", type: "entrada", history: "Recebimento parcela contrato #C-221", party: "Cliente Nordeste Alimentos", value: 28000, balanceAfter: 186420 },
     { date: "2026-10-23", bank: "ml", type: "entrada", history: "Liquidação vendas marketplace", party: "Mercado Pago", value: 11400, balanceAfter: 38750 },
     { date: "2026-10-22", bank: "santander", type: "entrada", history: "PIX recebido — fatura #F-904", party: "Cliente Casa Verde", value: 9500, balanceAfter: 94210 },
+    { date: "2026-10-22", bank: "itau", type: "entrada", history: "TED recebida — Clínica Horizonte", party: "Clínica Horizonte", value: 8500, balanceAfter: 61280 },
     { date: "2026-10-21", bank: "bb", type: "saida", history: "Folha de pagamento (lote)", party: "Folha / Banco pagador", value: 118000, balanceAfter: 158420 },
     { date: "2026-10-20", bank: "bb", type: "saida", history: "Transferência para Santander", party: "Conta Santander", value: 25000, balanceAfter: 276420 },
     { date: "2026-10-20", bank: "santander", type: "entrada", history: "Transferência recebida do BB", party: "Conta Banco do Brasil", value: 25000, balanceAfter: 84710 },
+    { date: "2026-10-19", bank: "itau", type: "saida", history: "Pagamento comissões comerciais", party: "Folha comercial", value: 6800, balanceAfter: 52780 },
     { date: "2026-10-17", bank: "ml", type: "saida", history: "Tarifa / antecipação recebíveis", party: "Mercado Pago", value: 420, balanceAfter: 27350 },
-    { date: "2026-10-15", bank: "bb", type: "entrada", history: "Recebimento contrato #C-204", party: "Cliente TecnoSul", value: 36000, balanceAfter: 301420 },
+    { date: "2026-10-16", bank: "bb", type: "entrada", history: "Recebimento Farmácia Rede Sul", party: "Farmácia Rede Sul", value: 12400, balanceAfter: 301420 },
+    { date: "2026-10-15", bank: "bb", type: "entrada", history: "Recebimento contrato #C-204", party: "Cliente TecnoSul", value: 36000, balanceAfter: 289020 },
+    { date: "2026-10-14", bank: "itau", type: "saida", history: "Plano de saúde Unimed", party: "Unimed JP", value: 9600, balanceAfter: 59580 },
     { date: "2026-10-12", bank: "santander", type: "saida", history: "Aplicação CDB (resgate automático)", party: "Santander Investimentos", value: 15000, balanceAfter: 59710 },
+    { date: "2026-10-10", bank: "ml", type: "entrada", history: "Repasse checkout semanal", party: "Mercado Pago", value: 8900, balanceAfter: 27770 },
     { date: "2026-10-08", bank: "bb", type: "saida", history: "Impostos DAS / retenções", party: "Receita Federal", value: 8700, balanceAfter: 265420 },
-    { date: "2026-10-05", bank: "ml", type: "entrada", history: "Vendas do dia — checkout", party: "Clientes ML", value: 6200, balanceAfter: 27770 },
-    { date: "2026-09-28", bank: "bb", type: "entrada", history: "Recebimento fatura #F-881", party: "Cliente Porto Tech", value: 22000, balanceAfter: 274120 },
-    { date: "2026-09-22", bank: "santander", type: "entrada", history: "Estorno / crédito em conta", party: "Santander", value: 1800, balanceAfter: 74710 },
-    { date: "2026-09-18", bank: "ml", type: "entrada", history: "Repasse semanal ML", party: "Mercado Pago", value: 15800, balanceAfter: 21570 },
-    { date: "2026-09-15", bank: "bb", type: "saida", history: "Folha de pagamento (lote)", party: "Folha / Banco pagador", value: 112000, balanceAfter: 252120 },
-    { date: "2026-08-30", bank: "santander", type: "saida", history: "Tarifas pacote empresarial", party: "Santander", value: 189, balanceAfter: 72910 },
-    { date: "2026-08-20", bank: "bb", type: "entrada", history: "Sinal contrato #C-198", party: "Cliente Alfa Serviços", value: 18000, balanceAfter: 364120 },
+    { date: "2026-10-07", bank: "santander", type: "entrada", history: "PIX EduMais — sinal", party: "EduMais Cursos", value: 4750, balanceAfter: 74710 },
+    { date: "2026-10-05", bank: "ml", type: "entrada", history: "Vendas do dia — checkout", party: "Clientes ML", value: 6200, balanceAfter: 18870 },
+    { date: "2026-10-03", bank: "itau", type: "entrada", history: "Recebimento Loja Aurora", party: "Loja Aurora", value: 6200, balanceAfter: 69180 },
+    { date: "2026-10-01", bank: "bb", type: "entrada", history: "Rendimento aplicação automática", party: "BB Rende Fácil", value: 890, balanceAfter: 274120 },
+    { date: "2026-09-28", bank: "bb", type: "entrada", history: "Recebimento fatura #F-881", party: "Cliente Porto Tech", value: 22000, balanceAfter: 273230 },
+    { date: "2026-09-25", bank: "itau", type: "saida", history: "Transferência para BB (caixa)", party: "Conta Banco do Brasil", value: 20000, balanceAfter: 62980 },
+    { date: "2026-09-25", bank: "bb", type: "entrada", history: "Transferência recebida do Itaú", party: "Conta Itaú", value: 20000, balanceAfter: 251230 },
+    { date: "2026-09-22", bank: "santander", type: "entrada", history: "Estorno / crédito em conta", party: "Santander", value: 1800, balanceAfter: 69960 },
+    { date: "2026-09-20", bank: "ml", type: "saida", history: "Antecipação taxa marketplace", party: "Mercado Pago", value: 380, balanceAfter: 12670 },
+    { date: "2026-09-18", bank: "ml", type: "entrada", history: "Repasse semanal ML", party: "Mercado Pago", value: 15800, balanceAfter: 13050 },
+    { date: "2026-09-15", bank: "bb", type: "saida", history: "Folha de pagamento (lote)", party: "Folha / Banco pagador", value: 112000, balanceAfter: 231230 },
+    { date: "2026-09-10", bank: "santander", type: "saida", history: "Pagamento fornecedor logística", party: "LogiSul Transportes", value: 5400, balanceAfter: 68160 },
+    { date: "2026-09-05", bank: "itau", type: "entrada", history: "Sinal Construtora Paraíba", party: "Construtora Paraíba", value: 15000, balanceAfter: 82980 },
+    { date: "2026-08-30", bank: "santander", type: "saida", history: "Tarifas pacote empresarial", party: "Santander", value: 189, balanceAfter: 73560 },
+    { date: "2026-08-28", bank: "ml", type: "entrada", history: "Liquidação quinzena ML", party: "Mercado Pago", value: 10200, balanceAfter: 9800 },
+    { date: "2026-08-20", bank: "bb", type: "entrada", history: "Sinal contrato #C-198", party: "Cliente Alfa Serviços", value: 18000, balanceAfter: 343230 },
+    { date: "2026-08-15", bank: "bb", type: "saida", history: "Folha de pagamento (lote)", party: "Folha / Banco pagador", value: 109000, balanceAfter: 325230 },
   ];
+
+  // Amplia listagens para demonstrar paginação (dados fictícios)
+  (function seedExtraRows() {
+    const areaIds = AREAS.map((a) => a.id);
+    const bankIds = BANKS.map((b) => b.id);
+    const suppliers = [
+      "Dell Brasil",
+      "CleanPro Distribuidora",
+      "LogiSul Transportes",
+      "MegaSupply Atacado",
+      "Kabum B2B",
+      "Kalunga Empresas",
+      "TechFix Industrial",
+      "Agência Norte Criativo",
+      "Meta Platforms",
+      "Amazon Web Services",
+      "HubSpot",
+      "Alelo",
+      "Unimed JP",
+      "Vivo Empresas",
+      "Shell Fleet",
+      "SafetyMax",
+      "LATAM Corporativo",
+      "Decolar Corporativo",
+      "Google Cloud Brasil",
+      "Microsoft / Slack",
+    ];
+    const clients = [
+      "Nordeste Alimentos",
+      "Porto Tech",
+      "TecnoSul",
+      "Casa Verde",
+      "Alfa Serviços",
+      "Loja Aurora",
+      "Clínica Horizonte",
+      "Construtora Paraíba",
+      "EduMais Cursos",
+      "Farmácia Rede Sul",
+      "Ateliê Costa",
+      "Mercado Bom Preço",
+      "Oficina Veloz",
+      "Studio Pixel",
+      "Padaria Sol Nascente",
+    ];
+    const categories = {
+      comercial: ["Comissões", "Viagens", "CRM", "Brindes"],
+      operacoes: ["Frete e logística", "Almoxarifado", "Manutenção", "EPIs"],
+      tecnologia: ["Hardware", "Software", "Cloud", "Suporte"],
+      rh: ["Benefícios", "Treinamentos", "Recrutamento", "Plano de saúde"],
+      marketing: ["Mídia paga", "Agência", "Eventos", "Branding"],
+      administrativo: ["Aluguel", "Luz e água", "Limpeza", "Papelaria", "Internet"],
+    };
+    const pad = (n) => String(n).padStart(2, "0");
+    const iso = (y, m, d) => `${y}-${pad(m)}-${pad(d)}`;
+
+    let nf = 11000;
+    for (const [month, days] of [
+      [10, 28],
+      [9, 26],
+      [8, 24],
+    ]) {
+      for (let i = 0; i < days; i++) {
+        const day = 1 + (i % 27);
+        const area = areaIds[i % areaIds.length];
+        const cats = categories[area];
+        const cat = cats[i % cats.length];
+        const supplier = suppliers[i % suppliers.length];
+        EXPENSES.push({
+          date: iso(2026, month, day),
+          area,
+          category: cat,
+          desc: `${cat} — lançamento #${month}${pad(i + 1)}`,
+          supplier,
+          nfse: `2026/${nf++}`,
+          bank: bankIds[i % bankIds.length],
+          value: 650 + ((i * 137) % 9800),
+          paid: i % 7 !== 0,
+        });
+      }
+    }
+
+    const payStatuses = ["atrasado", "vence", "aberto", "aberto", "aberto", "pago", "pago"];
+    for (let i = 0; i < 42; i++) {
+      const day = 1 + (i % 28);
+      const month = i < 18 ? 10 : i < 30 ? 11 : 9;
+      const status = payStatuses[i % payStatuses.length];
+      PAYABLES.push({
+        due: iso(2026, month, Math.min(day, 28)),
+        supplier: suppliers[i % suppliers.length],
+        desc: `Título a pagar #AP-${1200 + i}`,
+        area: areaIds[i % areaIds.length],
+        value: 900 + ((i * 211) % 16000),
+        status,
+      });
+    }
+
+    const recvStatuses = ["atrasado", "vence", "aberto", "aberto", "aberto", "recebido", "recebido"];
+    for (let i = 0; i < 40; i++) {
+      const day = 1 + (i % 28);
+      const month = i < 16 ? 10 : i < 28 ? 11 : 9;
+      RECEIVABLES.push({
+        due: iso(2026, month, Math.min(day, 28)),
+        client: clients[i % clients.length],
+        desc: `Fatura #F-${2000 + i}`,
+        value: 1200 + ((i * 307) % 32000),
+        status: recvStatuses[i % recvStatuses.length],
+      });
+    }
+
+    let bal = 180000;
+    for (let i = 0; i < 55; i++) {
+      const day = 1 + (i % 27);
+      const month = i < 22 ? 10 : i < 40 ? 9 : 8;
+      const type = i % 3 === 0 ? "saida" : "entrada";
+      const value = 800 + ((i * 173) % 24000);
+      bal += type === "entrada" ? value : -Math.min(value, bal - 5000);
+      BANK_MOVES.push({
+        date: iso(2026, month, day),
+        bank: bankIds[i % bankIds.length],
+        type,
+        history: type === "entrada" ? `Recebimento operacional #${300 + i}` : `Pagamento operacional #${300 + i}`,
+        party: type === "entrada" ? clients[i % clients.length] : suppliers[i % suppliers.length],
+        value,
+        balanceAfter: Math.max(4200, Math.round(bal)),
+      });
+    }
+
+    const extraClients = [
+      "Ateliê Costa",
+      "Mercado Bom Preço",
+      "Oficina Veloz",
+      "Studio Pixel",
+      "Padaria Sol Nascente",
+      "Auto Peças Norte",
+      "Hotel Maré Alta",
+      "Escola Crescer",
+      "Pet Vida",
+      "Lab Diagnóstico PB",
+      "Contábil Mais",
+      "Agro Vale Verde",
+      "Moda Urban",
+      "Delivery Rápido JP",
+    ];
+    extraClients.forEach((name, i) => {
+      CLIENTS.push({
+        name,
+        receita: 8000 + ((i * 1900) % 72000),
+        custo: 3500 + ((i * 1100) % 38000),
+      });
+    });
+  })();
 
   const CONTRATOS_META = 160000;
 
@@ -398,6 +609,67 @@
 
   let activeView = "executivo";
   let contasFilter = "all";
+  const PAGE_SIZE = 10;
+  const pages = {
+    expenses: 1,
+    bank: 1,
+    pay: 1,
+    recv: 1,
+    clients: 1,
+  };
+
+  function paginate(rows, page) {
+    const total = rows.length;
+    const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    const current = Math.min(Math.max(1, page), totalPages);
+    const start = (current - 1) * PAGE_SIZE;
+    return {
+      rows: rows.slice(start, start + PAGE_SIZE),
+      page: current,
+      totalPages,
+      total,
+      from: total ? start + 1 : 0,
+      to: Math.min(start + PAGE_SIZE, total),
+    };
+  }
+
+  function renderPager(elId, key, pageInfo, onChange) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    if (pageInfo.totalPages <= 1) {
+      el.innerHTML = pageInfo.total
+        ? `<span class="pager__meta">${pageInfo.total} registro${pageInfo.total > 1 ? "s" : ""}</span>`
+        : "";
+      return;
+    }
+    const nums = [];
+    const maxBtns = 5;
+    let start = Math.max(1, pageInfo.page - 2);
+    let end = Math.min(pageInfo.totalPages, start + maxBtns - 1);
+    start = Math.max(1, end - maxBtns + 1);
+    for (let i = start; i <= end; i++) nums.push(i);
+    el.innerHTML = `
+      <span class="pager__meta">${pageInfo.from}–${pageInfo.to} de ${pageInfo.total}</span>
+      <div class="pager__controls">
+        <button type="button" class="pager__btn" data-page="${pageInfo.page - 1}" ${pageInfo.page <= 1 ? "disabled" : ""}>Anterior</button>
+        ${nums
+          .map(
+            (n) =>
+              `<button type="button" class="pager__btn ${n === pageInfo.page ? "is-active" : ""}" data-page="${n}">${n}</button>`,
+          )
+          .join("")}
+        <button type="button" class="pager__btn" data-page="${pageInfo.page + 1}" ${pageInfo.page >= pageInfo.totalPages ? "disabled" : ""}>Próxima</button>
+      </div>
+    `;
+    el.querySelectorAll(".pager__btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const next = Number(btn.dataset.page);
+        if (!next || next < 1 || next > pageInfo.totalPages) return;
+        pages[key] = next;
+        onChange();
+      });
+    });
+  }
 
   function showView(viewId) {
     activeView = viewId;
@@ -1317,7 +1589,9 @@
       })
       .join("");
 
-    document.getElementById("planClientsBody").innerHTML = clients
+    const clientsPage = paginate(clients, pages.clients);
+    pages.clients = clientsPage.page;
+    document.getElementById("planClientsBody").innerHTML = clientsPage.rows
       .map(
         (c) => `<tr>
           <td><strong>${c.name}</strong></td>
@@ -1328,6 +1602,9 @@
         </tr>`,
       )
       .join("");
+    renderPager("clientsPager", "clients", clientsPage, () =>
+      renderPlanejamento(period, caixa),
+    );
 
     requestAnimationFrame(() => {
       const canvas = document.getElementById("planCashChart");
@@ -1749,12 +2026,18 @@
     document.querySelectorAll(".pay-filter").forEach((btn) => {
       btn.addEventListener("click", () => {
         contasFilter = btn.dataset.filter;
+        pages.pay = 1;
+        pages.recv = 1;
         renderContas();
       });
     });
 
     const payRows = PAYABLES.filter((p) => matchContasFilter(p.status)).slice().sort(sortContas);
     const recvRows = RECEIVABLES.filter((r) => matchContasFilter(r.status)).slice().sort(sortContas);
+    const payPage = paginate(payRows, pages.pay);
+    const recvPage = paginate(recvRows, pages.recv);
+    pages.pay = payPage.page;
+    pages.recv = recvPage.page;
 
     document.getElementById("payHeadTotal").textContent = money(
       payRows.filter((p) => p.status !== "pago").reduce((a, p) => a + p.value, 0),
@@ -1765,8 +2048,8 @@
     document.getElementById("payHeadMeta").textContent = `${payRows.length} título(s) no filtro`;
     document.getElementById("recvHeadMeta").textContent = `${recvRows.length} título(s) no filtro`;
 
-    document.getElementById("payBody").innerHTML = payRows.length
-      ? payRows
+    document.getElementById("payBody").innerHTML = payPage.rows.length
+      ? payPage.rows
           .map((p) => {
             const area = areaById(p.area);
             const due = dueMeta(p.due);
@@ -1789,8 +2072,8 @@
           .join("")
       : `<tr><td colspan="6" class="muted">Nenhum título neste filtro.</td></tr>`;
 
-    document.getElementById("recvBody").innerHTML = recvRows.length
-      ? recvRows
+    document.getElementById("recvBody").innerHTML = recvPage.rows.length
+      ? recvPage.rows
           .map((r) => {
             const due = dueMeta(r.due);
             const rowClass =
@@ -1816,6 +2099,9 @@
           })
           .join("")
       : `<tr><td colspan="5" class="muted">Nenhum título neste filtro.</td></tr>`;
+
+    renderPager("payPager", "pay", payPage, renderContas);
+    renderPager("recvPager", "recv", recvPage, renderContas);
   }
 
   function downloadCsv(filename, rows) {
@@ -1917,8 +2203,11 @@
       return monthOk && areaOk && searchOk;
     }).sort((a, b) => b.date.localeCompare(a.date));
 
-    document.getElementById("expenseBody").innerHTML = rows.length
-      ? rows
+    const pageInfo = paginate(rows, pages.expenses);
+    pages.expenses = pageInfo.page;
+
+    document.getElementById("expenseBody").innerHTML = pageInfo.rows.length
+      ? pageInfo.rows
           .map((e) => {
             const area = areaById(e.area);
             const bank = bankById(e.bank);
@@ -1935,6 +2224,8 @@
           })
           .join("")
       : `<tr><td colspan="8">Nenhum lançamento neste filtro.</td></tr>`;
+
+    renderPager("expensePager", "expenses", pageInfo, () => renderExpenses(els.period.value));
   }
 
   function renderBankMoves(period) {
@@ -1953,8 +2244,11 @@
       <div class="flow-kpi"><span>Fluxo líquido</span><strong class="${entradas - saidas >= 0 ? "in" : "out"}">${moneySigned(Math.abs(entradas - saidas), entradas - saidas >= 0 ? "entrada" : "saida")}</strong></div>
     `;
 
-    document.getElementById("bankMoveBody").innerHTML = rows.length
-      ? rows
+    const pageInfo = paginate(rows, pages.bank);
+    pages.bank = pageInfo.page;
+
+    document.getElementById("bankMoveBody").innerHTML = pageInfo.rows.length
+      ? pageInfo.rows
           .map((m) => {
             const bank = bankById(m.bank);
             return `<tr>
@@ -1969,6 +2263,8 @@
           })
           .join("")
       : `<tr><td colspan="7">Nenhuma movimentação neste filtro.</td></tr>`;
+
+    renderPager("bankPager", "bank", pageInfo, () => renderBankMoves(els.period.value));
   }
 
   function fillFiltersOnce() {
@@ -1998,14 +2294,24 @@
   });
 
   fillFiltersOnce();
-  els.period.addEventListener("change", render);
+  els.period.addEventListener("change", () => {
+    pages.expenses = 1;
+    pages.bank = 1;
+    pages.pay = 1;
+    pages.recv = 1;
+    pages.clients = 1;
+    render();
+  });
   els.expenseArea.addEventListener("change", () => {
+    pages.expenses = 1;
     if (activeView === "lancamentos") renderExpenses(els.period.value);
   });
   els.expenseSearch.addEventListener("input", () => {
+    pages.expenses = 1;
     if (activeView === "lancamentos") renderExpenses(els.period.value);
   });
   els.bankFilter.addEventListener("change", () => {
+    pages.bank = 1;
     if (activeView === "tesouraria") renderBankMoves(els.period.value);
   });
   document.getElementById("exportExpensesCsv")?.addEventListener("click", () => {

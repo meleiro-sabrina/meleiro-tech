@@ -358,6 +358,41 @@
   stroke-linejoin: round;
 }
 
+.svc-demo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 36px 40px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse 50% 80% at 100% 0%, rgba(215, 243, 0, 0.08), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent), var(--navy-900, #0a1633);
+}
+
+.svc-demo .section__title {
+  margin-top: 10px;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.svc-demo .section__lead {
+  margin-top: 12px;
+  max-width: 52ch;
+}
+
+.svc-demo .btn {
+  flex: none;
+}
+
+@media (max-width: 860px) {
+  .svc-demo {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+}
+
 @media (max-width: 1100px) {
   .svc-steps {
     grid-template-columns: repeat(2, 1fr);

@@ -70,6 +70,12 @@ export default {
     "Plataforma de microaprendizado com lições diárias, curtas e interativas sobre Bíblia, inteligência emocional, português e tecnologia. Contas de usuário, trilhas de conteúdo e experiência pensada para o celular.",
   "portfolio.lumio.t2": "Autenticação",
   "portfolio.lumio.t3": "Trilhas de conteúdo",
+  "portfolio.vista.cat": "Sistema · Painel financeiro",
+  "portfolio.vista.desc":
+    "Painel financeiro empresarial com visão executiva, tesouraria, contas a pagar e receber, planejamento de caixa, gastos por setor e lançamentos com NFS-e — demo interativa de sistema sob medida.",
+  "portfolio.vista.t1": "Dashboard",
+  "portfolio.vista.t2": "Contas e caixa",
+  "portfolio.vista.t3": "Planejamento",
   "portfolio.spectrum.cat": "Landing page · Arquitetura",
   "portfolio.spectrum.desc":
     "Landing page para construtora de casas modernas, com slider de obras, simulação de orçamento e portfólio de projetos.",

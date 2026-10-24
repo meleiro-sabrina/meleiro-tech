@@ -70,6 +70,12 @@ export default {
     "A micro-learning platform with short, interactive daily lessons on the Bible, emotional intelligence, Portuguese, and technology. User accounts, learning tracks, and a mobile-first experience.",
   "portfolio.lumio.t2": "Authentication",
   "portfolio.lumio.t3": "Learning tracks",
+  "portfolio.vista.cat": "Software · Finance dashboard",
+  "portfolio.vista.desc":
+    "Enterprise finance dashboard with executive view, treasury, payables and receivables, cash planning, spend by department, and NFS-e expense tracking — an interactive custom-software demo.",
+  "portfolio.vista.t1": "Dashboard",
+  "portfolio.vista.t2": "Payables & cash",
+  "portfolio.vista.t3": "Planning",
   "portfolio.spectrum.cat": "Landing page · Architecture",
   "portfolio.spectrum.desc":
     "Landing page for a modern home builder, with a project slider, price estimate form, and work portfolio.",

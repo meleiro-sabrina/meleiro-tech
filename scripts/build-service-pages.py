@@ -136,12 +136,13 @@ PAGES = [
         "types_lead": "Se o seu processo ainda depende de planilhas, papel ou ferramentas que não conversam entre si, existe uma solução sob medida.",
         "types": [
             ("Sistemas de gestão", "Clientes, pedidos, estoque, financeiro e equipe."),
-            ("Dashboards", "Indicadores do negócio em tempo real."),
+            ("Dashboards", "Indicadores do negócio em tempo real — gastos, pessoal, setores."),
             ("Plataformas web", "Portais de clientes, áreas de membros e marketplaces."),
             ("APIs", "Serviços para integrar aplicações e parceiros."),
             ("Integrações", "Sistemas, planilhas e ferramentas conectados."),
             ("Automações", "Tarefas repetitivas executadas automaticamente."),
         ],
+        "demo": True,
         "steps": [
             ("Descoberta", "Levantamento de requisitos e mapeamento do seu processo."),
             ("Protótipo", "Telas e fluxos validados com você antes de programar."),
@@ -227,6 +228,22 @@ def render(page):
         f'''          <a href="/{p['slug']}/"><span><small>Serviço</small><b>{e(p['name'])}</b></span>{ARROW}</a>'''
         for p in others
     )
+    demo = ""
+    if page.get("demo"):
+        demo = f'''
+    <section class="svc-section">
+      <div class="container">
+        <div class="svc-demo reveal">
+          <div>
+            <span class="kicker"><b>//</b> Exemplo</span>
+            <h2 class="section__title">Veja um dashboard de <span class="hl">gastos empresariais</span></h2>
+            <p class="section__lead">Demo interativa: total de gastos, custos com pessoal por setor, orçamento × realizado e lançamentos. Dados fictícios — no projeto real, vêm da sua empresa.</p>
+          </div>
+          <a class="btn btn--primary" href="/controle-gastos/" target="_blank" rel="noopener"><span>Abrir demo Vista</span>{ARROW}</a>
+        </div>
+      </div>
+    </section>
+'''
 
     return f'''<!DOCTYPE html>
 <html lang="pt-BR">
@@ -342,6 +359,7 @@ def render(page):
         </ul>
       </div>
     </section>
+{demo}
 
     <!-- ================= PROCESSO ================= -->
     <section class="svc-section">
