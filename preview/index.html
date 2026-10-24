@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Solutions · Meleiro Tech (protótipo)</title>
-  <meta name="description" content="Protótipo imersivo de soluções Meleiro Tech — sites, landing pages e sistemas sob medida." />
+  <meta name="description" content="Experiência imersiva de soluções Meleiro Tech." />
   <meta name="robots" content="noindex,nofollow" />
   <meta name="theme-color" content="#01102F" />
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -14,259 +14,143 @@
 </head>
 <body>
   <div class="notice">
-    <span>Protótipo imersivo — o site atual continua no ar</span>
-    <a href="https://meleiro.tech/">Ver site atual</a>
+    <span>Protótipo imersivo</span>
+    <a href="https://meleiro.tech/">Site atual</a>
   </div>
 
-  <header class="nav">
-    <div class="nav__inner">
-      <a class="nav__brand" href="#topo" aria-label="Meleiro Tech">
-        <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" width="120" height="45" />
-      </a>
-      <ul class="nav__links">
-        <li><a href="#solucoes">Soluções</a></li>
-        <li><a href="#cases">Cases</a></li>
-        <li><a href="#metodo">Método</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-      <a class="btn btn--lime" href="https://wa.me/5583993041956?text=Oi%21%20Vi%20o%20prot%C3%B3tipo%20de%20solu%C3%A7%C3%B5es%20e%20quero%20conversar." target="_blank" rel="noopener">Falar com especialista</a>
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#topo">
+      <img src="/assets/img/logo-horizontal.webp" alt="Meleiro Tech" width="120" height="45" />
+    </a>
+    <div class="nav__right">
+      <span class="nav__progress" id="progressLabel">01 / 07</span>
+      <a class="btn" href="https://wa.me/5583993041956" target="_blank" rel="noopener">Conversar</a>
     </div>
   </header>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
 
-  <section class="hero" id="topo">
-    <div class="hero__media" aria-hidden="true">
-      <video autoplay muted loop playsinline poster="/assets/img/og-image.jpg">
-        <source src="media/code-typing.mp4" type="video/mp4" />
-      </video>
-      <div class="hero__shade"></div>
-    </div>
-    <div class="hero__content">
-      <p class="kicker"><i></i> Meleiro Tech · Solutions</p>
-      <h1>SOFTWARE<br /><em>EXPERIENCE</em></h1>
-      <p class="hero__jp">Software moldado à sua operação</p>
-      <p class="hero__lead">
-        Do primeiro esboço ao sistema no ar: sites, landing pages e plataformas sob medida —
-        com a mesma obsessão por clareza, performance e resultado.
-      </p>
-      <div class="hero__actions">
-        <a class="btn btn--lime" href="#solucoes">Ver soluções</a>
-        <a class="btn btn--ghost" href="#cases">Conhecer cases</a>
-      </div>
-    </div>
-    <p class="scroll-hint">Role para explorar</p>
-  </section>
+  <!-- Vertical immersive rail: wheel hijack converts to horizontal on desktop -->
+  <main class="stage" id="stage">
+    <div class="rail" id="rail">
 
-  <section class="section" id="solucoes">
-    <div class="wrap">
-      <div class="section__head reveal">
-        <p class="kicker"><i></i> O que entregamos</p>
-        <h2>Soluções digitais feitas para a sua operação.</h2>
-        <p>
-          Cada frente tem um propósito claro. Você contrata o pedaço que falta — ou o conjunto
-          completo, do diagnóstico à evolução.
-        </p>
-      </div>
-
-      <div class="sol-list">
-        <article class="sol reveal">
-          <div class="sol__num">01</div>
-          <div class="sol__body">
-            <span class="sol__tag">Web</span>
-            <h3>Criação de sites</h3>
-            <p>
-              Presença digital com cara de produto: institucional, corporativo ou portal —
-              rápido, responsivo e pronto para ranquear.
-            </p>
-            <div class="sol__pills">
-              <span>Institucional</span><span>Corporativo</span><span>SEO</span><span>Performance</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="sol reveal">
-          <div class="sol__num">02</div>
-          <div class="sol__body">
-            <span class="sol__tag">Conversion</span>
-            <h3>Landing pages</h3>
-            <p>
-              Páginas de campanha e lançamento pensadas para converter: mensagem direta,
-              prova social e CTA no lugar certo.
-            </p>
-            <div class="sol__pills">
-              <span>Campanhas</span><span>Lançamentos</span><span>Captação</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="sol reveal">
-          <div class="sol__num">03</div>
-          <div class="sol__body">
-            <span class="sol__tag">Product</span>
-            <h3>Sistemas personalizados</h3>
-            <p>
-              Quando a planilha ou o software genérico já atrapalham: dashboards, APIs,
-              integrações e automações no jeito da sua rotina.
-            </p>
-            <div class="sol__pills">
-              <span>Dashboards</span><span>APIs</span><span>Integrações</span><span>Automações</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="sol reveal">
-          <div class="sol__num">04</div>
-          <div class="sol__body">
-            <span class="sol__tag">Partnership</span>
-            <h3>Consultoria & evolução</h3>
-            <p>
-              Diagnóstico, priorização e acompanhamento contínuo. Quem desenvolve continua
-              perto depois do go-live.
-            </p>
-            <div class="sol__pills">
-              <span>Diagnóstico</span><span>Roadmap</span><span>Manutenção</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--dark" id="cases">
-    <div class="wrap">
-      <div class="section__head reveal">
-        <p class="kicker"><i></i> Cases</p>
-        <h2>Experiências que já saíram do papel.</h2>
-        <p>Deslize para o lado. Cada card abre a demo completa.</p>
-      </div>
-
-      <div class="hscroll reveal">
-        <div class="hscroll__track" id="caseTrack">
-          <a class="case" href="https://meleiro.tech/projetos/spectrum/" target="_blank" rel="noopener">
-            <div class="case__media">
-              <img src="/assets/img/projects/spectrum-desktop.jpg" alt="Spectrum desktop" width="960" height="600" loading="lazy" />
-              <img src="/assets/img/projects/spectrum-mobile.jpg" alt="Spectrum mobile" width="960" height="600" loading="lazy" />
-            </div>
-            <div class="case__body">
-              <span class="case__cat">Landing page</span>
-              <h3>Spectrum</h3>
-              <p>Construtora moderna: obras, orçamento e portfólio.</p>
-              <span class="case__cta">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M8 7h9v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <a class="case" href="https://meleiro.tech/projetos/worky/" target="_blank" rel="noopener">
-            <div class="case__media">
-              <img src="/assets/img/projects/worky-desktop.jpg" alt="Worky desktop" width="960" height="600" loading="lazy" />
-              <img src="/assets/img/projects/worky-mobile.jpg" alt="Worky mobile" width="960" height="600" loading="lazy" />
-            </div>
-            <div class="case__body">
-              <span class="case__cat">Portfólio</span>
-              <h3>Worky</h3>
-              <p>Escritório de arquitetura: serviços, sobre e blog.</p>
-              <span class="case__cta">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M8 7h9v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <a class="case" href="https://lumio-six-steel.vercel.app/" target="_blank" rel="noopener">
-            <div class="case__media">
-              <img src="/assets/img/projects/lumio-desktop.jpg" alt="Lumio desktop" width="960" height="600" loading="lazy" />
-              <img src="/assets/img/projects/lumio-mobile.jpg" alt="Lumio mobile" width="960" height="600" loading="lazy" />
-            </div>
-            <div class="case__body">
-              <span class="case__cat">Jogo educacional</span>
-              <h3>Lumio</h3>
-              <p>Microaprendizado com lições curtas e trilhas no celular.</p>
-              <span class="case__cta">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M8 7h9v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <a class="case" href="https://meleiro.tech/controle-gastos/" target="_blank" rel="noopener">
-            <div class="case__media">
-              <img src="/assets/img/projects/vista-desktop.jpg" alt="Vista desktop" width="960" height="600" loading="lazy" />
-              <img src="/assets/img/projects/vista-mobile.jpg" alt="Vista mobile" width="960" height="600" loading="lazy" />
-            </div>
-            <div class="case__body">
-              <span class="case__cat">Dashboard empresarial</span>
-              <h3>Vista</h3>
-              <p>Painel financeiro por setor, lançamentos e tesouraria.</p>
-              <span class="case__cta">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M8 7h9v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
+      <!-- 01 HERO -->
+      <section class="panel panel--hero" id="topo" data-label="01">
+        <video class="panel__bg" autoplay muted loop playsinline poster="/assets/img/og-image.jpg">
+          <source src="media/code-typing.mp4" type="video/mp4" />
+        </video>
+        <div class="panel__veil"></div>
+        <div class="panel__inner">
+          <p class="eyebrow"><i></i> Meleiro Tech</p>
+          <h1 class="display">
+            <span class="line"><span>SOFTWARE</span></span>
+            <span class="line"><span class="lime">EXPERIENCE</span></span>
+          </h1>
+          <p class="sub">Software moldado à sua operação</p>
+          <p class="lead">Sites, landing pages e sistemas sob medida — do diagnóstico ao go-live.</p>
+          <p class="hint">Arraste ou role para explorar →</p>
         </div>
-        <div class="hscroll__nav">
-          <button type="button" id="casePrev" aria-label="Anterior">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 6 9 12l6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button type="button" id="caseNext" aria-label="Próximo">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
+      </section>
+
+      <!-- 02 INTRO -->
+      <section class="panel panel--copy" data-label="02">
+        <div class="panel__inner panel__inner--wide">
+          <p class="eyebrow"><i></i> Proposta</p>
+          <h2 class="display display--md">
+            Projetamos software<br />
+            <span class="lime">alinhado aos seus processos.</span>
+          </h2>
+          <p class="lead lead--lg">
+            Recusamos o genérico. Conversamos com quem usa, mapeamos a rotina e moldamos
+            a tecnologia ao negócio — nunca o contrário.
+          </p>
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="big-num" aria-hidden="true">MT</div>
+      </section>
 
-  <section class="section" id="metodo">
-    <div class="wrap process">
-      <div class="process__sticky reveal">
-        <p class="kicker"><i></i> Método</p>
-        <h2 style="font-family:var(--display);font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:-0.04em;line-height:1.08;margin:.4rem 0 1rem">
-          Do problema à solução, sem teatro.
-        </h2>
-        <p style="color:var(--muted);max-width:28rem">
-          Entendemos a operação, desenhamos a arquitetura e entregamos em ciclos curtos —
-          com algo utilizável a cada etapa.
-        </p>
-      </div>
-      <div class="process__steps">
-        <article class="step reveal">
-          <div class="step__n">Passo 01</div>
-          <strong>Diagnóstico</strong>
-          <span>Mapeamos dor, contexto e o que realmente precisa virar software.</span>
-        </article>
-        <article class="step reveal">
-          <div class="step__n">Passo 02</div>
-          <strong>Desenho</strong>
-          <span>Escopo, arquitetura e interfaces alinhadas ao objetivo do negócio.</span>
-        </article>
-        <article class="step reveal">
-          <div class="step__n">Passo 03</div>
-          <strong>Construção</strong>
-          <span>Código limpo, testado e preparado para crescer com a operação.</span>
-        </article>
-        <article class="step reveal">
-          <div class="step__n">Passo 04</div>
-          <strong>Evolução</strong>
-          <span>Go-live, ajustes reais e acompanhamento de quem fez a entrega.</span>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--dark" id="contato">
-    <div class="wrap">
-      <div class="cta reveal">
-        <p class="kicker"><i></i> Próximo passo</p>
-        <h2>Vamos construir a sua software experience.</h2>
-        <p>
-          Conte o que você precisa. Respondemos com um caminho possível e os próximos passos —
-          sem enrolação.
-        </p>
-        <div class="hero__actions">
-          <a class="btn btn--lime" href="https://wa.me/5583993041956" target="_blank" rel="noopener">Falar no WhatsApp</a>
-          <a class="btn btn--ghost" href="mailto:meleiro.tech@gmail.com">meleiro.tech@gmail.com</a>
+      <!-- 03 SOL 01 -->
+      <section class="panel panel--sol" data-label="03" style="--accent:#d7f300">
+        <div class="sol-art" aria-hidden="true">
+          <img src="/assets/img/projects/spectrum-desktop.jpg" alt="" />
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="panel__inner">
+          <p class="sol-idx">Solution 01</p>
+          <h2 class="display display--md">Criação<br />de sites</h2>
+          <p class="lead">Institucional, corporativo e portal — rápido, com SEO e visual de produto.</p>
+          <ul class="tags"><li>Institucional</li><li>SEO</li><li>Performance</li></ul>
+        </div>
+      </section>
 
-  <footer class="wrap foot">
-    <span>© 2026 Meleiro Tech · protótipo solutions</span>
-    <span>
-      <a href="https://meleiro.tech/">Site atual</a>
-      ·
-      <a href="https://meleiro.tech/links/">Links Instagram</a>
-    </span>
-  </footer>
+      <!-- 04 SOL 02 -->
+      <section class="panel panel--sol" data-label="04" style="--accent:#7dd3fc">
+        <div class="sol-art" aria-hidden="true">
+          <img src="/assets/img/projects/profit-desktop.jpg" alt="" />
+        </div>
+        <div class="panel__inner">
+          <p class="sol-idx">Solution 02</p>
+          <h2 class="display display--md">Landing<br />pages</h2>
+          <p class="lead">Campanhas e lançamentos com mensagem direta e CTA no lugar certo.</p>
+          <ul class="tags"><li>Campanhas</li><li>Conversão</li><li>Captação</li></ul>
+        </div>
+      </section>
+
+      <!-- 05 SOL 03 -->
+      <section class="panel panel--sol" data-label="05" style="--accent:#86efac">
+        <div class="sol-art" aria-hidden="true">
+          <img src="/assets/img/projects/vista-desktop.jpg" alt="" />
+        </div>
+        <div class="panel__inner">
+          <p class="sol-idx">Solution 03</p>
+          <h2 class="display display--md">Sistemas<br />sob medida</h2>
+          <p class="lead">Dashboards, APIs, integrações e automações no jeito da sua rotina.</p>
+          <ul class="tags"><li>Dashboards</li><li>APIs</li><li>Automações</li></ul>
+        </div>
+      </section>
+
+      <!-- 06 CASES horizontal strip inside panel -->
+      <section class="panel panel--cases" data-label="06">
+        <div class="panel__inner panel__inner--full">
+          <p class="eyebrow"><i></i> Cases</p>
+          <h2 class="display display--sm">Experiências<br />no ar</h2>
+          <div class="cases">
+            <a class="case" href="https://meleiro.tech/projetos/spectrum/" target="_blank" rel="noopener">
+              <img src="/assets/img/projects/spectrum-desktop.jpg" alt="Spectrum" />
+              <span>Spectrum · Landing</span>
+            </a>
+            <a class="case" href="https://meleiro.tech/projetos/worky/" target="_blank" rel="noopener">
+              <img src="/assets/img/projects/worky-desktop.jpg" alt="Worky" />
+              <span>Worky · Portfólio</span>
+            </a>
+            <a class="case" href="https://lumio-six-steel.vercel.app/" target="_blank" rel="noopener">
+              <img src="/assets/img/projects/lumio-desktop.jpg" alt="Lumio" />
+              <span>Lumio · Educacional</span>
+            </a>
+            <a class="case" href="https://meleiro.tech/controle-gastos/" target="_blank" rel="noopener">
+              <img src="/assets/img/projects/vista-desktop.jpg" alt="Vista" />
+              <span>Vista · Dashboard</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 CTA -->
+      <section class="panel panel--cta" data-label="07">
+        <div class="panel__inner">
+          <p class="eyebrow"><i></i> Contato</p>
+          <h2 class="display display--md">Vamos construir<br /><span class="lime">sua experience.</span></h2>
+          <p class="lead">Conte o que você precisa. Resposta clara, próximos passos, sem enrolação.</p>
+          <div class="cta-row">
+            <a class="btn btn--lime" href="https://wa.me/5583993041956" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn--ghost" href="mailto:meleiro.tech@gmail.com">E-mail</a>
+            <a class="btn btn--ghost" href="https://meleiro.tech/">Site atual</a>
+          </div>
+        </div>
+        <div class="big-num big-num--lime" aria-hidden="true">GO</div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="dots" id="dots" aria-hidden="true"></div>
 
   <script src="preview.js"></script>
 </body>
